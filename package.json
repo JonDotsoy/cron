@@ -1,6 +1,15 @@
 {
   "name": "@jondotsoy/cron",
   "description": "Cron expression parser and scheduler that generates execution times based on cron syntax",
+  "keywords": [
+    "cron",
+    "cron-parser",
+    "scheduler",
+    "cron-expression",
+    "temporal",
+    "datetime",
+    "scheduling"
+  ],
   "module": "./lib/esm/cron.js",
   "types": "./lib/types/cron.d.ts",
   "type": "module",
