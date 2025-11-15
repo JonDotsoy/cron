@@ -4,6 +4,9 @@
   "module": "./lib/esm/cron.js",
   "types": "./lib/types/cron.d.ts",
   "type": "module",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.esm.json && tsc -p tsconfig.types.json",
     "lint": "prettier --check .",
