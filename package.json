@@ -37,8 +37,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/JonDotsoy/cron.git"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }
