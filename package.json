@@ -1,0 +1,24 @@
+{
+  "name": "@jondotsoy/cron",
+  "description": "Cron expression parser and scheduler that generates execution times based on cron syntax",
+  "module": "./lib/esm/cron.js",
+  "types": "./lib/types/cron.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.esm.json && tsc -p tsconfig.types.json",
+    "lint": "prettier --check .",
+    "fmt": "prettier --write ."
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "prettier": "3.6.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "temporal-polyfill": "0.3.0"
+  },
+  "license": "MIT",
+  "author": "Jonathan Delgado <hi@jon.soy>"
+}
