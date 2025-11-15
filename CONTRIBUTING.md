@@ -51,6 +51,7 @@ bun test
 ```
 
 The test suite includes:
+
 - Cron expression parsing tests
 - Date generation tests for various cron patterns
 - Special expression tests (@yearly, @monthly, @reboot, etc.)

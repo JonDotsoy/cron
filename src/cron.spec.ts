@@ -10,7 +10,6 @@ import {
 } from "bun:test";
 import { Cron } from "./cron";
 import { Temporal } from "temporal-polyfill";
-import { and } from "astro:db";
 
 const take = <T>(iterator: Iterable<T>, limit: number = Infinity) => {
   const list: T[] = [];
@@ -938,5 +937,50 @@ describe("Cron.setTimeout", () => {
     // Should have executed once immediately
     expect(executions).toHaveLength(1);
     expect(executions[0]).toBe(currentTime.epochMilliseconds);
+  });
+
+  // CASE: Test using keyword with setInterval
+  // CRON: * * * * *
+  test("should support 'using' keyword for automatic disposal", () => {
+    const cron = new Cron("* * * * *");
+
+    const currentTime = Temporal.Instant.fromEpochMilliseconds(
+      new Date(2025, 11, 1, 10, 10, 10, 10).getTime(),
+    );
+
+    setSystemTime(currentTime.epochMilliseconds);
+
+    const cronInterval = Cron.setInterval(() => {}, cron);
+
+    // Verify that Symbol.dispose exists and is a function
+    expect(typeof cronInterval[Symbol.dispose]).toBe("function");
+
+    // Verify that calling Symbol.dispose works (doesn't throw)
+    expect(() => cronInterval[Symbol.dispose]()).not.toThrow();
+  });
+
+  // CASE: Test await using keyword with setInterval
+  // CRON: @reboot (completes immediately)
+  test("should support 'await using' keyword for automatic disposal", async () => {
+    const cron = new Cron("@reboot");
+    let callbackExecuted = false;
+
+    const currentTime = Temporal.Instant.fromEpochMilliseconds(
+      new Date(2025, 11, 1, 10, 10, 10, 10).getTime(),
+    );
+
+    setSystemTime(currentTime.epochMilliseconds);
+
+    {
+      await using cronInterval = Cron.setInterval(() => {
+        callbackExecuted = true;
+      }, cron);
+
+      // Verify that Symbol.asyncDispose exists and is a function
+      expect(typeof cronInterval[Symbol.asyncDispose]).toBe("function");
+    }
+    // At this point, Symbol.asyncDispose should have been called and awaited
+
+    expect(callbackExecuted).toBe(true);
   });
 });

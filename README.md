@@ -69,6 +69,40 @@ setTimeout(() => {
 await promise;
 ```
 
+### Using the `using` keyword (TypeScript 5.2+)
+
+The `setInterval` return value supports the `using` keyword for automatic resource disposal:
+
+```typescript
+import { Cron } from "@jondotsoy/cron";
+
+{
+  using cronInterval = Cron.setInterval(() => {
+    console.log("Task executed at:", new Date().toISOString());
+  }, new Cron("*/5 * * * *"));
+
+  // The interval will automatically be aborted when exiting this scope
+}
+// Scheduler is automatically stopped here
+```
+
+### Using the `await using` keyword (TypeScript 5.2+)
+
+For async disposal that waits for the scheduler to fully complete:
+
+```typescript
+import { Cron } from "@jondotsoy/cron";
+
+{
+  await using cronInterval = Cron.setInterval(() => {
+    console.log("Task executed at:", new Date().toISOString());
+  }, new Cron("@reboot")); // Executes once immediately
+
+  // The interval will automatically be aborted and awaited when exiting this scope
+}
+// Scheduler is fully stopped and cleaned up here
+```
+
 ## Supported Cron Syntax
 
 ### Standard Format
@@ -162,6 +196,7 @@ Creates a new Cron instance.
 - `now`: Optional starting date/time (defaults to current time using `Temporal.Now.plainDateTimeISO()`)
 
 **Properties:**
+
 - `rule`: The original cron expression string
 - `now`: The starting date/time
 - `spec`: The parsed cron specification (read-only)
@@ -179,8 +214,13 @@ Schedules a callback to run at times matching the cron expression.
 **Special behavior for `@reboot`:** Executes the callback immediately once and returns.
 
 Returns an object with:
+
 - `promise`: Promise that resolves when the scheduler is aborted or completes
 - `abort()`: Function to stop the scheduler
+- `[Symbol.dispose]()`: Function for automatic resource disposal (same as `abort()`)
+- `[Symbol.asyncDispose]()`: Async function that aborts and waits for the promise to complete
+
+The returned object implements both the Disposable and AsyncDisposable protocols, allowing it to be used with the `using` and `await using` keywords in TypeScript 5.2+.
 
 ### `cron[Symbol.iterator]()`
 

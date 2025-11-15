@@ -90,6 +90,11 @@ export class Cron {
     return {
       promise,
       abort: () => abort.abort(),
+      [Symbol.dispose]: () => abort.abort(),
+      [Symbol.asyncDispose]: async () => {
+        abort.abort();
+        await promise;
+      },
     };
   }
 
