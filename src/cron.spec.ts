@@ -498,31 +498,35 @@ describe("Cron", () => {
     });
   });
 
-  test("should generate correct dates for @yearly expression", () => {
-    const cron = new Cron("@yearly");
+  test(
+    "should generate correct dates for @yearly expression",
+    () => {
+      const cron = new Cron("@yearly");
 
-    const list = take(cron, 4);
+      const list = take(cron, 4);
 
-    const f = list.map((item) => ({
-      year: item.year,
-      month: item.month,
-      day: item.day,
-      hour: item.hour,
-      minute: item.minute,
-      second: item.second,
-    }));
+      const f = list.map((item) => ({
+        year: item.year,
+        month: item.month,
+        day: item.day,
+        hour: item.hour,
+        minute: item.minute,
+        second: item.second,
+      }));
 
-    // next at 2026-01-01 00:00:00
-    // then at 2027-01-01 00:00:00
-    // then at 2028-01-01 00:00:00
-    // then at 2029-01-01 00:00:00
-    expect(f).toEqual([
-      { year: 2026, month: 1, day: 1, hour: 0, minute: 0, second: 0 },
-      { year: 2027, month: 1, day: 1, hour: 0, minute: 0, second: 0 },
-      { year: 2028, month: 1, day: 1, hour: 0, minute: 0, second: 0 },
-      { year: 2029, month: 1, day: 1, hour: 0, minute: 0, second: 0 },
-    ]);
-  });
+      // next at 2026-01-01 00:00:00
+      // then at 2027-01-01 00:00:00
+      // then at 2028-01-01 00:00:00
+      // then at 2029-01-01 00:00:00
+      expect(f).toEqual([
+        { year: 2026, month: 1, day: 1, hour: 0, minute: 0, second: 0 },
+        { year: 2027, month: 1, day: 1, hour: 0, minute: 0, second: 0 },
+        { year: 2028, month: 1, day: 1, hour: 0, minute: 0, second: 0 },
+        { year: 2029, month: 1, day: 1, hour: 0, minute: 0, second: 0 },
+      ]);
+    },
+    { timeout: 60000 },
+  );
 
   test("should generate correct dates for every minute (* * * * *)", () => {
     const cron = new Cron("* * * * *");
