@@ -502,32 +502,32 @@ describe("CronFormat - Español", () => {
     expect(result).toContain("Thursday");
     expect(result).toContain("July through September");
     expect(result).toContain("2024-2029");
-    
+
     // The hour range should be properly described
     // Currently it says "past hour 14" but should say "past every hour from 14 through 15"
     // This test documents the current behavior and can be updated when fixed
     expect(result).toContain("past hour");
   });
 
-  it('formatea correctamente un rango de horas con minuto específico', () => {
+  it("formatea correctamente un rango de horas con minuto específico", () => {
     const formatter = new CronFormat("en");
     const result = formatter.format("30 14-15 * * *");
 
     // Should not contain NaN
     expect(result).not.toContain("NaN");
-    
+
     // Currently returns "At 14:30" but ideally should handle the hour range
     // This test documents the current behavior
     expect(result).toMatch(/^At \d{2}:\d{2}/);
   });
 
-  it('formatea correctamente un rango de horas con rango de minutos', () => {
+  it("formatea correctamente un rango de horas con rango de minutos", () => {
     const formatter = new CronFormat("en");
     const result = formatter.format("0-30 14-15 * * *");
 
     // Should not contain NaN
     expect(result).not.toContain("NaN");
-    
+
     // Should properly describe both ranges
     expect(result).toContain("minute");
     expect(result).toContain("past hour");
