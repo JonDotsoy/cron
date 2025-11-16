@@ -147,7 +147,7 @@ const parts = formatter.formatToParts("0 22 * * 1-5");
 // ]
 
 // Use parts for custom rendering (e.g., with colors or styles)
-parts.forEach(part => {
+parts.forEach((part) => {
   if (part.type === "hour" || part.type === "minute") {
     console.log(`\x1b[36m${part.value}\x1b[0m`); // Cyan for time
   } else if (part.type === "weekday") {
@@ -182,6 +182,7 @@ console.log(formatter.format("@daily"));
 ```
 
 Supported locales:
+
 - `en` - English
 - `es` - Spanish
 
@@ -334,8 +335,8 @@ Converts a cron expression into a human-readable description.
 ```typescript
 const formatter = new CronFormat("en");
 formatter.format("0 22 * * 1-5"); // "At 22:00 on every day-of-week from Monday through Friday."
-formatter.format("*/5 * * * *");  // "At every minute."
-formatter.format("@weekly");      // "At 00:00 on Sunday."
+formatter.format("*/5 * * * *"); // "At every minute."
+formatter.format("@weekly"); // "At 00:00 on Sunday."
 ```
 
 #### `formatToParts(cronExpression: Cron | string): CronFormatPart[]`
@@ -346,6 +347,7 @@ Converts a cron expression into an array of parts with type and value informatio
 - Returns: Array of `CronFormatPart` objects
 
 **Part types:**
+
 - `literal` - Static text (e.g., "At ", " on ")
 - `time` - General time description
 - `minute` - Minute component
