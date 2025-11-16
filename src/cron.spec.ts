@@ -988,3 +988,81 @@ describe("Cron.setTimeout", () => {
     expect(callbackExecuted).toBe(true);
   });
 });
+
+describe("Cron - NaN validation", () => {
+  // CASE: At every 6th minute past hour 19 on day-of-month 31 in February and on every day-of-week from Wednesday through Saturday in every year from 2028 through 2030.
+  // CRON: */6 19 31 2 3-6 2028-2030
+  test("should not contain NaN in formatted output for '*/6 19 31 2 3-6 2028-2030'", () => {
+    const cron = new Cron("*/6 19 31 2 3-6 2028-2030");
+
+    // Verify the spec is parsed correctly
+    expect(cron.spec).toEqual({
+      minute: {
+        stepValues: {
+          start: 0,
+          end: 59,
+          step: 6,
+        },
+      },
+      hour: { value: 19 },
+      dayOfMonth: { value: 31 },
+      month: { value: 2 },
+      dayOfWeek: {
+        rangeValues: {
+          start: 3,
+          end: 6,
+        },
+      },
+      year: {
+        rangeValues: {
+          start: 2028,
+          end: 2030,
+        },
+      },
+    });
+
+    // Verify that the spec doesn't contain any NaN values
+    const specString = JSON.stringify(cron.spec);
+    expect(specString).not.toContain("NaN");
+    expect(specString).not.toContain("null");
+  });
+
+  test("should parse complex expression without NaN values", () => {
+    const expression = "*/6 19 31 2 3-6 2028-2030";
+    const cron = new Cron(expression);
+
+    // Check minute field
+    if ("stepValues" in cron.spec.minute) {
+      expect(Number.isNaN(cron.spec.minute.stepValues.start)).toBe(false);
+      expect(Number.isNaN(cron.spec.minute.stepValues.end)).toBe(false);
+      expect(Number.isNaN(cron.spec.minute.stepValues.step)).toBe(false);
+    }
+
+    // Check hour field
+    if ("value" in cron.spec.hour) {
+      expect(Number.isNaN(cron.spec.hour.value)).toBe(false);
+    }
+
+    // Check dayOfMonth field
+    if ("value" in cron.spec.dayOfMonth) {
+      expect(Number.isNaN(cron.spec.dayOfMonth.value)).toBe(false);
+    }
+
+    // Check month field
+    if ("value" in cron.spec.month) {
+      expect(Number.isNaN(cron.spec.month.value)).toBe(false);
+    }
+
+    // Check dayOfWeek field
+    if ("rangeValues" in cron.spec.dayOfWeek) {
+      expect(Number.isNaN(cron.spec.dayOfWeek.rangeValues.start)).toBe(false);
+      expect(Number.isNaN(cron.spec.dayOfWeek.rangeValues.end)).toBe(false);
+    }
+
+    // Check year field
+    if ("rangeValues" in cron.spec.year) {
+      expect(Number.isNaN(cron.spec.year.rangeValues.start)).toBe(false);
+      expect(Number.isNaN(cron.spec.year.rangeValues.end)).toBe(false);
+    }
+  });
+});

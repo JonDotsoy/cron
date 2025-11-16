@@ -388,10 +388,10 @@ The `CronFormat` class provides optional internationalization support for format
 
 Currently, the following locales are supported:
 
-| Locale Code | Language | Example Output |
-|-------------|----------|----------------|
-| `en` | English | "At 22:00 on every day-of-week from Monday through Friday." |
-| `es` | Spanish | "A las 22:00 cada día de la semana del lunes al viernes." |
+| Locale Code | Language | Example Output                                              |
+| ----------- | -------- | ----------------------------------------------------------- |
+| `en`        | English  | "At 22:00 on every day-of-week from Monday through Friday." |
+| `es`        | Spanish  | "A las 22:00 cada día de la semana del lunes al viernes."   |
 
 ### Usage
 

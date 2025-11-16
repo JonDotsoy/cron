@@ -14,6 +14,7 @@ This file is auto-generated from `examples/examples.ts`.
 - `0 4 8-14 * *` → At 04:00 on every day-of-month from 8 through 14.
 - `0 0 1,15 * 3` → At 00:00 on day-of-month 1 and 15 and on Wednesday.
 - `15 14 1 * *` → At 14:15 on day-of-month 1.
+- `*/6 19 31 2 3-6 2028-2030` → At every 6th minute past hour 19 on day-of-month 31 on every day-of-week from Wednesday through Saturday in February in 2028-2030.
 
 ## Locale: es
 
@@ -27,6 +28,7 @@ This file is auto-generated from `examples/examples.ts`.
 - `0 4 8-14 * *` → A las 04:00 cada día del mes del 8 al 14.
 - `0 0 1,15 * 3` → A las 00:00 los días 1 y 15 del mes y los miércoles.
 - `15 14 1 * *` → A las 14:15 los días 1 del mes.
+- `*/6 19 31 2 3-6 2028-2030` → At every sexto minute past hour 19 los días 31 del mes cada día de la semana del miércoles al sábados de febrero en 2028-2030.
 
 ## Idiom: es-CL-Flaite
 
@@ -40,3 +42,4 @@ This file is auto-generated from `examples/examples.ts`.
 - `0 4 8-14 * *` → La weá corre a las 04:00 cada día del mes del 8 al 14, terrible específico.
 - `0 0 1,15 * 3` → La weá corre a las 00:00, sólo los días 1 y 15, y encima tiene que caer miércoles….
 - `15 14 1 * *` → La weá corre a las 14:15, sólo los días 1.
+- `*/6 19 31 2 3-6 2028-2030` → At every 6 minute past hour 19, sólo los días 31 del miércoles al sábado en febrero en 2028-2030.

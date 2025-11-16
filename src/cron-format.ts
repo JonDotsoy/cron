@@ -298,6 +298,29 @@ export class CronFormat implements ICronFormatter {
       });
     }
 
+    // Check if minute has a step (e.g., "*/6" or "0-30/6") and hour is specific
+    if (minute.includes("/") && hour !== "*") {
+      const hourNum = parseInt(hour, 10);
+      const [rangePart, stepPart] = minute.split("/");
+
+      if (!rangePart || !stepPart) {
+        return this.applyTemplate(this.localeDictionary.atTime, {
+          time: `${hourNum.toString().padStart(2, "0")}:00`,
+        });
+      }
+
+      const step = parseInt(stepPart, 10);
+
+      if (rangePart === "*") {
+        return `At every ${this.localeDictionary.ordinal(step)} minute past hour ${hourNum}`;
+      } else if (rangePart.includes("-")) {
+        const [start, end] = rangePart.split("-");
+        return `At every ${this.localeDictionary.ordinal(step)} minute from ${start} through ${end} past hour ${hourNum}`;
+      } else {
+        return `At every ${this.localeDictionary.ordinal(step)} minute from ${rangePart} past hour ${hourNum}`;
+      }
+    }
+
     // Check if hour has a step (e.g., "0-20/2" or "*/2")
     if (hour.includes("/") && minute !== "*") {
       const minuteNum = parseInt(minute, 10);

@@ -1,5 +1,5 @@
 import { CronFormat } from "../src/cron-format";
-import { IdiomsCronFormat } from "../src/idioms/idioms-cron-format";
+import { ColloquialCronFormat } from "../src/idioms/colloquial-cron-format";
 import { writeFileSync } from "fs";
 import { join } from "path";
 
@@ -14,6 +14,7 @@ const expresions = [
   "0 4 8-14 * *",
   "0 0 1,15 * 3",
   "15 14 1 * *",
+  "*/6 19 31 2 3-6 2028-2030",
 ];
 
 const locales = ["en", "es"];
@@ -39,7 +40,7 @@ function generateMarkdown(): string {
   // Generate examples for idioms
   for (const idiom of idioms) {
     markdown += `## Idiom: ${idiom}\n\n`;
-    const formatter = new IdiomsCronFormat(idiom);
+    const formatter = new ColloquialCronFormat(idiom);
 
     for (const expression of expresions) {
       const description = formatter.format(expression);

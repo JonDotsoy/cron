@@ -468,4 +468,17 @@ describe("CronFormat - Español", () => {
     const expected = "A las 04:05.";
     expect(formatter.format(cron)).toBe(expected);
   });
+
+  it('formatea "*/6 19 31 2 3-6 2028-2030" sin NaN', () => {
+    const formatter = new CronFormat("en");
+    const result = formatter.format("*/6 19 31 2 3-6 2028-2030");
+
+    // Verify no NaN in the output
+    expect(result).not.toContain("NaN");
+
+    // Verify the expected format
+    expect(result).toBe(
+      "At every 6th minute past hour 19 on day-of-month 31 on every day-of-week from Wednesday through Saturday in February in 2028-2030.",
+    );
+  });
 });
