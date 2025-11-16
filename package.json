@@ -19,7 +19,8 @@
   "scripts": {
     "build": "tsc -p tsconfig.esm.json && tsc -p tsconfig.types.json",
     "lint": "prettier --check .",
-    "fmt": "prettier --write ."
+    "fmt": "prettier --write .",
+    "examples": "bun run examples/examples.ts"
   },
   "devDependencies": {
     "@types/bun": "latest",
