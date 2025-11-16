@@ -213,7 +213,8 @@ describe("CronFormat", () => {
         { type: "literal", value: " " },
         { type: "day", value: "on day-of-month 1 and 15" },
         { type: "literal", value: " " },
-        { type: "weekday", value: "and on Wednesday" },
+        { type: "literal", value: "and " },
+        { type: "weekday", value: "on Wednesday" },
         { type: "literal", value: "." },
       ]);
     });
@@ -259,6 +260,29 @@ describe("CronFormat", () => {
         { type: "day", value: "on day-of-month 1" },
         { type: "literal", value: " " },
         { type: "month", value: "in every 2nd month" },
+        { type: "literal", value: "." },
+      ]);
+    });
+
+    it('devuelve partes para "2-7 4 5,7 4,6/4 5,3"', () => {
+      const cron = "2-7 4 5,7 4,6/4 5,3";
+      const parts = formatterEn.formatToParts(cron);
+
+      expect(parts).toEqual([
+        { type: "literal", value: "At " },
+        { type: "minute", value: "every minute from 2 through 7" },
+        { type: "literal", value: " " },
+        { type: "hour", value: "past hour 4" },
+        { type: "literal", value: " " },
+        { type: "day", value: "on day-of-month 5 and 7" },
+        { type: "literal", value: " " },
+        { type: "literal", value: "and " },
+        { type: "weekday", value: "on Friday and Wednesday" },
+        { type: "literal", value: " " },
+        {
+          type: "month",
+          value: "in April and every 4th month from June through December",
+        },
         { type: "literal", value: "." },
       ]);
     });
@@ -314,5 +338,106 @@ describe("CronFormat", () => {
         "At 04:05 in every 4th month from June through December.";
       expect(formatter.format(cronInstance)).toBe(expected);
     });
+  });
+});
+
+describe("CronFormat - Español", () => {
+  let formatterEs: CronFormat;
+
+  beforeEach(() => {
+    formatterEs = new CronFormat("es");
+  });
+
+  it('formatea "* * * * *" como "Cada minuto."', () => {
+    const cron = "* * * * *";
+    const expected = "Cada minuto.";
+    expect(formatterEs.format(cron)).toBe(expected);
+  });
+
+  it('formatea "5 4 * * *" como "A las 04:05."', () => {
+    const cron = "5 4 * * *";
+    const expected = "A las 04:05.";
+    expect(formatterEs.format(cron)).toBe(expected);
+  });
+
+  it('formatea "0 22 * * 1-5" como "A las 22:00 cada día de la semana del lunes al viernes."', () => {
+    const cron = "0 22 * * 1-5";
+    const expected = "A las 22:00 cada día de la semana del lunes al viernes.";
+    expect(formatterEs.format(cron)).toBe(expected);
+  });
+
+  it('formatea "15 14 1 * *" como "A las 14:15 los días 1 del mes."', () => {
+    const cron = "15 14 1 * *";
+    const expected = "A las 14:15 los días 1 del mes.";
+    expect(formatterEs.format(cron)).toBe(expected);
+  });
+
+  it('formatea "5 0 * 8 *" como "A las 00:05 de agosto."', () => {
+    const cron = "5 0 * 8 *";
+    const expected = "A las 00:05 de agosto.";
+    expect(formatterEs.format(cron)).toBe(expected);
+  });
+
+  it('formatea "@weekly" como "A las 00:00 los domingos."', () => {
+    const cron = "@weekly";
+    const expected = "A las 00:00 los domingos.";
+    expect(formatterEs.format(cron)).toBe(expected);
+  });
+
+  it('formatea "@daily" como "A las 00:00."', () => {
+    const cron = "@daily";
+    const expected = "A las 00:00.";
+    expect(formatterEs.format(cron)).toBe(expected);
+  });
+
+  it('formatea "@hourly" como "Al minuto 0."', () => {
+    const cron = "@hourly";
+    const expected = "Al minuto 0.";
+    expect(formatterEs.format(cron)).toBe(expected);
+  });
+
+  it("acepta una instancia de Cron como parámetro", () => {
+    const cronInstance = new Cron("* * * * *");
+    const expected = "Cada minuto.";
+    expect(formatterEs.format(cronInstance)).toBe(expected);
+  });
+
+  it('formatea "2-7 4 5,7 4,6/4 5,3" como expresión compleja', () => {
+    const cron = "2-7 4 5,7 4,6/4 5,3";
+    const expected =
+      "Cada minuto del 2 al 7 después de la hora 4 los días 5 y 7 del mes y los viernes y miércoles de abril y cada cuarto mes desde junio hasta diciembre.";
+    expect(formatterEs.format(cron)).toBe(expected);
+  });
+
+  describe("formatToParts", () => {
+    it('devuelve partes para "2-7 4 5,7 4,6/4 5,3"', () => {
+      const cron = "2-7 4 5,7 4,6/4 5,3";
+      const parts = formatterEs.formatToParts(cron);
+
+      expect(parts).toEqual([
+        { type: "literal", value: "Cada " },
+        { type: "minute", value: "minuto del 2 al 7" },
+        { type: "literal", value: " " },
+        { type: "hour", value: "después de la hora 4" },
+        { type: "literal", value: " " },
+        { type: "day", value: "los días 5 y 7 del mes" },
+        { type: "literal", value: " " },
+        { type: "literal", value: "y " },
+        { type: "weekday", value: "los viernes y miércoles" },
+        { type: "literal", value: " " },
+        {
+          type: "month",
+          value: "de abril y cada cuarto mes desde junio hasta diciembre",
+        },
+        { type: "literal", value: "." },
+      ]);
+    });
+  });
+
+  it("acepta Intl.Locale('es') en el constructor", () => {
+    const formatter = new CronFormat(new Intl.Locale("es"));
+    const cron = "5 4 * * *";
+    const expected = "A las 04:05.";
+    expect(formatter.format(cron)).toBe(expected);
   });
 });

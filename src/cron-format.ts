@@ -132,7 +132,45 @@ export class CronFormat implements ICronFormatter {
   }
 
   private parseTimeParts(timePart: string, parts: CronFormatPart[]): void {
-    // Extract "At " prefix
+    // Handle Spanish "A las" prefix
+    if (timePart.startsWith("A las ")) {
+      parts.push({ type: "literal", value: "A las " });
+      const rest = timePart.substring(6);
+
+      // Check if it's a time format HH:MM
+      const timeMatch = rest.match(/^(\d{2}):(\d{2})$/);
+      if (timeMatch) {
+        parts.push({ type: "hour", value: timeMatch[1]! });
+        parts.push({ type: "literal", value: ":" });
+        parts.push({ type: "minute", value: timeMatch[2]! });
+      } else {
+        parts.push({ type: "time", value: rest });
+      }
+      return;
+    }
+
+    // Handle Spanish "Cada minuto" or "Al minuto" prefix
+    if (
+      timePart.startsWith("Cada minuto") ||
+      timePart.startsWith("Al minuto")
+    ) {
+      const prefix = timePart.startsWith("Cada") ? "Cada " : "Al ";
+      parts.push({ type: "literal", value: prefix });
+      const rest = timePart.substring(prefix.length);
+
+      // Check for "minuto del X al Y después de la hora Z"
+      const complexMatch = rest.match(/^(.+) (después de la hora .+)$/);
+      if (complexMatch) {
+        parts.push({ type: "minute", value: complexMatch[1]! });
+        parts.push({ type: "literal", value: " " });
+        parts.push({ type: "hour", value: complexMatch[2]! });
+      } else {
+        parts.push({ type: "time", value: rest });
+      }
+      return;
+    }
+
+    // Extract "At " prefix (English)
     if (timePart.startsWith("At ")) {
       parts.push({ type: "literal", value: "At " });
       const rest = timePart.substring(3);
@@ -150,6 +188,17 @@ export class CronFormat implements ICronFormatter {
           parts.push({ type: "minute", value: minuteMatch[1]! });
           parts.push({ type: "literal", value: " " });
           parts.push({ type: "hour", value: minuteMatch[2]! });
+        } else {
+          // Fallback to time
+          parts.push({ type: "time", value: rest });
+        }
+      } else if (rest.includes(" past ")) {
+        // Handle "every minute from X through Y past hour Z" format
+        const complexMatch = rest.match(/^(.+) (past .+)$/);
+        if (complexMatch) {
+          parts.push({ type: "minute", value: complexMatch[1]! });
+          parts.push({ type: "literal", value: " " });
+          parts.push({ type: "hour", value: complexMatch[2]! });
         } else {
           // Fallback to time
           parts.push({ type: "time", value: rest });
@@ -172,8 +221,17 @@ export class CronFormat implements ICronFormatter {
     weekdayPart: string,
     parts: CronFormatPart[],
   ): void {
-    // Keep "on " or "and on " prefix as part of the weekday value
-    parts.push({ type: "weekday", value: weekdayPart });
+    // Check if it starts with "and on" or "y los" (Spanish)
+    if (weekdayPart.startsWith("and on ")) {
+      parts.push({ type: "literal", value: "and " });
+      parts.push({ type: "weekday", value: weekdayPart.substring(4) });
+    } else if (weekdayPart.startsWith("y los ")) {
+      parts.push({ type: "literal", value: "y " });
+      parts.push({ type: "weekday", value: weekdayPart.substring(2) });
+    } else {
+      // Keep "on " or other prefix as part of the weekday value
+      parts.push({ type: "weekday", value: weekdayPart });
+    }
   }
 
   private parseMonthParts(monthPart: string, parts: CronFormatPart[]): void {
@@ -203,7 +261,7 @@ export class CronFormat implements ICronFormatter {
         const hours = hour.split(",").map((h) => h.trim());
         return this.applyTemplate(this.localeDictionary.atMinutePastHour, {
           minute,
-          hour: hours.join(" and "),
+          hour: hours.join(` ${this.localeDictionary.and} `),
         });
       }
       const hourNum = parseInt(hour, 10);
@@ -234,12 +292,12 @@ export class CronFormat implements ICronFormatter {
       const step = parseInt(stepPart, 10);
 
       if (rangePart === "*") {
-        return `At minute ${minuteNum} past every ${this.ordinal(step)} hour`;
+        return `At minute ${minuteNum} past every ${this.localeDictionary.ordinal(step)} hour`;
       } else if (rangePart.includes("-")) {
         const [start, end] = rangePart.split("-");
-        return `At minute ${minuteNum} past every ${this.ordinal(step)} hour from ${start} through ${end}`;
+        return `At minute ${minuteNum} past every ${this.localeDictionary.ordinal(step)} hour from ${start} through ${end}`;
       } else {
-        return `At minute ${minuteNum} past every ${this.ordinal(step)} hour from ${rangePart}`;
+        return `At minute ${minuteNum} past every ${this.localeDictionary.ordinal(step)} hour from ${rangePart}`;
       }
     }
 
@@ -263,7 +321,7 @@ export class CronFormat implements ICronFormatter {
       const hours = hour.split(",").map((h) => h.trim());
       return this.applyTemplate(this.localeDictionary.atMinutePastHour, {
         minute: minuteNum.toString(),
-        hour: hours.join(" and "),
+        hour: hours.join(` ${this.localeDictionary.and} `),
       });
     }
 
@@ -293,9 +351,9 @@ export class CronFormat implements ICronFormatter {
         descriptions.push(this.describeMonthPart(part, monthNames));
       }
 
-      // Join with " and "
+      // Join with locale-specific "and"
       return this.applyTemplate(this.localeDictionary.inMonths, {
-        months: descriptions.join(" and "),
+        months: descriptions.join(` ${this.localeDictionary.and} `),
       });
     }
 
@@ -312,7 +370,7 @@ export class CronFormat implements ICronFormatter {
 
       if (!range || range === "*") {
         return this.applyTemplate(this.localeDictionary.everyMonth, {
-          ordinal: this.ordinal(stepNum),
+          ordinal: this.localeDictionary.ordinal(stepNum),
         });
       }
 
@@ -322,7 +380,7 @@ export class CronFormat implements ICronFormatter {
       const endMonth = monthNames[11]; // December (end of year)
 
       return this.applyTemplate(this.localeDictionary.everyMonthFromThrough, {
-        ordinal: this.ordinal(stepNum),
+        ordinal: this.localeDictionary.ordinal(stepNum),
         start: startMonth!,
         end: endMonth!,
       });
@@ -371,7 +429,7 @@ export class CronFormat implements ICronFormatter {
       const parts = day.split(",");
       const dayNumbers = parts.map((p) => p.trim());
       return this.applyTemplate(this.localeDictionary.onDayOfMonth, {
-        day: dayNumbers.join(" and "),
+        day: dayNumbers.join(` ${this.localeDictionary.and} `),
       });
     }
 
@@ -430,7 +488,7 @@ export class CronFormat implements ICronFormatter {
         return weekdayNames[dayNum];
       });
       return this.applyTemplate(this.localeDictionary.andOnWeekday, {
-        weekday: dayNames.join(" and "),
+        weekday: dayNames.join(` ${this.localeDictionary.and} `),
       });
     }
 
@@ -442,12 +500,6 @@ export class CronFormat implements ICronFormatter {
     return this.applyTemplate(template, {
       weekday: weekdayNames[dayNum]!,
     });
-  }
-
-  private ordinal(n: number): string {
-    const suffixes = ["th", "st", "nd", "rd"];
-    const v = n % 100;
-    return n + (suffixes[(v - 20) % 10] || suffixes[v] || suffixes[0]!);
   }
 
   private formatSpecialExpression(expr: string): string {
