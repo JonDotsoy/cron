@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.0](https://github.com/JonDotsoy/cron/compare/cron-v0.2.3...cron-v0.3.0) (2025-11-16)
+
+
+### Features
+
+* **cron-format:** add formatToParts method and Intl.Locale support ([4ccc83a](https://github.com/JonDotsoy/cron/commit/4ccc83ae2a109e688ede429de9243523fef14b1d))
+* **cron-format:** add Spanish locale support and improve formatToParts parsing ([6faa6e9](https://github.com/JonDotsoy/cron/commit/6faa6e93c95efb47fadf26dfa2be70966d046c17))
+
 ## [0.2.3](https://github.com/JonDotsoy/cron/compare/cron-v0.2.2...cron-v0.2.3) (2025-11-15)
 
 
