@@ -9,6 +9,7 @@ Cron expression parser and scheduler that generates execution times based on cro
 - Month and day names support
 - Iterator-based API for generating execution times
 - Built-in scheduler with `setInterval`
+- Human-readable cron expression formatting with i18n support
 - TypeScript support with full type definitions
 
 ## Installation
@@ -103,6 +104,87 @@ import { Cron } from "@jondotsoy/cron";
 // Scheduler is fully stopped and cleaned up here
 ```
 
+### Format Cron Expressions to Human-Readable Text
+
+Convert cron expressions into natural language descriptions:
+
+```typescript
+import { CronFormat } from "@jondotsoy/cron";
+
+// Create a formatter with a locale
+const formatter = new CronFormat("en");
+
+// Format a cron expression
+console.log(formatter.format("0 22 * * 1-5"));
+// Output: "At 22:00 on every day-of-week from Monday through Friday."
+
+console.log(formatter.format("*/5 * * * *"));
+// Output: "At every minute."
+
+console.log(formatter.format("@weekly"));
+// Output: "At 00:00 on Sunday."
+```
+
+### Format to Parts for Custom Rendering
+
+Get structured parts of the formatted expression for custom styling or rendering:
+
+```typescript
+import { CronFormat } from "@jondotsoy/cron";
+
+const formatter = new CronFormat("en");
+const parts = formatter.formatToParts("0 22 * * 1-5");
+
+// Returns an array of parts with type and value:
+// [
+//   { type: "literal", value: "At " },
+//   { type: "hour", value: "22" },
+//   { type: "literal", value: ":" },
+//   { type: "minute", value: "00" },
+//   { type: "literal", value: " " },
+//   { type: "weekday", value: "on every day-of-week from Monday through Friday" },
+//   { type: "literal", value: "." }
+// ]
+
+// Use parts for custom rendering (e.g., with colors or styles)
+parts.forEach(part => {
+  if (part.type === "hour" || part.type === "minute") {
+    console.log(`\x1b[36m${part.value}\x1b[0m`); // Cyan for time
+  } else if (part.type === "weekday") {
+    console.log(`\x1b[33m${part.value}\x1b[0m`); // Yellow for weekday
+  } else {
+    console.log(part.value);
+  }
+});
+```
+
+### Internationalization Support
+
+CronFormat supports multiple locales:
+
+```typescript
+import { CronFormat } from "@jondotsoy/cron";
+
+// English
+const formatterEn = new CronFormat("en");
+console.log(formatterEn.format("0 22 * * 1-5"));
+// Output: "At 22:00 on every day-of-week from Monday through Friday."
+
+// Spanish
+const formatterEs = new CronFormat("es");
+console.log(formatterEs.format("0 22 * * 1-5"));
+// Output: "A las 22:00 cada día de la semana del lunes al viernes."
+
+// Using Intl.Locale
+const formatter = new CronFormat(new Intl.Locale("es"));
+console.log(formatter.format("@daily"));
+// Output: "A las 00:00."
+```
+
+Supported locales:
+- `en` - English
+- `es` - Spanish
+
 ## Supported Cron Syntax
 
 ### Standard Format
@@ -188,7 +270,9 @@ bun test
 
 ## API
 
-### `new Cron(rule: string, now?: Temporal.PlainDateTime)`
+### Cron Class
+
+#### `new Cron(rule: string, now?: Temporal.PlainDateTime)`
 
 Creates a new Cron instance.
 
@@ -222,11 +306,67 @@ Returns an object with:
 
 The returned object implements both the Disposable and AsyncDisposable protocols, allowing it to be used with the `using` and `await using` keywords in TypeScript 5.2+.
 
-### `cron[Symbol.iterator]()`
+#### `cron[Symbol.iterator]()`
 
 Makes the Cron instance iterable, yielding execution times indefinitely.
 
 **Note:** Cannot iterate over `@reboot` expressions (throws an error).
+
+### CronFormat Class
+
+#### `new CronFormat(locale: string | Intl.Locale)`
+
+Creates a new CronFormat instance for formatting cron expressions into human-readable text.
+
+- `locale`: Locale string (e.g., "en", "es") or Intl.Locale object
+
+**Supported locales:** `en` (English), `es` (Spanish)
+
+#### `format(cronExpression: Cron | string): string`
+
+Converts a cron expression into a human-readable description.
+
+- `cronExpression`: Cron instance or cron expression string
+- Returns: Human-readable string describing the cron schedule
+
+**Examples:**
+
+```typescript
+const formatter = new CronFormat("en");
+formatter.format("0 22 * * 1-5"); // "At 22:00 on every day-of-week from Monday through Friday."
+formatter.format("*/5 * * * *");  // "At every minute."
+formatter.format("@weekly");      // "At 00:00 on Sunday."
+```
+
+#### `formatToParts(cronExpression: Cron | string): CronFormatPart[]`
+
+Converts a cron expression into an array of parts with type and value information. Useful for custom rendering or styling.
+
+- `cronExpression`: Cron instance or cron expression string
+- Returns: Array of `CronFormatPart` objects
+
+**Part types:**
+- `literal` - Static text (e.g., "At ", " on ")
+- `time` - General time description
+- `minute` - Minute component
+- `hour` - Hour component
+- `day` - Day of month component
+- `weekday` - Day of week component
+- `month` - Month component
+
+**Example:**
+
+```typescript
+const formatter = new CronFormat("en");
+const parts = formatter.formatToParts("5 4 * * *");
+// [
+//   { type: "literal", value: "At " },
+//   { type: "hour", value: "04" },
+//   { type: "literal", value: ":" },
+//   { type: "minute", value: "05" },
+//   { type: "literal", value: "." }
+// ]
+```
 
 ## Dependencies
 
