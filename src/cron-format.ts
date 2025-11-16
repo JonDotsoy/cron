@@ -1,9 +1,11 @@
 // src/cron-format.ts
 
+import { Cron } from "./cron";
+
 export type CronExpression = string;
 
 export interface ICronFormatter {
-  format(cronExpression: CronExpression): string;
+  format(cronExpression: Cron | CronExpression): string;
 }
 
 /**
@@ -18,9 +20,15 @@ export class CronFormat implements ICronFormatter {
   /**
    * Convierte una expresión CRON en una descripción legible.
    */
-  format(cronExpression: CronExpression): string {
+  format(cronExpression: Cron | CronExpression): string {
+    // If it's a string, convert it to a Cron instance
+    const cron =
+      typeof cronExpression === "string"
+        ? new Cron(cronExpression)
+        : cronExpression;
+
     // Parse the cron expression into 5 fields
-    const parts = cronExpression.trim().split(/\s+/);
+    const parts = cron.rule.trim().split(/\s+/);
 
     if (parts.length !== 5) {
       throw new Error(

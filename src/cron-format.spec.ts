@@ -1,5 +1,6 @@
 import { describe, expect, it, beforeEach } from "bun:test";
 import { CronFormat } from "./cron-format";
+import { Cron } from "./cron";
 
 describe("CronFormat", () => {
   let formatterEn: CronFormat;
@@ -41,5 +42,17 @@ describe("CronFormat", () => {
     const cron = "4 * 7 * *";
     const expected = "At every minute past hour 4 in July.";
     expect(formatterEn.format(cron)).toBe(expected);
+  });
+
+  it("acepta una instancia de Cron como parámetro", () => {
+    const cronInstance = new Cron("* * * * *");
+    const expected = "At every minute.";
+    expect(formatterEn.format(cronInstance)).toBe(expected);
+  });
+
+  it("acepta una instancia de Cron con expresión compleja", () => {
+    const cronInstance = new Cron("5 4 * 6/4 *");
+    const expected = "At 04:05 in every 4th month from June through December.";
+    expect(formatterEn.format(cronInstance)).toBe(expected);
   });
 });
