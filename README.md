@@ -380,6 +380,74 @@ The `Temporal` object is also exported from this package for convenience:
 import { Cron, Temporal } from "@jondotsoy/cron";
 ```
 
+## Internationalization (i18n)
+
+The `CronFormat` class provides optional internationalization support for formatting cron expressions into human-readable text in different languages.
+
+### Supported Languages
+
+Currently, the following locales are supported:
+
+| Locale Code | Language | Example Output |
+|-------------|----------|----------------|
+| `en` | English | "At 22:00 on every day-of-week from Monday through Friday." |
+| `es` | Spanish | "A las 22:00 cada día de la semana del lunes al viernes." |
+
+### Usage
+
+```typescript
+import { CronFormat } from "@jondotsoy/cron";
+
+// Using locale string
+const formatterEn = new CronFormat("en");
+const formatterEs = new CronFormat("es");
+
+// Using Intl.Locale object
+const formatter = new CronFormat(new Intl.Locale("es"));
+
+// Format the same expression in different languages
+const expression = "0 9 * * MON-FRI";
+
+console.log(formatterEn.format(expression));
+// Output: "At 09:00 on every day-of-week from Monday through Friday."
+
+console.log(formatterEs.format(expression));
+// Output: "A las 09:00 cada día de la semana del lunes al viernes."
+```
+
+### Contributing New Languages
+
+To add support for a new language, you can contribute by creating a new locale file following the existing pattern. Check the project repository for contribution guidelines.
+
+### Colloquial Language Support
+
+For colloquial or regional language variants, you can use the `@jondotsoy/cron/idioms-cron-format` export:
+
+```typescript
+import { IdiomsCronFormat } from "@jondotsoy/cron/idioms-cron-format";
+
+// Chilean slang variant
+const formatter = new IdiomsCronFormat("es-CL-Flaite");
+
+console.log(formatter.format("0 9 * * MON-FRI"));
+// Output: "A las 09:00 en los días lunes, martes, miércoles, jueves y viernes."
+
+console.log(formatter.format("*/15 * * * *"));
+// Output: "Cada 15 minutos."
+```
+
+The `IdiomsCronFormat` class extends the standard `CronFormat` functionality to support regional and colloquial language variants. It implements the same interface, so you can use it as a drop-in replacement:
+
+```typescript
+import { IdiomsCronFormat } from "@jondotsoy/cron/idioms-cron-format";
+
+const formatter = new IdiomsCronFormat("es-CL-Flaite");
+
+// Same methods as CronFormat
+const text = formatter.format("0 22 * * 1-5");
+const parts = formatter.formatToParts("0 22 * * 1-5");
+```
+
 ## License
 
 [MIT](./LICENSE) © 2025 Jonathan Delgado

@@ -13,6 +13,16 @@
   "module": "./lib/esm/cron.js",
   "types": "./lib/types/cron.d.ts",
   "type": "module",
+  "exports": {
+    ".": {
+      "types": "./lib/types/cron.d.ts",
+      "import": "./lib/esm/cron.js"
+    },
+    "./idioms-cron-format": {
+      "types": "./lib/types/idioms/idioms-cron-format.d.ts",
+      "import": "./lib/esm/idioms/idioms-cron-format.js"
+    }
+  },
   "files": [
     "lib"
   ],
