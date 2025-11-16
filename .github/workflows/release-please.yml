@@ -33,7 +33,7 @@ jobs:
       contents: read
       id-token: write
     environment:
-      name: NPM Registry
+      name: NPM ${{ steps.package.outputs.NAME }} Registry
       url: https://www.npmjs.com/package/${{ steps.package.outputs.NAME }}/v/${{ steps.package.outputs.VERSION }}
     steps:
       - uses: actions/checkout@v5
