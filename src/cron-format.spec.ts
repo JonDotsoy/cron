@@ -55,4 +55,11 @@ describe("CronFormat", () => {
     const expected = "At 04:05 in every 4th month from June through December.";
     expect(formatterEn.format(cronInstance)).toBe(expected);
   });
+
+  it('formatea "2-7 4 5,7 4,6/4 5,3" como expresión compleja', () => {
+    const cron = "2-7 4 5,7 4,6/4 5,3";
+    const expected =
+      "At every minute from 2 through 7past hour 4 on day-of-month 5 and 7 and on Friday and Wednesday in April and every 4th month from June through December.";
+    expect(formatterEn.format(cron)).toBe(expected);
+  });
 });

@@ -74,12 +74,6 @@ export class CronFormat implements ICronFormatter {
     const timePart = this.describeTime(minute, hour);
     description += timePart;
 
-    // Month part
-    const monthPart = this.describeMonth(month);
-    if (monthPart) {
-      description += " " + monthPart;
-    }
-
     // Day part
     const dayPart = this.describeDay(day);
     if (dayPart) {
@@ -90,6 +84,12 @@ export class CronFormat implements ICronFormatter {
     const weekdayPart = this.describeWeekday(weekday);
     if (weekdayPart) {
       description += " " + weekdayPart;
+    }
+
+    // Month part
+    const monthPart = this.describeMonth(month);
+    if (monthPart) {
+      description += " " + monthPart;
     }
 
     // Ensure it ends with a period
@@ -116,6 +116,13 @@ export class CronFormat implements ICronFormatter {
     if (minute !== "*" && hour === "*") {
       const minuteNum = parseInt(minute, 10);
       return `At minute ${minuteNum}`;
+    }
+
+    // Check if minute is a range (e.g., "2-7")
+    if (minute.includes("-") && hour !== "*") {
+      const [start, end] = minute.split("-");
+      const hourNum = parseInt(hour, 10);
+      return `At every minute from ${start} through ${end}past hour ${hourNum}`;
     }
 
     // Case: M H -> "At HH:MM"
@@ -200,8 +207,15 @@ export class CronFormat implements ICronFormatter {
       return "";
     }
 
-    // For now, simplified implementation
-    return "";
+    // Check if it contains a comma (list)
+    if (day.includes(",")) {
+      const parts = day.split(",");
+      const dayNumbers = parts.map((p) => p.trim());
+      return "on day-of-month " + dayNumbers.join(" and ");
+    }
+
+    // Single day
+    return `on day-of-month ${day}`;
   }
 
   private describeWeekday(weekday: string): string {
@@ -209,8 +223,29 @@ export class CronFormat implements ICronFormatter {
       return "";
     }
 
-    // For now, simplified implementation
-    return "";
+    const weekdayNames = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+
+    // Check if it contains a comma (list)
+    if (weekday.includes(",")) {
+      const parts = weekday.split(",");
+      const dayNames = parts.map((p) => {
+        const dayNum = parseInt(p.trim(), 10);
+        return weekdayNames[dayNum];
+      });
+      return "and on " + dayNames.join(" and ");
+    }
+
+    // Single weekday
+    const dayNum = parseInt(weekday, 10);
+    return `on ${weekdayNames[dayNum]}`;
   }
 
   private ordinal(n: number): string {
