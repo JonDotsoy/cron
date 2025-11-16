@@ -36,6 +36,10 @@ export interface LocaleDictionary {
   everyMonthFromThrough: TemplateResult;
   everyMonthFromThroughRange: TemplateResult;
 
+  // Year expressions
+  inYear: TemplateResult;
+  inEveryYear: TemplateResult;
+
   // Month names
   monthNames: string[];
 
@@ -85,6 +89,10 @@ export const locales: Record<string, LocaleDictionary> = {
     everyMonth: template`every ${"ordinal"} month`,
     everyMonthFromThrough: template`every ${"ordinal"} month from ${"start"} through ${"end"}`,
     everyMonthFromThroughRange: template`every month from ${"start"} through ${"end"}`,
+
+    // Year expressions
+    inYear: template`in ${"year"}`,
+    inEveryYear: template`in every ${"ordinal"} year`,
 
     // Month names
     monthNames: [
@@ -158,6 +166,10 @@ export const locales: Record<string, LocaleDictionary> = {
     everyMonth: template`cada ${"ordinal"} mes`,
     everyMonthFromThrough: template`cada ${"ordinal"} mes desde ${"start"} hasta ${"end"}`,
     everyMonthFromThroughRange: template`cada mes desde ${"start"} hasta ${"end"}`,
+
+    // Year expressions
+    inYear: template`en ${"year"}`,
+    inEveryYear: template`cada ${"ordinal"} año`,
 
     // Month names
     monthNames: [

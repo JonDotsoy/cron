@@ -113,6 +113,20 @@ describe("CronFormat", () => {
     expect(formatterEn.format(cron)).toBe(expected);
   });
 
+  it('formatea "2-7 4 5,7 4,6,10 3,5 */4" como expresión compleja con step', () => {
+    const cron = "2-7 4 5,7 4,6,10 3,5 */4";
+    const expected =
+      "At every minute from 2 through 7 past hour 4 on day-of-month 5 and 7 and on Wednesday and Friday in April and June and October in every 4th year.";
+    expect(formatterEn.format(cron)).toBe(expected);
+  });
+
+  it('formatea "2-7 4 5,7 4,6,10 3,5 2025" como expresión con año específico', () => {
+    const cron = "2-7 4 5,7 4,6,10 3,5 2025";
+    const expected =
+      "At every minute from 2 through 7 past hour 4 on day-of-month 5 and 7 and on Wednesday and Friday in April and June and October in 2025.";
+    expect(formatterEn.format(cron)).toBe(expected);
+  });
+
   describe("formatToParts", () => {
     it('devuelve partes para "* * * * *"', () => {
       const cron = "* * * * *";
@@ -406,6 +420,20 @@ describe("CronFormat - Español", () => {
     const cron = "2-7 4 5,7 4,6/4 5,3";
     const expected =
       "Cada minuto del 2 al 7 después de la hora 4 los días 5 y 7 del mes y los viernes y miércoles de abril y cada cuarto mes desde junio hasta diciembre.";
+    expect(formatterEs.format(cron)).toBe(expected);
+  });
+
+  it('formatea "2-7 4 5,7 4,6,10 3,5 */4" como expresión compleja con step', () => {
+    const cron = "2-7 4 5,7 4,6,10 3,5 */4";
+    const expected =
+      "Cada minuto del 2 al 7 después de la hora 4 los días 5 y 7 del mes y los miércoles y viernes de abril y junio y octubre cada cuarto año.";
+    expect(formatterEs.format(cron)).toBe(expected);
+  });
+
+  it('formatea "2-7 4 5,7 4,6,10 3,5 2025" como expresión con año específico', () => {
+    const cron = "2-7 4 5,7 4,6,10 3,5 2025";
+    const expected =
+      "Cada minuto del 2 al 7 después de la hora 4 los días 5 y 7 del mes y los miércoles y viernes de abril y junio y octubre en 2025.";
     expect(formatterEs.format(cron)).toBe(expected);
   });
 

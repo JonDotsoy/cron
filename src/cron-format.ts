@@ -10,7 +10,15 @@ export interface ICronFormatter {
 }
 
 export type CronFormatPart = {
-  type: "literal" | "time" | "minute" | "hour" | "day" | "weekday" | "month";
+  type:
+    | "literal"
+    | "time"
+    | "minute"
+    | "hour"
+    | "day"
+    | "weekday"
+    | "month"
+    | "year";
   value: string;
 };
 
@@ -125,6 +133,13 @@ export class CronFormat implements ICronFormatter {
       this.parseMonthParts(monthPart, parts);
     }
 
+    // Year part
+    const yearPart = this.describeYearFromSpec(spec.year);
+    if (yearPart) {
+      parts.push({ type: "literal", value: " " });
+      this.parseYearParts(yearPart, parts);
+    }
+
     // Add period at the end
     parts.push({ type: "literal", value: "." });
 
@@ -237,6 +252,11 @@ export class CronFormat implements ICronFormatter {
   private parseMonthParts(monthPart: string, parts: CronFormatPart[]): void {
     // Keep "in " prefix as part of the month value
     parts.push({ type: "month", value: monthPart });
+  }
+
+  private parseYearParts(yearPart: string, parts: CronFormatPart[]): void {
+    // Keep "in " prefix as part of the year value
+    parts.push({ type: "year", value: yearPart });
   }
 
   /**
@@ -548,6 +568,34 @@ export class CronFormat implements ICronFormatter {
     return this.describeMonth(month);
   }
 
+  private describeYearFromSpec(yearRule: any): string {
+    const year = this.ruleToString(yearRule);
+    return this.describeYear(year);
+  }
+
+  private describeYear(year: string): string {
+    if (year === "*") {
+      return "";
+    }
+
+    // Check if it contains a step (e.g., "*/4")
+    if (year.includes("/")) {
+      const [range, step] = year.split("/");
+      const stepNum = parseInt(step!, 10);
+
+      if (!range || range === "*") {
+        return this.applyTemplate(this.localeDictionary.inEveryYear, {
+          ordinal: this.localeDictionary.ordinal(stepNum),
+        });
+      }
+    }
+
+    // Single year
+    return this.applyTemplate(this.localeDictionary.inYear, {
+      year,
+    });
+  }
+
   private ruleToString(rule: any): string {
     // Handle "any" rule
     if ("any" in rule) {
@@ -574,7 +622,8 @@ export class CronFormat implements ICronFormatter {
         (start === 0 && end === 23) || // hours
         (start === 1 && end === 31) || // day of month
         (start === 1 && end === 12) || // month
-        (start === 0 && end === 7); // day of week
+        (start === 0 && end === 7) || // day of week
+        (start === 1970 && end === 3000); // year
 
       if (isFullRange) {
         return `*/${step}`;
