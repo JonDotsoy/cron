@@ -46,6 +46,10 @@ export interface LocaleDictionary {
   and: string;
   ordinal: (n: number) => string;
 
+  // Year expressions
+  inYear: TemplateResult;
+  everyNthYear: TemplateResult;
+
   // Special expressions
   specialExpressions: {
     yearly: string;
@@ -121,6 +125,10 @@ export const locales: Record<string, LocaleDictionary> = {
       return n + (suffixes[(v - 20) % 10] || suffixes[v] || suffixes[0]!);
     },
 
+    // Year expressions
+    inYear: template`in year ${"year"}`,
+    everyNthYear: template`every ${"ordinal"} year`,
+
     // Special expressions
     specialExpressions: {
       yearly: "At 00:00 on day-of-month 1 in January.",
@@ -140,7 +148,7 @@ export const locales: Record<string, LocaleDictionary> = {
     atEveryMinutePastHour: template`Cada minuto después de la hora ${"hour"}`,
     atMinute: template`Al minuto ${"minute"}`,
     atMinutePastHour: template`Al minuto ${"minute"} después de la hora ${"hour"}`,
-    atEveryMinuteFromThroughPastHour: template`Cada minuto del ${"start"} al ${"end"} después de la hora ${"hour"}`,
+    atEveryMinuteFromThroughPastHour: template`En los minutos del ${"start"} al ${"end"}, a la hora ${"hour"}`,
     atTime: template`A las ${"time"}`,
 
     // Day expressions
@@ -149,12 +157,12 @@ export const locales: Record<string, LocaleDictionary> = {
 
     // Weekday expressions
     onWeekday: template`los ${"weekday"}`,
-    andOnWeekday: template`y los ${"weekday"}`,
+    andOnWeekday: template`únicamente los ${"weekday"}`,
     onEveryDayOfWeekFromThrough: template`cada día de la semana del ${"start"} al ${"end"}`,
 
     // Month expressions
     inMonth: template`de ${"month"}`,
-    inMonths: template`de ${"months"}`,
+    inMonths: template`en los meses ${"months"}`,
     everyMonth: template`cada ${"ordinal"} mes`,
     everyMonthFromThrough: template`cada ${"ordinal"} mes desde ${"start"} hasta ${"end"}`,
     everyMonthFromThroughRange: template`cada mes desde ${"start"} hasta ${"end"}`,
@@ -203,6 +211,10 @@ export const locales: Record<string, LocaleDictionary> = {
       };
       return ordinals[n] || `${n}º`;
     },
+
+    // Year expressions
+    inYear: template`durante el año ${"year"}`,
+    everyNthYear: template`y cada ${"step"} años`,
 
     // Special expressions
     specialExpressions: {

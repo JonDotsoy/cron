@@ -405,7 +405,7 @@ describe("CronFormat - Español", () => {
   it('formatea "2-7 4 5,7 4,6/4 5,3" como expresión compleja', () => {
     const cron = "2-7 4 5,7 4,6/4 5,3";
     const expected =
-      "Cada minuto del 2 al 7 después de la hora 4 los días 5 y 7 del mes y los viernes y miércoles de abril y cada cuarto mes desde junio hasta diciembre.";
+      "En los minutos del 2 al 7, a la hora 4 (entre las 4:02 y las 4:07), los días 5 y 7 del mes, en los meses abril y cada cuarto mes desde junio hasta diciembre, únicamente los viernes y miércoles.";
     expect(formatterEs.format(cron)).toBe(expected);
   });
 
@@ -415,23 +415,40 @@ describe("CronFormat - Español", () => {
       const parts = formatterEs.formatToParts(cron);
 
       expect(parts).toEqual([
-        { type: "literal", value: "Cada " },
-        { type: "minute", value: "minuto del 2 al 7" },
-        { type: "literal", value: " " },
-        { type: "hour", value: "después de la hora 4" },
+        {
+          type: "time",
+          value:
+            "En los minutos del 2 al 7, a la hora 4 (entre las 4:02 y las 4:07),",
+        },
         { type: "literal", value: " " },
         { type: "day", value: "los días 5 y 7 del mes" },
-        { type: "literal", value: " " },
-        { type: "literal", value: "y " },
-        { type: "weekday", value: "los viernes y miércoles" },
+        { type: "literal", value: "," },
         { type: "literal", value: " " },
         {
           type: "month",
-          value: "de abril y cada cuarto mes desde junio hasta diciembre",
+          value:
+            "en los meses abril y cada cuarto mes desde junio hasta diciembre",
         },
+        { type: "literal", value: "," },
+        { type: "literal", value: " " },
+        { type: "weekday", value: "únicamente los viernes y miércoles" },
         { type: "literal", value: "." },
       ]);
     });
+  });
+
+  it('formatea "2-7 4 5,7 4,6,10 3,5 */4" con año cada 4 años', () => {
+    const cron = "2-7 4 5,7 4,6,10 3,5 */4";
+    const expected =
+      "En los minutos del 2 al 7, a la hora 4 (entre las 4:02 y las 4:07), los días 5 y 7 del mes, en los meses abril, junio y octubre, únicamente los miércoles y viernes, y cada 4 años.";
+    expect(formatterEs.format(cron)).toBe(expected);
+  });
+
+  it('formatea "2-7 4 5,7 4,6,10 3,5 2025" con año específico', () => {
+    const cron = "2-7 4 5,7 4,6,10 3,5 2025";
+    const expected =
+      "En los minutos del 2 al 7, a la hora 4 (4:02–4:07), los días 5 y 7, en los meses abril, junio y octubre, únicamente los miércoles y viernes, durante el año 2025.";
+    expect(formatterEs.format(cron)).toBe(expected);
   });
 
   it("acepta Intl.Locale('es') en el constructor", () => {

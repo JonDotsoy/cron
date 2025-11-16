@@ -98,31 +98,74 @@ export class CronFormat implements ICronFormatter {
     }
 
     // Time part (minute and hour)
-    const timePart = this.describeTimeFromSpec(spec.minute, spec.hour);
+    const hasSpecificYear = spec.year && "value" in spec.year;
+    const dayPart = this.describeDayFromSpec(spec.dayOfMonth, hasSpecificYear);
+    const monthPart = this.describeMonthFromSpec(spec.month);
+    const hasDay = !("any" in spec.dayOfMonth);
+    const weekdayPart = this.describeWeekdayFromSpec(spec.dayOfWeek, hasDay);
+    const yearPart = this.describeYearFromSpec(spec.year);
+
+    const timePart = this.describeTimeFromSpec(
+      spec.minute,
+      spec.hour,
+      hasSpecificYear,
+      dayPart || monthPart || weekdayPart || yearPart, // hasMoreParts
+    );
     if (timePart) {
       this.parseTimeParts(timePart, parts);
     }
 
     // Day part
-    const dayPart = this.describeDayFromSpec(spec.dayOfMonth);
     if (dayPart) {
       parts.push({ type: "literal", value: " " });
       this.parseDayParts(dayPart, parts);
+
+      // Add comma in Spanish if there are more parts
+      if (
+        this.locale.language === "es" &&
+        (monthPart || weekdayPart || yearPart)
+      ) {
+        parts.push({ type: "literal", value: "," });
+      }
     }
 
-    // Weekday part - pass whether day was specified
-    const hasDay = !("any" in spec.dayOfMonth);
-    const weekdayPart = this.describeWeekdayFromSpec(spec.dayOfWeek, hasDay);
-    if (weekdayPart) {
-      parts.push({ type: "literal", value: " " });
-      this.parseWeekdayParts(weekdayPart, parts);
+    // For Spanish, month comes before weekday; for English, weekday comes before month
+    if (this.locale.language === "es") {
+      // Spanish: month before weekday
+      if (monthPart) {
+        parts.push({ type: "literal", value: " " });
+        this.parseMonthParts(monthPart, parts);
+
+        // Add comma if there are more parts
+        if (weekdayPart || yearPart) {
+          parts.push({ type: "literal", value: "," });
+        }
+      }
+      if (weekdayPart) {
+        parts.push({ type: "literal", value: " " });
+        this.parseWeekdayParts(weekdayPart, parts);
+
+        // Add comma if there's a year part
+        if (yearPart) {
+          parts.push({ type: "literal", value: "," });
+        }
+      }
+    } else {
+      // English and others: weekday before month
+      if (weekdayPart) {
+        parts.push({ type: "literal", value: " " });
+        this.parseWeekdayParts(weekdayPart, parts);
+      }
+      if (monthPart) {
+        parts.push({ type: "literal", value: " " });
+        this.parseMonthParts(monthPart, parts);
+      }
     }
 
-    // Month part
-    const monthPart = this.describeMonthFromSpec(spec.month);
-    if (monthPart) {
+    // Year part
+    if (yearPart) {
       parts.push({ type: "literal", value: " " });
-      this.parseMonthParts(monthPart, parts);
+      this.parseYearParts(yearPart, parts);
     }
 
     // Add period at the end
@@ -239,6 +282,16 @@ export class CronFormat implements ICronFormatter {
     parts.push({ type: "month", value: monthPart });
   }
 
+  private parseYearParts(yearPart: string, parts: CronFormatPart[]): void {
+    // Check if it starts with "y " (Spanish)
+    if (yearPart.startsWith("y ")) {
+      parts.push({ type: "literal", value: "y " });
+      parts.push({ type: "literal", value: yearPart.substring(2) });
+    } else {
+      parts.push({ type: "literal", value: yearPart });
+    }
+  }
+
   /**
    * Convierte una expresión CRON en una descripción legible.
    */
@@ -248,7 +301,30 @@ export class CronFormat implements ICronFormatter {
       .join("");
   }
 
-  private describeTime(minute: string, hour: string): string {
+  /**
+   * Join a list of items with commas and "and" for the last item (Spanish style)
+   */
+  private joinList(items: string[]): string {
+    if (items.length === 0) return "";
+    if (items.length === 1) return items[0]!;
+    if (items.length === 2) return items.join(` ${this.localeDictionary.and} `);
+
+    // For Spanish locale, use commas and "y" for last item
+    if (this.locale.language === "es") {
+      const allButLast = items.slice(0, -1).join(", ");
+      return `${allButLast} ${this.localeDictionary.and} ${items[items.length - 1]}`;
+    }
+
+    // For other locales, use "and" for joining
+    return items.join(` ${this.localeDictionary.and} `);
+  }
+
+  private describeTime(
+    minute: string,
+    hour: string,
+    hasSpecificYear: boolean = false,
+    hasMoreParts: boolean = false,
+  ): string {
     // Case: * * -> "At every minute"
     if (minute === "*" && hour === "*") {
       return this.applyTemplate(this.localeDictionary.atEveryMinute, {});
@@ -305,7 +381,7 @@ export class CronFormat implements ICronFormatter {
     if (minute.includes("-") && hour !== "*") {
       const [start, end] = minute.split("-");
       const hourNum = parseInt(hour, 10);
-      return this.applyTemplate(
+      const baseText = this.applyTemplate(
         this.localeDictionary.atEveryMinuteFromThroughPastHour,
         {
           start: start!,
@@ -313,6 +389,23 @@ export class CronFormat implements ICronFormatter {
           hour: hourNum.toString(),
         },
       );
+
+      // Add time range clarification for Spanish
+      if (this.locale.language === "es") {
+        const startStr = start!.padStart(2, "0");
+        const endStr = end!.padStart(2, "0");
+
+        // Use compact format for specific years
+        if (hasSpecificYear) {
+          const comma = hasMoreParts ? "," : "";
+          return `${baseText} (${hourNum}:${startStr}–${hourNum}:${endStr})${comma}`;
+        } else {
+          const comma = hasMoreParts ? "," : "";
+          return `${baseText} (entre las ${hourNum}:${startStr} y las ${hourNum}:${endStr})${comma}`;
+        }
+      }
+
+      return baseText;
     }
 
     // Check if hour has a comma (list) and minute is specific
@@ -351,9 +444,9 @@ export class CronFormat implements ICronFormatter {
         descriptions.push(this.describeMonthPart(part, monthNames));
       }
 
-      // Join with locale-specific "and"
+      // Join with locale-specific formatting
       return this.applyTemplate(this.localeDictionary.inMonths, {
-        months: descriptions.join(` ${this.localeDictionary.and} `),
+        months: this.joinList(descriptions),
       });
     }
 
@@ -407,7 +500,7 @@ export class CronFormat implements ICronFormatter {
     return monthNames[monthNum - 1]!;
   }
 
-  private describeDay(day: string): string {
+  private describeDay(day: string, hasSpecificYear: boolean = false): string {
     if (day === "*") {
       return "";
     }
@@ -428,12 +521,22 @@ export class CronFormat implements ICronFormatter {
     if (day.includes(",")) {
       const parts = day.split(",");
       const dayNumbers = parts.map((p) => p.trim());
+
+      // Use simplified format for Spanish with specific year
+      if (this.locale.language === "es" && hasSpecificYear) {
+        return `los días ${this.joinList(dayNumbers)}`;
+      }
+
       return this.applyTemplate(this.localeDictionary.onDayOfMonth, {
-        day: dayNumbers.join(` ${this.localeDictionary.and} `),
+        day: this.joinList(dayNumbers),
       });
     }
 
     // Single day
+    if (this.locale.language === "es" && hasSpecificYear) {
+      return `los días ${day}`;
+    }
+
     return this.applyTemplate(this.localeDictionary.onDayOfMonth, {
       day,
     });
@@ -488,7 +591,7 @@ export class CronFormat implements ICronFormatter {
         return weekdayNames[dayNum];
       });
       return this.applyTemplate(this.localeDictionary.andOnWeekday, {
-        weekday: dayNames.join(` ${this.localeDictionary.and} `),
+        weekday: this.joinList(dayNames),
       });
     }
 
@@ -499,6 +602,26 @@ export class CronFormat implements ICronFormatter {
       : this.localeDictionary.onWeekday;
     return this.applyTemplate(template, {
       weekday: weekdayNames[dayNum]!,
+    });
+  }
+
+  private describeYear(year: string): string {
+    if (year === "*") {
+      return "";
+    }
+
+    // Check if it's a step value (e.g., "*/4")
+    if (year.includes("/")) {
+      const [_range, step] = year.split("/");
+      const stepNum = parseInt(step!, 10);
+      return this.applyTemplate(this.localeDictionary.everyNthYear, {
+        step: stepNum.toString(),
+      });
+    }
+
+    // Specific year
+    return this.applyTemplate(this.localeDictionary.inYear, {
+      year,
     });
   }
 
@@ -527,15 +650,23 @@ export class CronFormat implements ICronFormatter {
   }
 
   // New spec-based methods
-  private describeTimeFromSpec(minuteRule: any, hourRule: any): string {
+  private describeTimeFromSpec(
+    minuteRule: any,
+    hourRule: any,
+    hasSpecificYear: boolean = false,
+    hasMoreParts: boolean = false,
+  ): string {
     const minute = this.ruleToString(minuteRule);
     const hour = this.ruleToString(hourRule);
-    return this.describeTime(minute, hour);
+    return this.describeTime(minute, hour, hasSpecificYear, hasMoreParts);
   }
 
-  private describeDayFromSpec(dayRule: any): string {
+  private describeDayFromSpec(
+    dayRule: any,
+    hasSpecificYear: boolean = false,
+  ): string {
     const day = this.ruleToString(dayRule);
-    return this.describeDay(day);
+    return this.describeDay(day, hasSpecificYear);
   }
 
   private describeWeekdayFromSpec(weekdayRule: any, hasDay: boolean): string {
@@ -546,6 +677,11 @@ export class CronFormat implements ICronFormatter {
   private describeMonthFromSpec(monthRule: any): string {
     const month = this.ruleToString(monthRule);
     return this.describeMonth(month);
+  }
+
+  private describeYearFromSpec(yearRule: any): string {
+    const year = this.ruleToString(yearRule);
+    return this.describeYear(year);
   }
 
   private ruleToString(rule: any): string {
@@ -574,7 +710,8 @@ export class CronFormat implements ICronFormatter {
         (start === 0 && end === 23) || // hours
         (start === 1 && end === 31) || // day of month
         (start === 1 && end === 12) || // month
-        (start === 0 && end === 7); // day of week
+        (start === 0 && end === 7) || // day of week
+        (start === 1970 && end === 3000); // year
 
       if (isFullRange) {
         return `*/${step}`;
