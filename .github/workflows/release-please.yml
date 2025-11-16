@@ -38,7 +38,14 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git fetch origin develop
           git rebase origin/develop
-          git push --force-with-lease
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+          registry-url: "https://registry.npmjs.org"
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install
+      - run: bun run web:build
+      - run: npx wrangler deploy --assets ./web/dist/ --compatibility-date 2025-11-16
 
   publish:
     runs-on: ubuntu-latest
