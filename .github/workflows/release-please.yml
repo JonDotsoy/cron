@@ -34,7 +34,7 @@ jobs:
       id-token: write
     environment:
       name: NPM Registry
-      url: https://www.npmjs.com/package/{{ steps.package.outputs.NAME }}/v/{{ steps.package.outputs.VERSION }}
+      url: https://www.npmjs.com/package/${{ steps.package.outputs.NAME }}/v/${{ steps.package.outputs.VERSION }}
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v6
