@@ -3,32 +3,32 @@ name: Release Please
 on:
   push:
     branches:
-      - ci/publish
+      - develop
 
 permissions:
   contents: write
   pull-requests: write
 
 jobs:
-  # release-please:
-  #   runs-on: ubuntu-latest
-  #   outputs:
-  #     release_created: ${{ steps.release.outputs.release_created }}
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - uses: oven-sh/setup-bun@v2
-  #     - run: bun install
-  #     - run: bun test
-  #     - run: bun lint
-  #     - uses: googleapis/release-please-action@v4
-  #       id: release
-  #       with:
-  #         token: ${{ secrets.GITHUB_TOKEN }}
+  release-please:
+    runs-on: ubuntu-latest
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install
+      - run: bun lint
+      - run: bun test
+      - uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
   publish:
     runs-on: ubuntu-latest
-    # needs: release-please
-    # if: ${{ needs.release-please.outputs.release_created }}
+    needs: release-please
+    if: ${{ needs.release-please.outputs.release_created }}
     permissions:
       contents: read
       id-token: write
