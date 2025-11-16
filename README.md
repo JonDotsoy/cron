@@ -421,27 +421,27 @@ To add support for a new language, you can contribute by creating a new locale f
 
 ### Colloquial Language Support
 
-For colloquial or regional language variants, you can use the `@jondotsoy/cron/idioms-cron-format` export:
+For colloquial or regional language variants, you can use the `@jondotsoy/cron/colloquial-cron-format` export:
 
 ```typescript
-import { IdiomsCronFormat } from "@jondotsoy/cron/idioms-cron-format";
+import { ColloquialCronFormat } from "@jondotsoy/cron/colloquial-cron-format";
 
 // Chilean slang variant
-const formatter = new IdiomsCronFormat("es-CL-Flaite");
+const formatter = new ColloquialCronFormat("es-CL-Flaite");
 
 console.log(formatter.format("0 9 * * MON-FRI"));
-// Output: "A las 09:00 en los días lunes, martes, miércoles, jueves y viernes."
+// Output: "La weá corre a las 09:00 del lunes al viernes."
 
 console.log(formatter.format("*/15 * * * *"));
-// Output: "Cada 15 minutos."
+// Output: "La weá corre cada 15 minutos."
 ```
 
-The `IdiomsCronFormat` class extends the standard `CronFormat` functionality to support regional and colloquial language variants. It implements the same interface, so you can use it as a drop-in replacement:
+The `ColloquialCronFormat` class extends the standard `CronFormat` functionality to support regional and colloquial language variants. It implements the same interface, so you can use it as a drop-in replacement:
 
 ```typescript
-import { IdiomsCronFormat } from "@jondotsoy/cron/idioms-cron-format";
+import { ColloquialCronFormat } from "@jondotsoy/cron/colloquial-cron-format";
 
-const formatter = new IdiomsCronFormat("es-CL-Flaite");
+const formatter = new ColloquialCronFormat("es-CL-Flaite");
 
 // Same methods as CronFormat
 const text = formatter.format("0 22 * * 1-5");

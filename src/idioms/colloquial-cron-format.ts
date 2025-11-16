@@ -1,4 +1,4 @@
-// src/idioms/idioms-cron-format.ts
+// src/idioms/colloquial-cron-format.ts
 
 import {
   CronFormat,
@@ -7,14 +7,14 @@ import {
   type CronFormatPart,
 } from "../cron-format";
 import { Cron } from "../cron";
-import { idiomsLocales } from "./idioms-locales";
+import { colloquialLocales } from "./colloquial-locales";
 import type { LocaleDictionary } from "../locales";
 
 /**
  * Formateador de expresiones CRON a lenguaje natural con soporte para idiomas coloquiales.
  * Extiende CronFormat para incluir variantes como "es-CL-Flaite".
  */
-export class IdiomsCronFormat implements ICronFormatter {
+export class ColloquialCronFormat implements ICronFormatter {
   private readonly localeString: string;
   private readonly localeDictionary: LocaleDictionary;
   private readonly baseFormatter: CronFormat;
@@ -23,9 +23,9 @@ export class IdiomsCronFormat implements ICronFormatter {
     // Store the original locale string
     this.localeString = typeof locale === "string" ? locale : locale.toString();
 
-    // Try to get idioms locale first using the full locale string
+    // Try to get colloquial locale first using the full locale string
     this.localeDictionary =
-      idiomsLocales[this.localeString] ?? idiomsLocales["en"]!;
+      colloquialLocales[this.localeString] ?? colloquialLocales["en"]!;
 
     // Create base formatter with a simple locale (es for es-CL-Flaite)
     const baseLocale = this.localeString.split("-")[0] || "en";

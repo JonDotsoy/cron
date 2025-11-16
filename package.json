@@ -18,9 +18,9 @@
       "types": "./lib/types/cron.d.ts",
       "import": "./lib/esm/cron.js"
     },
-    "./idioms-cron-format": {
-      "types": "./lib/types/idioms/idioms-cron-format.d.ts",
-      "import": "./lib/esm/idioms/idioms-cron-format.js"
+    "./colloquial-cron-format": {
+      "types": "./lib/types/idioms/colloquial-cron-format.d.ts",
+      "import": "./lib/esm/idioms/colloquial-cron-format.js"
     }
   },
   "files": [

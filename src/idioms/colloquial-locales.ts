@@ -1,4 +1,4 @@
-// src/idioms/idioms-locales.ts
+// src/idioms/colloquial-locales.ts
 
 import {
   template,
@@ -6,7 +6,7 @@ import {
   locales as baseLocales,
 } from "../locales";
 
-export const idiomsLocales: Record<string, LocaleDictionary> = {
+export const colloquialLocales: Record<string, LocaleDictionary> = {
   ...baseLocales,
   "es-CL-Flaite": {
     // Time expressions

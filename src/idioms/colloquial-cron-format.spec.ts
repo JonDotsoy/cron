@@ -1,15 +1,15 @@
-// src/idioms/idioms-cron-format.spec.ts
+// src/idioms/colloquial-cron-format.spec.ts
 
 import { describe, expect, it, beforeEach } from "bun:test";
-import { IdiomsCronFormat } from "./idioms-cron-format";
+import { ColloquialCronFormat } from "./colloquial-cron-format";
 import { Cron } from "../cron";
 
-describe("IdiomsCronFormat", () => {
+describe("ColloquialCronFormat", () => {
   describe("es-CL-Flaite", () => {
-    let formatter: IdiomsCronFormat;
+    let formatter: ColloquialCronFormat;
 
     beforeEach(() => {
-      formatter = new IdiomsCronFormat("es-CL-Flaite");
+      formatter = new ColloquialCronFormat("es-CL-Flaite");
     });
 
     it('formatea "2-7 4 5,7 4,6,10 3,5 */4" en estilo flaite chileno', () => {
@@ -68,7 +68,7 @@ describe("IdiomsCronFormat", () => {
     });
 
     it("acepta Intl.Locale en el constructor", () => {
-      const formatterWithLocale = new IdiomsCronFormat(
+      const formatterWithLocale = new ColloquialCronFormat(
         new Intl.Locale("es", { region: "CL" }),
       );
       const cron = "5 4 * * *";
@@ -128,14 +128,14 @@ describe("IdiomsCronFormat", () => {
 
   describe("Herencia de locales base", () => {
     it("soporta locale 'en' heredado", () => {
-      const formatter = new IdiomsCronFormat("en");
+      const formatter = new ColloquialCronFormat("en");
       const cron = "* * * * *";
       const expected = "At every minute.";
       expect(formatter.format(cron)).toBe(expected);
     });
 
     it("soporta locale 'es' heredado", () => {
-      const formatter = new IdiomsCronFormat("es");
+      const formatter = new ColloquialCronFormat("es");
       const cron = "* * * * *";
       const expected = "Cada minuto.";
       expect(formatter.format(cron)).toBe(expected);
