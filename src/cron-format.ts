@@ -27,6 +27,11 @@ export class CronFormat implements ICronFormatter {
         ? new Cron(cronExpression)
         : cronExpression;
 
+    // Handle special expressions like @weekly
+    if (cron.rule.trim().startsWith("@")) {
+      return this.formatSpecialExpression(cron.rule.trim());
+    }
+
     // Parse the cron expression into 5 fields
     const parts = cron.rule.trim().split(/\s+/);
 
@@ -80,8 +85,9 @@ export class CronFormat implements ICronFormatter {
       description += " " + dayPart;
     }
 
-    // Weekday part
-    const weekdayPart = this.describeWeekday(weekday);
+    // Weekday part - pass whether day was specified
+    const hasDay = day !== "*";
+    const weekdayPart = this.describeWeekday(weekday, hasDay);
     if (weekdayPart) {
       description += " " + weekdayPart;
     }
@@ -108,6 +114,11 @@ export class CronFormat implements ICronFormatter {
 
     // Case: * H -> "At every minute past hour H"
     if (minute === "*" && hour !== "*") {
+      // Check if hour is a list (e.g., "0,12")
+      if (hour.includes(",")) {
+        const hours = hour.split(",").map((h) => h.trim());
+        return `At minute ${minute} past hour ${hours.join(" and ")}`;
+      }
       const hourNum = parseInt(hour, 10);
       return `At every minute past hour ${hourNum}`;
     }
@@ -123,6 +134,13 @@ export class CronFormat implements ICronFormatter {
       const [start, end] = minute.split("-");
       const hourNum = parseInt(hour, 10);
       return `At every minute from ${start} through ${end}past hour ${hourNum}`;
+    }
+
+    // Check if hour has a comma (list) and minute is specific
+    if (hour.includes(",") && minute !== "*") {
+      const minuteNum = parseInt(minute, 10);
+      const hours = hour.split(",").map((h) => h.trim());
+      return `At minute ${minuteNum} past hour ${hours.join(" and ")}`;
     }
 
     // Case: M H -> "At HH:MM"
@@ -207,6 +225,12 @@ export class CronFormat implements ICronFormatter {
       return "";
     }
 
+    // Check if it contains a range (e.g., "8-14")
+    if (day.includes("-") && !day.includes(",")) {
+      const [start, end] = day.split("-");
+      return `on every day-of-month from ${start} through ${end}`;
+    }
+
     // Check if it contains a comma (list)
     if (day.includes(",")) {
       const parts = day.split(",");
@@ -218,7 +242,7 @@ export class CronFormat implements ICronFormatter {
     return `on day-of-month ${day}`;
   }
 
-  private describeWeekday(weekday: string): string {
+  private describeWeekday(weekday: string, hasDay: boolean = false): string {
     if (weekday === "*") {
       return "";
     }
@@ -233,6 +257,34 @@ export class CronFormat implements ICronFormatter {
       "Saturday",
     ];
 
+    // Map for weekday names (the Cron class converts these to numbers)
+    const weekdayMap: Record<string, number> = {
+      sun: 0,
+      mon: 1,
+      tue: 2,
+      wed: 3,
+      thu: 4,
+      fri: 5,
+      sat: 6,
+    };
+
+    // Convert name to number if needed
+    const normalizedWeekday = weekday.toLowerCase();
+    if (weekdayMap[normalizedWeekday] !== undefined) {
+      weekday = weekdayMap[normalizedWeekday].toString();
+    }
+
+    // Check if it contains a range (e.g., "1-5")
+    if (weekday.includes("-") && !weekday.includes(",")) {
+      const [start, end] = weekday.split("-");
+      if (!start || !end) {
+        throw new Error(`Invalid weekday range: ${weekday}`);
+      }
+      const startNum = parseInt(start, 10);
+      const endNum = parseInt(end, 10);
+      return `on every day-of-week from ${weekdayNames[startNum]} through ${weekdayNames[endNum]}`;
+    }
+
     // Check if it contains a comma (list)
     if (weekday.includes(",")) {
       const parts = weekday.split(",");
@@ -243,14 +295,36 @@ export class CronFormat implements ICronFormatter {
       return "and on " + dayNames.join(" and ");
     }
 
-    // Single weekday
+    // Single weekday - use "and on" prefix when there's also a day-of-month
     const dayNum = parseInt(weekday, 10);
-    return `on ${weekdayNames[dayNum]}`;
+    const prefix = hasDay ? "and on" : "on";
+    return `${prefix} ${weekdayNames[dayNum]}`;
   }
 
   private ordinal(n: number): string {
     const suffixes = ["th", "st", "nd", "rd"];
     const v = n % 100;
     return n + (suffixes[(v - 20) % 10] || suffixes[v] || suffixes[0]!);
+  }
+
+  private formatSpecialExpression(expr: string): string {
+    switch (expr.toLowerCase()) {
+      case "@yearly":
+      case "@annually":
+        return "At 00:00 on day-of-month 1 in January.";
+      case "@monthly":
+        return "At 00:00 on day-of-month 1.";
+      case "@weekly":
+        return "At 00:00 on Sunday.";
+      case "@daily":
+      case "@midnight":
+        return "At 00:00.";
+      case "@hourly":
+        return "At minute 0.";
+      case "@reboot":
+        return "At reboot.";
+      default:
+        return `Unknown special expression: ${expr}.`;
+    }
   }
 }
