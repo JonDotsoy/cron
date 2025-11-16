@@ -1,6 +1,10 @@
 // src/idioms/idioms-locales.ts
 
-import { template, type LocaleDictionary, locales as baseLocales } from "../locales";
+import {
+  template,
+  type LocaleDictionary,
+  locales as baseLocales,
+} from "../locales";
 
 export const idiomsLocales: Record<string, LocaleDictionary> = {
   ...baseLocales,
@@ -13,7 +17,7 @@ export const idiomsLocales: Record<string, LocaleDictionary> = {
     atEveryMinuteFromThroughPastHour: template`La weá corre entre el minuto ${"start"} y el ${"end"} pasao' las ${"hour"} de la mañana`,
     atTime: template`La weá corre a las ${"time"}`,
 
-    // Day expressions  
+    // Day expressions
     onDayOfMonth: template`, sólo los días ${"day"}`,
     onEveryDayOfMonthFromThrough: template`cada día del mes del ${"start"} al ${"end"}, terrible específico`,
 
@@ -68,9 +72,12 @@ export const idiomsLocales: Record<string, LocaleDictionary> = {
 
     // Special expressions
     specialExpressions: {
-      yearly: "La weá corre a las 00:00 el día 1 de enero. Una vez al año no más.",
-      annually: "La weá corre a las 00:00 el día 1 de enero. Una vez al año no más.",
-      monthly: "La weá corre a las 00:00 el primer día del mes. Todos los meses, ¿cachai?",
+      yearly:
+        "La weá corre a las 00:00 el día 1 de enero. Una vez al año no más.",
+      annually:
+        "La weá corre a las 00:00 el día 1 de enero. Una vez al año no más.",
+      monthly:
+        "La weá corre a las 00:00 el primer día del mes. Todos los meses, ¿cachai?",
       weekly: "La weá corre a las 00:00 el domingo. Una vez a la semana.",
       daily: "La weá corre a las 00:00. Todos los días, compadre.",
       midnight: "La weá corre a medianoche, ¿cachai?",

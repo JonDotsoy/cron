@@ -90,15 +90,26 @@ describe("IdiomsCronFormat", () => {
         const parts = formatter.formatToParts(cron);
 
         expect(parts).toEqual([
-          { type: "time", value: "La weá corre entre el minuto 2 y el 7 pasao' las 4 de la mañana" },
+          {
+            type: "time",
+            value:
+              "La weá corre entre el minuto 2 y el 7 pasao' las 4 de la mañana",
+          },
           { type: "literal", value: " " },
           { type: "day", value: ", sólo los días 5 o 7" },
           { type: "literal", value: " " },
-          { type: "weekday", value: ", y encima tiene que caer miércoles o viernes…" },
+          {
+            type: "weekday",
+            value: ", y encima tiene que caer miércoles o viernes…",
+          },
           { type: "literal", value: " " },
           { type: "month", value: " en abril o junio o octubre" },
           { type: "literal", value: " " },
-          { type: "year", value: " y más encima la cuestión pasa cada 4 años. Terrible específica la volá" },
+          {
+            type: "year",
+            value:
+              " y más encima la cuestión pasa cada 4 años. Terrible específica la volá",
+          },
           { type: "literal", value: "." },
         ]);
       });
