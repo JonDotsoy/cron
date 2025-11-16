@@ -47,8 +47,8 @@ jobs:
       - run: npm version patch --no-git-tag-version
       - id: package
         run: |
-          jq 'jq -r '"NAME=" + .version' package.json' >> "$GITHUB_OUTPUT"
-          jq 'jq -r '"VERSION=" + .version' package.json' >> "$GITHUB_OUTPUT"
+          jq -r '"NAME=" + .version' package.json >> "$GITHUB_OUTPUT"
+          jq -r '"VERSION=" + .version' package.json >> "$GITHUB_OUTPUT"
       - run: npm publish --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
