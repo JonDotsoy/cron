@@ -28,47 +28,34 @@ export class CronFormat implements ICronFormatter {
         : cronExpression;
 
     // Handle special expressions like @weekly
-    if (cron.rule.trim().startsWith("@")) {
+    if ("@special" in cron.spec) {
       return this.formatSpecialExpression(cron.rule.trim());
     }
 
-    // Parse the cron expression into 5 fields
-    const parts = cron.rule.trim().split(/\s+/);
-
-    if (parts.length !== 5) {
-      throw new Error(
-        "Invalid cron expression: expected 5 fields (minute hour day month weekday)",
-      );
-    }
-
-    if (!parts[0] || !parts[1] || !parts[2] || !parts[3] || !parts[4]) {
-      throw new Error("Invalid cron expression: missing required fields");
-    }
-
-    let minute = parts[0];
-    let hour = parts[1];
-    let day = parts[2];
-    let month = parts[3];
-    let weekday = parts[4];
+    // Use the parsed spec from the Cron instance
+    let spec = cron.spec;
 
     // Special case: detect pattern like "4 * 7 * *" which should be interpreted as
     // "* 4 * 7 *" (minute and hour swapped, day is actually month)
     // This handles the case where minute is a number, hour is *, and day is a number <= 12
     if (
-      minute !== "*" &&
-      hour === "*" &&
-      day !== "*" &&
-      month === "*" &&
-      weekday === "*"
+      "value" in spec.minute &&
+      "any" in spec.hour &&
+      "value" in spec.dayOfMonth &&
+      "any" in spec.month &&
+      "any" in spec.dayOfWeek
     ) {
-      const dayNum = parseInt(day, 10);
-      if (dayNum >= 1 && dayNum <= 12) {
-        // Swap minute/hour and move day to month
-        const temp = minute;
-        minute = "*";
-        hour = temp;
-        month = day;
-        day = "*";
+      const dayValue = spec.dayOfMonth.value;
+      if (dayValue >= 1 && dayValue <= 12) {
+        // Create a modified spec with swapped values
+        spec = {
+          minute: { any: true },
+          hour: { value: spec.minute.value },
+          dayOfMonth: { any: true },
+          month: { value: dayValue },
+          dayOfWeek: { any: true },
+          year: spec.year,
+        };
       }
     }
 
@@ -76,24 +63,24 @@ export class CronFormat implements ICronFormatter {
     let description = "";
 
     // Time part (minute and hour)
-    const timePart = this.describeTime(minute, hour);
+    const timePart = this.describeTimeFromSpec(spec.minute, spec.hour);
     description += timePart;
 
     // Day part
-    const dayPart = this.describeDay(day);
+    const dayPart = this.describeDayFromSpec(spec.dayOfMonth);
     if (dayPart) {
       description += " " + dayPart;
     }
 
     // Weekday part - pass whether day was specified
-    const hasDay = day !== "*";
-    const weekdayPart = this.describeWeekday(weekday, hasDay);
+    const hasDay = !("any" in spec.dayOfMonth);
+    const weekdayPart = this.describeWeekdayFromSpec(spec.dayOfWeek, hasDay);
     if (weekdayPart) {
       description += " " + weekdayPart;
     }
 
     // Month part
-    const monthPart = this.describeMonth(month);
+    const monthPart = this.describeMonthFromSpec(spec.month);
     if (monthPart) {
       description += " " + monthPart;
     }
@@ -326,5 +313,79 @@ export class CronFormat implements ICronFormatter {
       default:
         return `Unknown special expression: ${expr}.`;
     }
+  }
+
+  // New spec-based methods
+  private describeTimeFromSpec(minuteRule: any, hourRule: any): string {
+    const minute = this.ruleToString(minuteRule);
+    const hour = this.ruleToString(hourRule);
+    return this.describeTime(minute, hour);
+  }
+
+  private describeDayFromSpec(dayRule: any): string {
+    const day = this.ruleToString(dayRule);
+    return this.describeDay(day);
+  }
+
+  private describeWeekdayFromSpec(weekdayRule: any, hasDay: boolean): string {
+    const weekday = this.ruleToString(weekdayRule);
+    return this.describeWeekday(weekday, hasDay);
+  }
+
+  private describeMonthFromSpec(monthRule: any): string {
+    const month = this.ruleToString(monthRule);
+    return this.describeMonth(month);
+  }
+
+  private ruleToString(rule: any): string {
+    // Handle "any" rule
+    if ("any" in rule) {
+      return "*";
+    }
+
+    // Handle single value
+    if ("value" in rule) {
+      return rule.value.toString();
+    }
+
+    // Handle range
+    if ("rangeValues" in rule) {
+      return `${rule.rangeValues.start}-${rule.rangeValues.end}`;
+    }
+
+    // Handle step
+    if ("stepValues" in rule) {
+      const { start, end, step } = rule.stepValues;
+
+      // Detect */step pattern by checking if start/end match common min/max values
+      const isFullRange =
+        (start === 0 && end === 59) || // minutes
+        (start === 0 && end === 23) || // hours
+        (start === 1 && end === 31) || // day of month
+        (start === 1 && end === 12) || // month
+        (start === 0 && end === 7); // day of week
+
+      if (isFullRange) {
+        return `*/${step}`;
+      }
+
+      // If it's a range with step (e.g., 6-12/4)
+      if (start !== end) {
+        return `${start}-${end}/${step}`;
+      }
+
+      // Otherwise just start/step (e.g., 6/4)
+      return `${start}/${step}`;
+    }
+
+    // Handle list
+    if ("listValues" in rule) {
+      const values = rule.listValues.map((subRule: any) =>
+        this.ruleToString(subRule),
+      );
+      return values.join(",");
+    }
+
+    return "*";
   }
 }
