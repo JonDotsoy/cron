@@ -67,7 +67,6 @@
         <span data-part="4" class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium transition-colors">Weekday</span>
         <span data-part="5" class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium transition-colors">Year</span>
     </div>
-    <div></div>
     <div class="text-sm text-gray-600 hidden">
         <span class="font-medium">Selection:</span>
         <span id="selection-info" class="ml-2 text-indigo-600"></span>
@@ -196,6 +195,32 @@
         }
     };
 
+    const highlightCode = (code: string) => {
+        return code
+            .replace(/\b(import|from|const|new)\b/g, '<span class="text-purple-400">$1</span>')
+            .replace(/\b(console)\b/g, '<span class="text-yellow-400">$1</span>')
+            .replace(/\.(log|format)\b/g, '.<span class="text-blue-400">$1</span>')
+            .replace(/"([^"]*)"/g, '<span class="text-green-400">"$1"</span>')
+            .replace(/\/\/ (.*)/g, '<span class="text-gray-500">// $1</span>');
+    };
+
+    const updateCodeExample = () => {
+        const codeExample = document.getElementById("code-example") as HTMLElement;
+        const language = languageSelector.value;
+        const cronExpression = input.value || "* * * * *";
+        const output = document.getElementById("show-format")?.textContent || "";
+        
+        const code = `import { Cron, CronFormat } from "@jondotsoy/cron";
+
+const cronFormat = new CronFormat("${language}");
+const result = cronFormat.format("${cronExpression}");
+
+console.log(result);
+// Output: "${output}"`;
+        
+        codeExample.innerHTML = highlightCode(code);
+    };
+
     const updateFormat = () => {
         const showFormat = document.getElementById("show-format") as HTMLElement;
         const language = languageSelector.value as "en" | "es";
@@ -208,6 +233,7 @@
                 .join(" ");
         }
         updateSelectionInfo();
+        updateCodeExample();
     };
 
     const rand = () => {
