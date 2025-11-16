@@ -59,7 +59,7 @@ describe("CronFormat", () => {
   it('formatea "2-7 4 5,7 4,6/4 5,3" como expresión compleja', () => {
     const cron = "2-7 4 5,7 4,6/4 5,3";
     const expected =
-      "At every minute from 2 through 7past hour 4 on day-of-month 5 and 7 and on Friday and Wednesday in April and every 4th month from June through December.";
+      "At every minute from 2 through 7 past hour 4 on day-of-month 5 and 7 and on Friday and Wednesday in April and every 4th month from June through December.";
     expect(formatterEn.format(cron)).toBe(expected);
   });
 
@@ -111,5 +111,208 @@ describe("CronFormat", () => {
     const cron = "5 4 * * sun";
     const expected = "At 04:05 on Sunday.";
     expect(formatterEn.format(cron)).toBe(expected);
+  });
+
+  describe("formatToParts", () => {
+    it('devuelve partes para "* * * * *"', () => {
+      const cron = "* * * * *";
+      const parts = formatterEn.formatToParts(cron);
+
+      expect(parts).toEqual([
+        { type: "literal", value: "At " },
+        { type: "time", value: "every minute" },
+        { type: "literal", value: "." },
+      ]);
+    });
+
+    it('devuelve partes para "5 4 * * *"', () => {
+      const cron = "5 4 * * *";
+      const parts = formatterEn.formatToParts(cron);
+
+      expect(parts).toEqual([
+        { type: "literal", value: "At " },
+        { type: "hour", value: "04" },
+        { type: "literal", value: ":" },
+        { type: "minute", value: "05" },
+        { type: "literal", value: "." },
+      ]);
+    });
+
+    it('devuelve partes para "0 22 * * 1-5"', () => {
+      const cron = "0 22 * * 1-5";
+      const parts = formatterEn.formatToParts(cron);
+
+      expect(parts).toEqual([
+        { type: "literal", value: "At " },
+        { type: "hour", value: "22" },
+        { type: "literal", value: ":" },
+        { type: "minute", value: "00" },
+        { type: "literal", value: " " },
+        {
+          type: "weekday",
+          value: "on every day-of-week from Monday through Friday",
+        },
+        { type: "literal", value: "." },
+      ]);
+    });
+
+    it('devuelve partes para "15 14 1 * *"', () => {
+      const cron = "15 14 1 * *";
+      const parts = formatterEn.formatToParts(cron);
+
+      expect(parts).toEqual([
+        { type: "literal", value: "At " },
+        { type: "hour", value: "14" },
+        { type: "literal", value: ":" },
+        { type: "minute", value: "15" },
+        { type: "literal", value: " " },
+        { type: "day", value: "on day-of-month 1" },
+        { type: "literal", value: "." },
+      ]);
+    });
+
+    it('devuelve partes para "5 0 * 8 *"', () => {
+      const cron = "5 0 * 8 *";
+      const parts = formatterEn.formatToParts(cron);
+
+      expect(parts).toEqual([
+        { type: "literal", value: "At " },
+        { type: "hour", value: "00" },
+        { type: "literal", value: ":" },
+        { type: "minute", value: "05" },
+        { type: "literal", value: " " },
+        { type: "month", value: "in August" },
+        { type: "literal", value: "." },
+      ]);
+    });
+
+    it('devuelve partes para "@weekly"', () => {
+      const cron = "@weekly";
+      const parts = formatterEn.formatToParts(cron);
+
+      expect(parts).toEqual([
+        { type: "literal", value: "At " },
+        { type: "hour", value: "00" },
+        { type: "literal", value: ":" },
+        { type: "minute", value: "00" },
+        { type: "literal", value: " " },
+        { type: "weekday", value: "on Sunday" },
+        { type: "literal", value: "." },
+      ]);
+    });
+
+    it('devuelve partes para "0 0 1,15 * 3"', () => {
+      const cron = "0 0 1,15 * 3";
+      const parts = formatterEn.formatToParts(cron);
+
+      expect(parts).toEqual([
+        { type: "literal", value: "At " },
+        { type: "hour", value: "00" },
+        { type: "literal", value: ":" },
+        { type: "minute", value: "00" },
+        { type: "literal", value: " " },
+        { type: "day", value: "on day-of-month 1 and 15" },
+        { type: "literal", value: " " },
+        { type: "weekday", value: "and on Wednesday" },
+        { type: "literal", value: "." },
+      ]);
+    });
+
+    it('devuelve partes para "0 0 * * 0"', () => {
+      const cron = "0 0 * * 0";
+      const parts = formatterEn.formatToParts(cron);
+
+      expect(parts).toEqual([
+        { type: "literal", value: "At " },
+        { type: "hour", value: "00" },
+        { type: "literal", value: ":" },
+        { type: "minute", value: "00" },
+        { type: "literal", value: " " },
+        { type: "weekday", value: "on Sunday" },
+        { type: "literal", value: "." },
+      ]);
+    });
+
+    it('devuelve partes para "23 0-20/2 * * *"', () => {
+      const cron = "23 0-20/2 * * *";
+      const parts = formatterEn.formatToParts(cron);
+
+      expect(parts).toEqual([
+        { type: "literal", value: "At " },
+        { type: "minute", value: "minute 23" },
+        { type: "literal", value: " " },
+        { type: "hour", value: "past every 2nd hour from 0 through 20" },
+        { type: "literal", value: "." },
+      ]);
+    });
+
+    it('devuelve partes para "0 0,12 1 */2 *"', () => {
+      const cron = "0 0,12 1 */2 *";
+      const parts = formatterEn.formatToParts(cron);
+
+      expect(parts).toEqual([
+        { type: "literal", value: "At " },
+        { type: "minute", value: "minute 0" },
+        { type: "literal", value: " " },
+        { type: "hour", value: "past hour 0 and 12" },
+        { type: "literal", value: " " },
+        { type: "day", value: "on day-of-month 1" },
+        { type: "literal", value: " " },
+        { type: "month", value: "in every 2nd month" },
+        { type: "literal", value: "." },
+      ]);
+    });
+
+    it("acepta una instancia de Cron", () => {
+      const cronInstance = new Cron("5 4 * * *");
+      const parts = formatterEn.formatToParts(cronInstance);
+
+      expect(parts).toEqual([
+        { type: "literal", value: "At " },
+        { type: "hour", value: "04" },
+        { type: "literal", value: ":" },
+        { type: "minute", value: "05" },
+        { type: "literal", value: "." },
+      ]);
+    });
+  });
+
+  describe("Soporte para Intl.Locale", () => {
+    it("acepta Intl.Locale en el constructor", () => {
+      const formatter = new CronFormat(new Intl.Locale("en"));
+      const cron = "* * * * *";
+      const expected = "At every minute.";
+      expect(formatter.format(cron)).toBe(expected);
+    });
+
+    it('formatea "5 4 * * *" usando Intl.Locale("en")', () => {
+      const formatter = new CronFormat(new Intl.Locale("en"));
+      const cron = "5 4 * * *";
+      const expected = "At 04:05.";
+      expect(formatter.format(cron)).toBe(expected);
+    });
+
+    it('formatea "@weekly" usando Intl.Locale("en")', () => {
+      const formatter = new CronFormat(new Intl.Locale("en"));
+      const cron = "@weekly";
+      const expected = "At 00:00 on Sunday.";
+      expect(formatter.format(cron)).toBe(expected);
+    });
+
+    it('formatea "0 22 * * 1-5" usando Intl.Locale("en")', () => {
+      const formatter = new CronFormat(new Intl.Locale("en"));
+      const cron = "0 22 * * 1-5";
+      const expected =
+        "At 22:00 on every day-of-week from Monday through Friday.";
+      expect(formatter.format(cron)).toBe(expected);
+    });
+
+    it("acepta Intl.Locale con instancia de Cron", () => {
+      const formatter = new CronFormat(new Intl.Locale("en"));
+      const cronInstance = new Cron("5 4 * 6/4 *");
+      const expected =
+        "At 04:05 in every 4th month from June through December.";
+      expect(formatter.format(cronInstance)).toBe(expected);
+    });
   });
 });
