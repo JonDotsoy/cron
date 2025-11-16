@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.6](https://github.com/JonDotsoy/cron/compare/cron-v0.3.0...cron-v0.3.6) (2025-11-16)
+
+
+### Miscellaneous Chores
+
+* release 0.3.6 ([1fe071a](https://github.com/JonDotsoy/cron/commit/1fe071a42420a1f4587757733037c26767a18c1b))
+
 ## [0.3.0](https://github.com/JonDotsoy/cron/compare/cron-v0.2.3...cron-v0.3.0) (2025-11-16)
 
 
