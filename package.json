@@ -33,7 +33,7 @@
   },
   "license": "MIT",
   "author": "Jonathan Delgado <hi@jon.soy>",
-  "version": "0.3.0",
+  "version": "0.3.5",
   "repository": {
     "type": "git",
     "url": "https://github.com/JonDotsoy/cron.git"
