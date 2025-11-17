@@ -32,7 +32,7 @@ describe("README.md Examples", () => {
     it("should get next execution time", () => {
       const cron = new Cron("0 9 * * MON-FRI");
       const nextExecution = Cron.next(cron);
-      
+
       expect(nextExecution).toBeInstanceOf(Temporal.PlainDateTime);
       expect(nextExecution.hour).toBe(9);
       expect(nextExecution.minute).toBe(0);
@@ -65,7 +65,7 @@ describe("README.md Examples", () => {
       // Test that Symbol.dispose exists and works
       expect(cronInterval[Symbol.dispose]).toBeDefined();
       cronInterval[Symbol.dispose]();
-      
+
       expect(executionCount).toBe(0);
     });
 
@@ -80,7 +80,7 @@ describe("README.md Examples", () => {
       // Test that Symbol.asyncDispose exists and works
       expect(cronInterval[Symbol.asyncDispose]).toBeDefined();
       await cronInterval[Symbol.asyncDispose]();
-      
+
       expect(executionCount).toBe(1); // @reboot executes once
     });
   });
@@ -90,7 +90,7 @@ describe("README.md Examples", () => {
       const formatter = new CronFormat("en");
 
       expect(formatter.format("0 22 * * 1-5")).toBe(
-        "At 22:00 on every day-of-week from Monday through Friday."
+        "At 22:00 on every day-of-week from Monday through Friday.",
       );
 
       expect(formatter.format("*/5 * * * *")).toBe("At every 5th minute.");
@@ -106,11 +106,11 @@ describe("README.md Examples", () => {
 
       expect(parts).toBeArray();
       expect(parts.length).toBeGreaterThan(0);
-      
+
       const hasLiteral = parts.some((p) => p.type === "literal");
       const hasHour = parts.some((p) => p.type === "hour");
       const hasMinute = parts.some((p) => p.type === "minute");
-      
+
       expect(hasLiteral).toBe(true);
       expect(hasHour).toBe(true);
       expect(hasMinute).toBe(true);
@@ -121,25 +121,25 @@ describe("README.md Examples", () => {
     it("should support English locale", () => {
       const formatterEn = new CronFormat("en");
       const result = formatterEn.format("0 22 * * 1-5");
-      
+
       expect(result).toBe(
-        "At 22:00 on every day-of-week from Monday through Friday."
+        "At 22:00 on every day-of-week from Monday through Friday.",
       );
     });
 
     it("should support Spanish locale", () => {
       const formatterEs = new CronFormat("es");
       const result = formatterEs.format("0 22 * * 1-5");
-      
+
       expect(result).toBe(
-        "A las 22:00 cada día de la semana del lunes al viernes."
+        "A las 22:00 cada día de la semana del lunes al viernes.",
       );
     });
 
     it("should support Intl.Locale", () => {
       const formatter = new CronFormat(new Intl.Locale("es"));
       const result = formatter.format("@daily");
-      
+
       expect(result).toBe("A las 00:00.");
     });
   });
@@ -227,7 +227,7 @@ describe("README.md Examples", () => {
     it("should return next execution time", () => {
       const cron = new Cron("0 12 * * *");
       const nextRun = Cron.next(cron);
-      
+
       expect(nextRun).toBeInstanceOf(Temporal.PlainDateTime);
       expect(nextRun.hour).toBe(12);
       expect(nextRun.minute).toBe(0);
@@ -235,7 +235,7 @@ describe("README.md Examples", () => {
 
     it("should throw error for @reboot", () => {
       const cron = new Cron("@reboot");
-      
+
       expect(() => Cron.next(cron)).toThrow();
     });
   });
@@ -244,10 +244,10 @@ describe("README.md Examples", () => {
     it("should return array of next N execution times", () => {
       const cron = new Cron("0 */6 * * *");
       const next5Runs = Cron.take(cron, 5);
-      
+
       expect(next5Runs).toBeArray();
       expect(next5Runs).toHaveLength(5);
-      
+
       next5Runs.forEach((dt) => {
         expect(dt).toBeInstanceOf(Temporal.PlainDateTime);
         expect(dt.minute).toBe(0);
@@ -257,7 +257,7 @@ describe("README.md Examples", () => {
 
     it("should throw error for @reboot", () => {
       const cron = new Cron("@reboot");
-      
+
       expect(() => Cron.take(cron, 5)).toThrow();
     });
   });
@@ -265,13 +265,13 @@ describe("README.md Examples", () => {
   describe("API - CronFormat.format()", () => {
     it("should format various cron expressions", () => {
       const formatter = new CronFormat("en");
-      
+
       expect(formatter.format("0 22 * * 1-5")).toBe(
-        "At 22:00 on every day-of-week from Monday through Friday."
+        "At 22:00 on every day-of-week from Monday through Friday.",
       );
-      
+
       expect(formatter.format("*/5 * * * *")).toBe("At every 5th minute.");
-      
+
       expect(formatter.format("@weekly")).toBe("At 00:00 on Sunday.");
     });
   });
@@ -280,17 +280,17 @@ describe("README.md Examples", () => {
     it("should return parts with correct types", () => {
       const formatter = new CronFormat("en");
       const parts = formatter.formatToParts("5 4 * * *");
-      
+
       expect(parts).toBeArray();
-      
+
       const types = parts.map((p) => p.type);
       expect(types).toContain("literal");
       expect(types).toContain("hour");
       expect(types).toContain("minute");
-      
+
       const hourPart = parts.find((p) => p.type === "hour");
       const minutePart = parts.find((p) => p.type === "minute");
-      
+
       expect(hourPart?.value).toBe("04");
       expect(minutePart?.value).toBe("05");
     });
@@ -299,7 +299,7 @@ describe("README.md Examples", () => {
   describe("Utilities - randomSpec()", () => {
     it("should generate random spec", () => {
       const spec = randomSpec();
-      
+
       expect(spec).toBeDefined();
       // Check if it's either a special expression or has standard fields
       if ("@special" in spec) {
@@ -316,20 +316,20 @@ describe("README.md Examples", () => {
     it("should create Cron from random spec", () => {
       const spec = randomSpec();
       const cron = Cron.fromSpec(spec);
-      
+
       expect(cron).toBeInstanceOf(Cron);
       expect(cron.expression).toBeDefined();
     });
 
     it("should generate multiple different random specs", () => {
       const specs: string[] = [];
-      
+
       for (let i = 0; i < 10; i++) {
         const spec = randomSpec();
         const cron = Cron.fromSpec(spec);
         specs.push(cron.expression);
       }
-      
+
       expect(specs).toHaveLength(10);
       // At least some should be different (very high probability)
       const uniqueSpecs = new Set(specs);
@@ -346,14 +346,14 @@ describe("README.md Examples", () => {
     it("should have now property", () => {
       const now = Temporal.Now.plainDateTimeISO();
       const cron = new Cron("0 22 * * 1-5", now);
-      
+
       expect(cron.now).toBeDefined();
       expect(cron.now).toBeInstanceOf(Temporal.PlainDateTime);
     });
 
     it("should have spec property", () => {
       const cron = new Cron("0 22 * * 1-5");
-      
+
       expect(cron.spec).toBeDefined();
       expect(cron.spec).toHaveProperty("minute");
       expect(cron.spec).toHaveProperty("hour");
@@ -363,14 +363,14 @@ describe("README.md Examples", () => {
   describe("Iterator Protocol", () => {
     it("should be iterable", () => {
       const cron = new Cron("0 0 * * *");
-      
+
       expect(cron[Symbol.iterator]).toBeDefined();
       expect(typeof cron[Symbol.iterator]).toBe("function");
     });
 
     it("should throw error when iterating @reboot", () => {
       const cron = new Cron("@reboot");
-      
+
       expect(() => {
         for (const _ of cron) {
           break;
