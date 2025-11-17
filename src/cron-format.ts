@@ -282,12 +282,30 @@ export class CronFormat implements ICronFormatter {
         const step = parseInt(stepPart!, 10);
 
         if (rangePart === "*") {
-          return `At every minute past every ${this.localeDictionary.ordinal(step)} hour`;
+          return this.applyTemplate(
+            this.localeDictionary.atEveryMinutePastEveryHour,
+            {
+              ordinal: this.localeDictionary.ordinal(step),
+            },
+          );
         } else if (rangePart!.includes("-")) {
           const [start, end] = rangePart!.split("-");
-          return `At every minute past every ${this.localeDictionary.ordinal(step)} hour from ${start} through ${end}`;
+          return this.applyTemplate(
+            this.localeDictionary.atEveryMinutePastEveryHourFromThrough,
+            {
+              ordinal: this.localeDictionary.ordinal(step),
+              start,
+              end,
+            },
+          );
         } else {
-          return `At every minute past every ${this.localeDictionary.ordinal(step)} hour from ${rangePart}`;
+          return this.applyTemplate(
+            this.localeDictionary.atEveryMinutePastEveryHourFrom,
+            {
+              ordinal: this.localeDictionary.ordinal(step),
+              start: rangePart,
+            },
+          );
         }
       }
 
@@ -357,11 +375,23 @@ export class CronFormat implements ICronFormatter {
       const step = parseInt(stepPart, 10);
 
       if (rangePart === "*") {
+        // Use locale-specific template for "every Nth minute past hour X"
+        if (this.locale.language === "es") {
+          return `Cada ${this.localeDictionary.ordinal(step)} minuto después de la hora ${hourNum}`;
+        }
         return `At every ${this.localeDictionary.ordinal(step)} minute past hour ${hourNum}`;
       } else if (rangePart.includes("-")) {
         const [start, end] = rangePart.split("-");
+        // Use locale-specific template for "every Nth minute from X through Y past hour Z"
+        if (this.locale.language === "es") {
+          return `Cada ${this.localeDictionary.ordinal(step)} minuto del ${start} al ${end} después de la hora ${hourNum}`;
+        }
         return `At every ${this.localeDictionary.ordinal(step)} minute from ${start} through ${end} past hour ${hourNum}`;
       } else {
+        // Use locale-specific template for "every Nth minute from X past hour Y"
+        if (this.locale.language === "es") {
+          return `Cada ${this.localeDictionary.ordinal(step)} minuto desde ${rangePart} después de la hora ${hourNum}`;
+        }
         return `At every ${this.localeDictionary.ordinal(step)} minute from ${rangePart} past hour ${hourNum}`;
       }
     }
@@ -389,30 +419,57 @@ export class CronFormat implements ICronFormatter {
 
         if (rangePart === "*") {
           if (minRangePart === "*") {
+            if (this.locale.language === "es") {
+              return `Cada ${this.localeDictionary.ordinal(minStep)} minuto después de cada ${this.localeDictionary.ordinal(step)} hora`;
+            }
             return `At every ${this.localeDictionary.ordinal(minStep)} minute past every ${this.localeDictionary.ordinal(step)} hour`;
           } else if (minRangePart!.includes("-")) {
             const [minStart, minEnd] = minRangePart!.split("-");
+            if (this.locale.language === "es") {
+              return `Cada ${this.localeDictionary.ordinal(minStep)} minuto del ${minStart} al ${minEnd} después de cada ${this.localeDictionary.ordinal(step)} hora`;
+            }
             return `At every ${this.localeDictionary.ordinal(minStep)} minute from ${minStart} through ${minEnd} past every ${this.localeDictionary.ordinal(step)} hour`;
           } else {
+            if (this.locale.language === "es") {
+              return `Cada ${this.localeDictionary.ordinal(minStep)} minuto desde ${minRangePart} después de cada ${this.localeDictionary.ordinal(step)} hora`;
+            }
             return `At every ${this.localeDictionary.ordinal(minStep)} minute from ${minRangePart} past every ${this.localeDictionary.ordinal(step)} hour`;
           }
         } else if (rangePart.includes("-")) {
           const [start, end] = rangePart.split("-");
           if (minRangePart === "*") {
+            if (this.locale.language === "es") {
+              return `Cada ${this.localeDictionary.ordinal(minStep)} minuto después de cada ${this.localeDictionary.ordinal(step)} hora desde ${start} hasta ${end}`;
+            }
             return `At every ${this.localeDictionary.ordinal(minStep)} minute past every ${this.localeDictionary.ordinal(step)} hour from ${start} through ${end}`;
           } else if (minRangePart!.includes("-")) {
             const [minStart, minEnd] = minRangePart!.split("-");
+            if (this.locale.language === "es") {
+              return `Cada ${this.localeDictionary.ordinal(minStep)} minuto del ${minStart} al ${minEnd} después de cada ${this.localeDictionary.ordinal(step)} hora desde ${start} hasta ${end}`;
+            }
             return `At every ${this.localeDictionary.ordinal(minStep)} minute from ${minStart} through ${minEnd} past every ${this.localeDictionary.ordinal(step)} hour from ${start} through ${end}`;
           } else {
+            if (this.locale.language === "es") {
+              return `Cada ${this.localeDictionary.ordinal(minStep)} minuto desde ${minRangePart} después de cada ${this.localeDictionary.ordinal(step)} hora desde ${start} hasta ${end}`;
+            }
             return `At every ${this.localeDictionary.ordinal(minStep)} minute from ${minRangePart} past every ${this.localeDictionary.ordinal(step)} hour from ${start} through ${end}`;
           }
         } else {
           if (minRangePart === "*") {
+            if (this.locale.language === "es") {
+              return `Cada ${this.localeDictionary.ordinal(minStep)} minuto después de cada ${this.localeDictionary.ordinal(step)} hora desde ${rangePart}`;
+            }
             return `At every ${this.localeDictionary.ordinal(minStep)} minute past every ${this.localeDictionary.ordinal(step)} hour from ${rangePart}`;
           } else if (minRangePart!.includes("-")) {
             const [minStart, minEnd] = minRangePart!.split("-");
+            if (this.locale.language === "es") {
+              return `Cada ${this.localeDictionary.ordinal(minStep)} minuto del ${minStart} al ${minEnd} después de cada ${this.localeDictionary.ordinal(step)} hora desde ${rangePart}`;
+            }
             return `At every ${this.localeDictionary.ordinal(minStep)} minute from ${minStart} through ${minEnd} past every ${this.localeDictionary.ordinal(step)} hour from ${rangePart}`;
           } else {
+            if (this.locale.language === "es") {
+              return `Cada ${this.localeDictionary.ordinal(minStep)} minuto desde ${minRangePart} después de cada ${this.localeDictionary.ordinal(step)} hora desde ${rangePart}`;
+            }
             return `At every ${this.localeDictionary.ordinal(minStep)} minute from ${minRangePart} past every ${this.localeDictionary.ordinal(step)} hour from ${rangePart}`;
           }
         }
@@ -421,11 +478,20 @@ export class CronFormat implements ICronFormatter {
       // Handle minute as "*"
       if (minute === "*") {
         if (rangePart === "*") {
+          if (this.locale.language === "es") {
+            return `Cada minuto después de cada ${this.localeDictionary.ordinal(step)} hora`;
+          }
           return `At every minute past every ${this.localeDictionary.ordinal(step)} hour`;
         } else if (rangePart.includes("-")) {
           const [start, end] = rangePart.split("-");
+          if (this.locale.language === "es") {
+            return `Cada minuto después de cada ${this.localeDictionary.ordinal(step)} hora desde ${start} hasta ${end}`;
+          }
           return `At every minute past every ${this.localeDictionary.ordinal(step)} hour from ${start} through ${end}`;
         } else {
+          if (this.locale.language === "es") {
+            return `Cada minuto después de cada ${this.localeDictionary.ordinal(step)} hora desde ${rangePart}`;
+          }
           return `At every minute past every ${this.localeDictionary.ordinal(step)} hour from ${rangePart}`;
         }
       }
@@ -433,12 +499,33 @@ export class CronFormat implements ICronFormatter {
       // Handle specific minute value
       const minuteNum = parseInt(minute, 10);
       if (rangePart === "*") {
-        return `At minute ${minuteNum} past every ${this.localeDictionary.ordinal(step)} hour`;
+        return this.applyTemplate(
+          this.localeDictionary.atMinutePastEveryHour,
+          {
+            minute: minuteNum.toString(),
+            ordinal: this.localeDictionary.ordinal(step),
+          },
+        );
       } else if (rangePart.includes("-")) {
         const [start, end] = rangePart.split("-");
-        return `At minute ${minuteNum} past every ${this.localeDictionary.ordinal(step)} hour from ${start} through ${end}`;
+        return this.applyTemplate(
+          this.localeDictionary.atMinutePastEveryHourFromThrough,
+          {
+            minute: minuteNum.toString(),
+            ordinal: this.localeDictionary.ordinal(step),
+            start,
+            end,
+          },
+        );
       } else {
-        return `At minute ${minuteNum} past every ${this.localeDictionary.ordinal(step)} hour from ${rangePart}`;
+        return this.applyTemplate(
+          this.localeDictionary.atMinutePastEveryHourFrom,
+          {
+            minute: minuteNum.toString(),
+            ordinal: this.localeDictionary.ordinal(step),
+            start: rangePart,
+          },
+        );
       }
     }
 
