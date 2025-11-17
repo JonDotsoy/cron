@@ -294,8 +294,8 @@ export class CronFormat implements ICronFormatter {
             this.localeDictionary.atEveryMinutePastEveryHourFromThrough,
             {
               ordinal: this.localeDictionary.ordinal(step),
-              start,
-              end,
+              start: start!,
+              end: end!,
             },
           );
         } else {
@@ -303,7 +303,7 @@ export class CronFormat implements ICronFormatter {
             this.localeDictionary.atEveryMinutePastEveryHourFrom,
             {
               ordinal: this.localeDictionary.ordinal(step),
-              start: rangePart,
+              start: rangePart!,
             },
           );
         }
@@ -510,8 +510,8 @@ export class CronFormat implements ICronFormatter {
           {
             minute: minuteNum.toString(),
             ordinal: this.localeDictionary.ordinal(step),
-            start,
-            end,
+            start: start!,
+            end: end!,
           },
         );
       } else {
@@ -520,7 +520,7 @@ export class CronFormat implements ICronFormatter {
           {
             minute: minuteNum.toString(),
             ordinal: this.localeDictionary.ordinal(step),
-            start: rangePart,
+            start: rangePart!,
           },
         );
       }
