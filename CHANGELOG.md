@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.6.0](https://github.com/JonDotsoy/cron/compare/cron-v0.5.0...cron-v0.6.0) (2025-11-17)
+
+
+### Features
+
+* **cron:** add Cron.fromSpec() static method for spec-based construction ([66ead84](https://github.com/JonDotsoy/cron/commit/66ead847aa6a8c7fa2157b22f45f673543a0ca3a))
+* **cron:** add private fields and getters for cron rule components ([15a45a4](https://github.com/JonDotsoy/cron/commit/15a45a45c897038592826ddf6ff35699309c6e31))
+* **cron:** add static take() method to collect next occurrences ([126a1ae](https://github.com/JonDotsoy/cron/commit/126a1ae453125cb1376793e7e67d4a88ba66db8d))
+* **utils:** add utility functions for random cron spec generation ([9702932](https://github.com/JonDotsoy/cron/commit/970293229efaa2418a39d6e72e4eb39978df78b4))
+
 ## [0.5.0](https://github.com/JonDotsoy/cron/compare/cron-v0.4.0...cron-v0.5.0) (2025-11-17)
 
 
