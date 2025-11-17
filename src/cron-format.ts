@@ -290,6 +290,21 @@ export class CronFormat implements ICronFormatter {
       });
     }
 
+    // Check if minute has a step (e.g., "*/6") and hour is "*"
+    if (minute.includes("/") && hour === "*") {
+      const [rangePart, stepPart] = minute.split("/");
+      const step = parseInt(stepPart!, 10);
+
+      if (rangePart === "*") {
+        return `At every ${this.localeDictionary.ordinal(step)} minute`;
+      } else if (rangePart!.includes("-")) {
+        const [start, end] = rangePart!.split("-");
+        return `At every ${this.localeDictionary.ordinal(step)} minute from ${start} through ${end}`;
+      } else {
+        return `At every ${this.localeDictionary.ordinal(step)} minute from ${rangePart}`;
+      }
+    }
+
     // Case: M * -> "At minute M past every hour" (unusual, but handle it)
     if (minute !== "*" && hour === "*") {
       const minuteNum = parseInt(minute, 10);
@@ -504,6 +519,40 @@ export class CronFormat implements ICronFormatter {
     const normalizedWeekday = weekday.toLowerCase();
     if (weekdayMap[normalizedWeekday] !== undefined) {
       weekday = weekdayMap[normalizedWeekday].toString();
+    }
+
+    // Check if it contains a step (e.g., "4-3/4" or "*/2")
+    if (weekday.includes("/")) {
+      const [rangePart, stepPart] = weekday.split("/");
+      const step = parseInt(stepPart!, 10);
+
+      if (rangePart === "*") {
+        return this.applyTemplate(this.localeDictionary.onEveryWeekday, {
+          ordinal: this.localeDictionary.ordinal(step),
+        });
+      }
+
+      // Range with step: "4-3/4" means "every 4th day-of-week from Thursday through Wednesday"
+      if (rangePart!.includes("-")) {
+        const [start, end] = rangePart!.split("-");
+        const startNum = parseInt(start!, 10);
+        const endNum = parseInt(end!, 10);
+        return this.applyTemplate(
+          this.localeDictionary.onEveryDayOfWeekFromThroughWithStep,
+          {
+            ordinal: this.localeDictionary.ordinal(step),
+            start: weekdayNames[startNum]!,
+            end: weekdayNames[endNum]!,
+          },
+        );
+      }
+
+      // Single value with step: "4/2" means "every 2nd day-of-week from Thursday"
+      const startNum = parseInt(rangePart!, 10);
+      return this.applyTemplate(this.localeDictionary.onEveryWeekdayFrom, {
+        ordinal: this.localeDictionary.ordinal(step),
+        start: weekdayNames[startNum]!,
+      });
     }
 
     // Check if it contains a range (e.g., "1-5")

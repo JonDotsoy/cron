@@ -532,4 +532,20 @@ describe("CronFormat - Español", () => {
     expect(result).toContain("minute");
     expect(result).toContain("past hour");
   });
+
+  it('formatea "*/6 * * */5 4-3/4 2024" con rango invertido en dayOfWeek', () => {
+    const formatter = new CronFormat("en");
+    const result = formatter.format("*/6 * * */5 4-3/4 2024");
+
+    // Verify no NaN in the output
+    expect(result).not.toContain("NaN");
+
+    // Verify the expected components are present
+    expect(result).toContain("every 6th minute");
+    expect(result).toContain(
+      "every 4th day-of-week from Thursday through Wednesday",
+    );
+    expect(result).toContain("every 5th month");
+    expect(result).toContain("2024");
+  });
 });

@@ -28,6 +28,9 @@ export interface LocaleDictionary {
   onWeekday: TemplateResult;
   andOnWeekday: TemplateResult;
   onEveryDayOfWeekFromThrough: TemplateResult;
+  onEveryDayOfWeekFromThroughWithStep: TemplateResult;
+  onEveryWeekday: TemplateResult;
+  onEveryWeekdayFrom: TemplateResult;
 
   // Month expressions
   inMonth: TemplateResult;
@@ -82,6 +85,9 @@ export const locales: Record<string, LocaleDictionary> = {
     onWeekday: template`on ${"weekday"}`,
     andOnWeekday: template`and on ${"weekday"}`,
     onEveryDayOfWeekFromThrough: template`on every day-of-week from ${"start"} through ${"end"}`,
+    onEveryDayOfWeekFromThroughWithStep: template`on every ${"ordinal"} day-of-week from ${"start"} through ${"end"}`,
+    onEveryWeekday: template`on every ${"ordinal"} day-of-week`,
+    onEveryWeekdayFrom: template`on every ${"ordinal"} day-of-week from ${"start"}`,
 
     // Month expressions
     inMonth: template`in ${"month"}`,
@@ -159,6 +165,9 @@ export const locales: Record<string, LocaleDictionary> = {
     onWeekday: template`los ${"weekday"}`,
     andOnWeekday: template`y los ${"weekday"}`,
     onEveryDayOfWeekFromThrough: template`cada día de la semana del ${"start"} al ${"end"}`,
+    onEveryDayOfWeekFromThroughWithStep: template`cada ${"ordinal"} día de la semana del ${"start"} al ${"end"}`,
+    onEveryWeekday: template`cada ${"ordinal"} día de la semana`,
+    onEveryWeekdayFrom: template`cada ${"ordinal"} día de la semana desde ${"start"}`,
 
     // Month expressions
     inMonth: template`de ${"month"}`,

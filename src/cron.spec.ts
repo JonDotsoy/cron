@@ -1065,4 +1065,42 @@ describe("Cron - NaN validation", () => {
       expect(Number.isNaN(cron.spec.year.rangeValues.end)).toBe(false);
     }
   });
+
+  // CASE: At every 6th minute on every day-of-month from 4 through 3 and every 4th day-of-week from Thursday through Wednesday in every 5th month in 2024.
+  // CRON: */6 * * */5 4-3/4 2024
+  test("should parse complex expression with inverted range '*/6 * * */5 4-3/4 2024'", () => {
+    const cron = new Cron("*/6 * * */5 4-3/4 2024");
+
+    expect(cron.spec).toEqual({
+      minute: {
+        stepValues: {
+          start: 0,
+          end: 59,
+          step: 6,
+        },
+      },
+      hour: { any: true },
+      dayOfMonth: { any: true },
+      month: {
+        stepValues: {
+          start: 1,
+          end: 12,
+          step: 5,
+        },
+      },
+      dayOfWeek: {
+        stepValues: {
+          start: 4,
+          end: 3,
+          step: 4,
+        },
+      },
+      year: { value: 2024 },
+    });
+
+    // Verify that the spec doesn't contain any NaN values
+    const specString = JSON.stringify(cron.spec);
+    expect(specString).not.toContain("NaN");
+    expect(specString).not.toContain("null");
+  });
 });
