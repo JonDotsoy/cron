@@ -290,7 +290,42 @@ Creates a new Cron instance.
 
 Returns the next execution time for the given cron instance.
 
-**Throws:** Error if no next datetime is found (shouldn't happen for valid cron expressions)
+**Parameters:**
+
+- `cron`: The Cron instance to get the next execution time from
+
+**Returns:** The next `Temporal.PlainDateTime` when the cron expression will match
+
+**Throws:** Error if the cron expression is `@reboot` or no next datetime is found
+
+**Example:**
+
+```typescript
+const cron = new Cron("0 12 * * *"); // Daily at noon
+const nextRun = Cron.next(cron);
+console.log(nextRun.toString()); // Next occurrence at 12:00
+```
+
+### `Cron.take(cron: Cron, limit?: number): Temporal.PlainDateTime[]`
+
+Returns an array of the next N execution times for the given cron expression.
+
+**Parameters:**
+
+- `cron`: The Cron instance to get execution times from
+- `limit`: The number of execution times to return (default: 1)
+
+**Returns:** An array of `Temporal.PlainDateTime` objects when the cron expression will match
+
+**Throws:** Error if the cron expression is `@reboot`
+
+**Example:**
+
+```typescript
+const cron = new Cron("0 */6 * * *"); // Every 6 hours
+const next5Runs = Cron.take(cron, 5);
+next5Runs.forEach((dt) => console.log(dt.toString()));
+```
 
 ### `Cron.setInterval(callback: () => void, cron: Cron)`
 
