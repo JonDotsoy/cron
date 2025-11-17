@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.6.1](https://github.com/JonDotsoy/cron/compare/cron-v0.6.0...cron-v0.6.1) (2025-11-17)
+
+
+### Bug Fixes
+
+* **cron-format:** enhance step expression formatting for complex cron patterns ([bff7253](https://github.com/JonDotsoy/cron/commit/bff7253af3a2afd6bc7fb101234fe6acabbdaf65))
+* **cron-format:** migrate hardcoded strings to locale templates ([ee82490](https://github.com/JonDotsoy/cron/commit/ee8249017fdac7b6056b59a027b21de3645a484a))
+* **locales:** add comprehensive hour-step expressions for cron formatting ([56b4179](https://github.com/JonDotsoy/cron/commit/56b41793a71f9f49a5bc95fbdd9ee386525cf03e))
+
 ## [0.6.0](https://github.com/JonDotsoy/cron/compare/cron-v0.5.0...cron-v0.6.0) (2025-11-17)
 
 
