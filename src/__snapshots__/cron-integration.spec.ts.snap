@@ -1,0 +1,1201 @@
+// Bun Snapshot v1, https://bun.sh/docs/test/snapshots
+
+exports[`Cron Integration Tests Expression 1: "@yearly" should format to English (en) 1`] = `"At 00:00 on day-of-month 1 in January."`;
+
+exports[`Cron Integration Tests Expression 1: "@yearly" should format to Spanish (es) 1`] = `"A las 00:00 los días 1 del mes de enero."`;
+
+exports[`Cron Integration Tests Expression 1: "@yearly" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 00:00 los días 1 del mes de enero."`;
+
+exports[`Cron Integration Tests Expression 2: "@annually" should format to English (en) 1`] = `"At 00:00 on day-of-month 1 in January."`;
+
+exports[`Cron Integration Tests Expression 2: "@annually" should format to Spanish (es) 1`] = `"A las 00:00 los días 1 del mes de enero."`;
+
+exports[`Cron Integration Tests Expression 2: "@annually" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 00:00 los días 1 del mes de enero."`;
+
+exports[`Cron Integration Tests Expression 3: "@monthly" should format to English (en) 1`] = `"At 00:00 on day-of-month 1."`;
+
+exports[`Cron Integration Tests Expression 3: "@monthly" should format to Spanish (es) 1`] = `"A las 00:00 los días 1 del mes."`;
+
+exports[`Cron Integration Tests Expression 3: "@monthly" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 00:00 los días 1 del mes."`;
+
+exports[`Cron Integration Tests Expression 4: "@weekly" should format to English (en) 1`] = `"At 00:00 on Sunday."`;
+
+exports[`Cron Integration Tests Expression 4: "@weekly" should format to Spanish (es) 1`] = `"A las 00:00 los domingos."`;
+
+exports[`Cron Integration Tests Expression 4: "@weekly" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 00:00 los domingos."`;
+
+exports[`Cron Integration Tests Expression 5: "@daily" should format to English (en) 1`] = `"At 00:00."`;
+
+exports[`Cron Integration Tests Expression 5: "@daily" should format to Spanish (es) 1`] = `"A las 00:00."`;
+
+exports[`Cron Integration Tests Expression 5: "@daily" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 00:00."`;
+
+exports[`Cron Integration Tests Expression 6: "@midnight" should format to English (en) 1`] = `"At 00:00."`;
+
+exports[`Cron Integration Tests Expression 6: "@midnight" should format to Spanish (es) 1`] = `"A las 00:00."`;
+
+exports[`Cron Integration Tests Expression 6: "@midnight" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 00:00."`;
+
+exports[`Cron Integration Tests Expression 7: "@hourly" should format to English (en) 1`] = `"At minute 0."`;
+
+exports[`Cron Integration Tests Expression 7: "@hourly" should format to Spanish (es) 1`] = `"Al minuto 0."`;
+
+exports[`Cron Integration Tests Expression 7: "@hourly" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 0."`;
+
+exports[`Cron Integration Tests Expression 8: "@reboot" should format to English (en) 1`] = `"At reboot."`;
+
+exports[`Cron Integration Tests Expression 8: "@reboot" should format to Spanish (es) 1`] = `"Al reiniciar."`;
+
+exports[`Cron Integration Tests Expression 8: "@reboot" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al reiniciar."`;
+
+exports[`Cron Integration Tests Expression 9: "* */7 26-29 5 2-4/2 2029-2030" should format to English (en) 1`] = `"At every minute past every 7th hour on every day-of-month from 26 through 29 on every 2nd day-of-week from Tuesday through Thursday in May in 2029-2030."`;
+
+exports[`Cron Integration Tests Expression 9: "* */7 26-29 5 2-4/2 2029-2030" should format to Spanish (es) 1`] = `"Cada minuto después de cada séptimo hora cada día del mes del 26 al 29 cada segundo día de la semana del martes al jueves de mayo en 2029-2030."`;
+
+exports[`Cron Integration Tests Expression 9: "* */7 26-29 5 2-4/2 2029-2030" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de cada séptimo hora cada día del mes del 26 al 29 cada segundo día de la semana del martes al jueves de mayo en 2029-2030."`;
+
+exports[`Cron Integration Tests Expression 10: "50-58 * * 6 *" should format to English (en) 1`] = `"At minute 50 in June."`;
+
+exports[`Cron Integration Tests Expression 10: "50-58 * * 6 *" should format to Spanish (es) 1`] = `"Al minuto 50 de junio."`;
+
+exports[`Cron Integration Tests Expression 10: "50-58 * * 6 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 50 de junio."`;
+
+exports[`Cron Integration Tests Expression 11: "21,30,26,49 */2 3,30,5,17 7-11/2 4-7/2" should format to English (en) 1`] = `"At minute 21 past every 2nd hour on day-of-month 3 and 30 and 5 and 17 on every 2nd day-of-week from Thursday through  in every 2nd month from July through December."`;
+
+exports[`Cron Integration Tests Expression 11: "21,30,26,49 */2 3,30,5,17 7-11/2 4-7/2" should format to Spanish (es) 1`] = `"Al minuto 21 después de cada segundo hora los días 3 y 30 y 5 y 17 del mes cada segundo día de la semana del jueves al  de cada segundo mes desde julio hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 11: "21,30,26,49 */2 3,30,5,17 7-11/2 4-7/2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 21 después de cada segundo hora los días 3 y 30 y 5 y 17 del mes cada segundo día de la semana del jueves al  de cada segundo mes desde julio hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 12: "* 3-20 10-29 * * 2028-2030" should format to English (en) 1`] = `"At every minute past hour 3 on every day-of-month from 10 through 29 in 2028-2030."`;
+
+exports[`Cron Integration Tests Expression 12: "* 3-20 10-29 * * 2028-2030" should format to Spanish (es) 1`] = `"Cada minuto después de la hora 3 cada día del mes del 10 al 29 en 2028-2030."`;
+
+exports[`Cron Integration Tests Expression 12: "* 3-20 10-29 * * 2028-2030" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de la hora 3 cada día del mes del 10 al 29 en 2028-2030."`;
+
+exports[`Cron Integration Tests Expression 13: "* * * * */2" should format to English (en) 1`] = `"At every minute on every 2nd day-of-week."`;
+
+exports[`Cron Integration Tests Expression 13: "* * * * */2" should format to Spanish (es) 1`] = `"Cada minuto cada segundo día de la semana."`;
+
+exports[`Cron Integration Tests Expression 13: "* * * * */2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto cada segundo día de la semana."`;
+
+exports[`Cron Integration Tests Expression 14: "* */9 * 1-3/2 2-7" should format to English (en) 1`] = `"At every minute past every 9th hour on every day-of-week from Tuesday through  in every 2nd month from January through December."`;
+
+exports[`Cron Integration Tests Expression 14: "* */9 * 1-3/2 2-7" should format to Spanish (es) 1`] = `"Cada minuto después de cada noveno hora cada día de la semana del martes al  de cada segundo mes desde enero hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 14: "* */9 * 1-3/2 2-7" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de cada noveno hora cada día de la semana del martes al  de cada segundo mes desde enero hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 15: "*/4 * */8 */4 4,6" should format to English (en) 1`] = `"At every 4th minute on day-of-month */8 and on Thursday and Saturday in every 4th month."`;
+
+exports[`Cron Integration Tests Expression 15: "*/4 * */8 */4 4,6" should format to Spanish (es) 1`] = `"Cada cuarto minuto los días */8 del mes y los jueves y sábados de cada cuarto mes."`;
+
+exports[`Cron Integration Tests Expression 15: "*/4 * */8 */4 4,6" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada cuarto minuto los días */8 del mes y los jueves y sábados de cada cuarto mes."`;
+
+exports[`Cron Integration Tests Expression 16: "6 11-23/5 23 11-12 0-7/3" should format to English (en) 1`] = `"At minute 6 past every 5th hour from 11 through 23 on day-of-month 23 on every 3rd day-of-week in every month from November through December."`;
+
+exports[`Cron Integration Tests Expression 16: "6 11-23/5 23 11-12 0-7/3" should format to Spanish (es) 1`] = `"Al minuto 6 después de cada quinto hora desde 11 hasta 23 los días 23 del mes cada tercer día de la semana de cada mes desde noviembre hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 16: "6 11-23/5 23 11-12 0-7/3" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 6 después de cada quinto hora desde 11 hasta 23 los días 23 del mes cada tercer día de la semana de cada mes desde noviembre hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 17: "* 4-11 27,1 11-12 *" should format to English (en) 1`] = `"At every minute past hour 4 on day-of-month 27 and 1 in every month from November through December."`;
+
+exports[`Cron Integration Tests Expression 17: "* 4-11 27,1 11-12 *" should format to Spanish (es) 1`] = `"Cada minuto después de la hora 4 los días 27 y 1 del mes de cada mes desde noviembre hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 17: "* 4-11 27,1 11-12 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de la hora 4 los días 27 y 1 del mes de cada mes desde noviembre hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 18: "* 10-11 */3 * 1 2029" should format to English (en) 1`] = `"At every minute past hour 10 on day-of-month */3 and on Monday in 2029."`;
+
+exports[`Cron Integration Tests Expression 18: "* 10-11 */3 * 1 2029" should format to Spanish (es) 1`] = `"Cada minuto después de la hora 10 los días */3 del mes y los lunes en 2029."`;
+
+exports[`Cron Integration Tests Expression 18: "* 10-11 */3 * 1 2029" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de la hora 10 los días */3 del mes y los lunes en 2029."`;
+
+exports[`Cron Integration Tests Expression 19: "32-39 19,3,1 16 5-7 *" should format to English (en) 1`] = `"At every minute from 32 through 39 past hour 19 on day-of-month 16 in every month from May through July."`;
+
+exports[`Cron Integration Tests Expression 19: "32-39 19,3,1 16 5-7 *" should format to Spanish (es) 1`] = `"Cada minuto del 32 al 39 después de la hora 19 los días 16 del mes de cada mes desde mayo hasta julio."`;
+
+exports[`Cron Integration Tests Expression 19: "32-39 19,3,1 16 5-7 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto del 32 al 39 después de la hora 19 los días 16 del mes de cada mes desde mayo hasta julio."`;
+
+exports[`Cron Integration Tests Expression 20: "* 7 * * 4,6,0,1" should format to English (en) 1`] = `"At every minute past hour 7 and on Thursday and Saturday and Sunday and Monday."`;
+
+exports[`Cron Integration Tests Expression 20: "* 7 * * 4,6,0,1" should format to Spanish (es) 1`] = `"Cada minuto después de la hora 7 y los jueves y sábados y domingos y lunes."`;
+
+exports[`Cron Integration Tests Expression 20: "* 7 * * 4,6,0,1" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de la hora 7 y los jueves y sábados y domingos y lunes."`;
+
+exports[`Cron Integration Tests Expression 21: "* 19-22/2 27 5-7/2 4 2027-2030" should format to English (en) 1`] = `"At every minute past every 2nd hour from 19 through 22 on day-of-month 27 and on Thursday in every 2nd month from May through December in 2027-2030."`;
+
+exports[`Cron Integration Tests Expression 21: "* 19-22/2 27 5-7/2 4 2027-2030" should format to Spanish (es) 1`] = `"Cada minuto después de cada segundo hora desde 19 hasta 22 los días 27 del mes y los jueves de cada segundo mes desde mayo hasta diciembre en 2027-2030."`;
+
+exports[`Cron Integration Tests Expression 21: "* 19-22/2 27 5-7/2 4 2027-2030" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de cada segundo hora desde 19 hasta 22 los días 27 del mes y los jueves de cada segundo mes desde mayo hasta diciembre en 2027-2030."`;
+
+exports[`Cron Integration Tests Expression 22: "47-54 2,14,19,13 */8 2 2-4/2" should format to English (en) 1`] = `"At every minute from 47 through 54 past hour 2 on day-of-month */8 on every 2nd day-of-week from Tuesday through Thursday in February."`;
+
+exports[`Cron Integration Tests Expression 22: "47-54 2,14,19,13 */8 2 2-4/2" should format to Spanish (es) 1`] = `"Cada minuto del 47 al 54 después de la hora 2 los días */8 del mes cada segundo día de la semana del martes al jueves de febrero."`;
+
+exports[`Cron Integration Tests Expression 22: "47-54 2,14,19,13 */8 2 2-4/2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto del 47 al 54 después de la hora 2 los días */8 del mes cada segundo día de la semana del martes al jueves de febrero."`;
+
+exports[`Cron Integration Tests Expression 23: "55,1,55,27 16,15,21,1 22 * */3" should format to English (en) 1`] = `"At minute 55 past hour 16 and 15 and 21 and 1 on day-of-month 22 on every 3rd day-of-week."`;
+
+exports[`Cron Integration Tests Expression 23: "55,1,55,27 16,15,21,1 22 * */3" should format to Spanish (es) 1`] = `"Al minuto 55 después de la hora 16 y 15 y 21 y 1 los días 22 del mes cada tercer día de la semana."`;
+
+exports[`Cron Integration Tests Expression 23: "55,1,55,27 16,15,21,1 22 * */3" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 55 después de la hora 16 y 15 y 21 y 1 los días 22 del mes cada tercer día de la semana."`;
+
+exports[`Cron Integration Tests Expression 24: "47 8 * 1-4 6,2" should format to English (en) 1`] = `"At 08:47 and on Saturday and Tuesday in every month from January through April."`;
+
+exports[`Cron Integration Tests Expression 24: "47 8 * 1-4 6,2" should format to Spanish (es) 1`] = `"A las 08:47 y los sábados y martes de cada mes desde enero hasta abril."`;
+
+exports[`Cron Integration Tests Expression 24: "47 8 * 1-4 6,2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 08:47 y los sábados y martes de cada mes desde enero hasta abril."`;
+
+exports[`Cron Integration Tests Expression 25: "* 16 * * *" should format to English (en) 1`] = `"At every minute past hour 16."`;
+
+exports[`Cron Integration Tests Expression 25: "* 16 * * *" should format to Spanish (es) 1`] = `"Cada minuto después de la hora 16."`;
+
+exports[`Cron Integration Tests Expression 25: "* 16 * * *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de la hora 16."`;
+
+exports[`Cron Integration Tests Expression 26: "20 12-16/2 22-31 5-7/2 0,3,3" should format to English (en) 1`] = `"At minute 20 past every 2nd hour from 12 through 16 on every day-of-month from 22 through 31 and on Sunday and Wednesday and Wednesday in every 2nd month from May through December."`;
+
+exports[`Cron Integration Tests Expression 26: "20 12-16/2 22-31 5-7/2 0,3,3" should format to Spanish (es) 1`] = `"Al minuto 20 después de cada segundo hora desde 12 hasta 16 cada día del mes del 22 al 31 y los domingos y miércoles y miércoles de cada segundo mes desde mayo hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 26: "20 12-16/2 22-31 5-7/2 0,3,3" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 20 después de cada segundo hora desde 12 hasta 16 cada día del mes del 22 al 31 y los domingos y miércoles y miércoles de cada segundo mes desde mayo hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 27: "24-56/5 * 15-25/4 2 *" should format to English (en) 1`] = `"At every 5th minute from 24 through 56 on every day-of-month from 15 through 25/4 in February."`;
+
+exports[`Cron Integration Tests Expression 27: "24-56/5 * 15-25/4 2 *" should format to Spanish (es) 1`] = `"Cada quinto minuto del 24 al 56 cada día del mes del 15 al 25/4 de febrero."`;
+
+exports[`Cron Integration Tests Expression 27: "24-56/5 * 15-25/4 2 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada quinto minuto del 24 al 56 cada día del mes del 15 al 25/4 de febrero."`;
+
+exports[`Cron Integration Tests Expression 28: "*/6 9-20 2,12,29,7 */3 1,1" should format to English (en) 1`] = `"At every 6th minute past hour 9 on day-of-month 2 and 12 and 29 and 7 and on Monday and Monday in every 3rd month."`;
+
+exports[`Cron Integration Tests Expression 28: "*/6 9-20 2,12,29,7 */3 1,1" should format to Spanish (es) 1`] = `"Cada sexto minuto después de la hora 9 los días 2 y 12 y 29 y 7 del mes y los lunes y lunes de cada tercer mes."`;
+
+exports[`Cron Integration Tests Expression 28: "*/6 9-20 2,12,29,7 */3 1,1" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada sexto minuto después de la hora 9 los días 2 y 12 y 29 y 7 del mes y los lunes y lunes de cada tercer mes."`;
+
+exports[`Cron Integration Tests Expression 29: "52-59/3 5-18 23-31 8 5 2028" should format to English (en) 1`] = `"At every 3rd minute from 52 through 59 past hour 5 on every day-of-month from 23 through 31 and on Friday in August in 2028."`;
+
+exports[`Cron Integration Tests Expression 29: "52-59/3 5-18 23-31 8 5 2028" should format to Spanish (es) 1`] = `"Cada tercer minuto del 52 al 59 después de la hora 5 cada día del mes del 23 al 31 y los viernes de agosto en 2028."`;
+
+exports[`Cron Integration Tests Expression 29: "52-59/3 5-18 23-31 8 5 2028" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada tercer minuto del 52 al 59 después de la hora 5 cada día del mes del 23 al 31 y los viernes de agosto en 2028."`;
+
+exports[`Cron Integration Tests Expression 30: "9-45 */9 5 * * *" should format to English (en) 1`] = `"At minute 9 past every 9th hour on day-of-month 5."`;
+
+exports[`Cron Integration Tests Expression 30: "9-45 */9 5 * * *" should format to Spanish (es) 1`] = `"Al minuto 9 después de cada noveno hora los días 5 del mes."`;
+
+exports[`Cron Integration Tests Expression 30: "9-45 */9 5 * * *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 9 después de cada noveno hora los días 5 del mes."`;
+
+exports[`Cron Integration Tests Expression 31: "34-56/2 * 22-27/2 * 4" should format to English (en) 1`] = `"At every 2nd minute from 34 through 56 on every day-of-month from 22 through 27/2 and on Thursday."`;
+
+exports[`Cron Integration Tests Expression 31: "34-56/2 * 22-27/2 * 4" should format to Spanish (es) 1`] = `"Cada segundo minuto del 34 al 56 cada día del mes del 22 al 27/2 y los jueves."`;
+
+exports[`Cron Integration Tests Expression 31: "34-56/2 * 22-27/2 * 4" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada segundo minuto del 34 al 56 cada día del mes del 22 al 27/2 y los jueves."`;
+
+exports[`Cron Integration Tests Expression 32: "46-55 16 30 1-9/2 5,5" should format to English (en) 1`] = `"At every minute from 46 through 55 past hour 16 on day-of-month 30 and on Friday and Friday in every 2nd month from January through December."`;
+
+exports[`Cron Integration Tests Expression 32: "46-55 16 30 1-9/2 5,5" should format to Spanish (es) 1`] = `"Cada minuto del 46 al 55 después de la hora 16 los días 30 del mes y los viernes y viernes de cada segundo mes desde enero hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 32: "46-55 16 30 1-9/2 5,5" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto del 46 al 55 después de la hora 16 los días 30 del mes y los viernes y viernes de cada segundo mes desde enero hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 33: "*/5 * * 4-7/2 3-6" should format to English (en) 1`] = `"At every 5th minute on every day-of-week from Wednesday through Saturday in every 2nd month from April through December."`;
+
+exports[`Cron Integration Tests Expression 33: "*/5 * * 4-7/2 3-6" should format to Spanish (es) 1`] = `"Cada quinto minuto cada día de la semana del miércoles al sábados de cada segundo mes desde abril hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 33: "*/5 * * 4-7/2 3-6" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada quinto minuto cada día de la semana del miércoles al sábados de cada segundo mes desde abril hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 34: "32 10-12 20,11,1,26 10-12/2 */3" should format to English (en) 1`] = `"At 10:32 on day-of-month 20 and 11 and 1 and 26 on every 3rd day-of-week in every 2nd month from October through December."`;
+
+exports[`Cron Integration Tests Expression 34: "32 10-12 20,11,1,26 10-12/2 */3" should format to Spanish (es) 1`] = `"A las 10:32 los días 20 y 11 y 1 y 26 del mes cada tercer día de la semana de cada segundo mes desde octubre hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 34: "32 10-12 20,11,1,26 10-12/2 */3" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 10:32 los días 20 y 11 y 1 y 26 del mes cada tercer día de la semana de cada segundo mes desde octubre hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 35: "* 12 * 8-12 6-7" should format to English (en) 1`] = `"At every minute past hour 12 on every day-of-week from Saturday through  in every month from August through December."`;
+
+exports[`Cron Integration Tests Expression 35: "* 12 * 8-12 6-7" should format to Spanish (es) 1`] = `"Cada minuto después de la hora 12 cada día de la semana del sábados al  de cada mes desde agosto hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 35: "* 12 * 8-12 6-7" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de la hora 12 cada día de la semana del sábados al  de cada mes desde agosto hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 36: "37,36,0,27 20,6 * 8-9 *" should format to English (en) 1`] = `"At minute 37 past hour 20 and 6 in every month from August through September."`;
+
+exports[`Cron Integration Tests Expression 36: "37,36,0,27 20,6 * 8-9 *" should format to Spanish (es) 1`] = `"Al minuto 37 después de la hora 20 y 6 de cada mes desde agosto hasta septiembre."`;
+
+exports[`Cron Integration Tests Expression 36: "37,36,0,27 20,6 * 8-9 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 37 después de la hora 20 y 6 de cada mes desde agosto hasta septiembre."`;
+
+exports[`Cron Integration Tests Expression 37: "22 6 */10 7,5,11 5 2028-2030" should format to English (en) 1`] = `"At 06:22 on day-of-month */10 and on Friday in July and May and November in 2028-2030."`;
+
+exports[`Cron Integration Tests Expression 37: "22 6 */10 7,5,11 5 2028-2030" should format to Spanish (es) 1`] = `"A las 06:22 los días */10 del mes y los viernes de julio y mayo y noviembre en 2028-2030."`;
+
+exports[`Cron Integration Tests Expression 37: "22 6 */10 7,5,11 5 2028-2030" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 06:22 los días */10 del mes y los viernes de julio y mayo y noviembre en 2028-2030."`;
+
+exports[`Cron Integration Tests Expression 38: "* */7 * * *" should format to English (en) 1`] = `"At every minute past every 7th hour."`;
+
+exports[`Cron Integration Tests Expression 38: "* */7 * * *" should format to Spanish (es) 1`] = `"Cada minuto después de cada séptimo hora."`;
+
+exports[`Cron Integration Tests Expression 38: "* */7 * * *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de cada séptimo hora."`;
+
+exports[`Cron Integration Tests Expression 39: "* 7,19,13,19 11-13 5 4-5" should format to English (en) 1`] = `"At minute * past hour 7 and 19 and 13 and 19 on every day-of-month from 11 through 13 on every day-of-week from Thursday through Friday in May."`;
+
+exports[`Cron Integration Tests Expression 39: "* 7,19,13,19 11-13 5 4-5" should format to Spanish (es) 1`] = `"Al minuto * después de la hora 7 y 19 y 13 y 19 cada día del mes del 11 al 13 cada día de la semana del jueves al viernes de mayo."`;
+
+exports[`Cron Integration Tests Expression 39: "* 7,19,13,19 11-13 5 4-5" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto * después de la hora 7 y 19 y 13 y 19 cada día del mes del 11 al 13 cada día de la semana del jueves al viernes de mayo."`;
+
+exports[`Cron Integration Tests Expression 40: "* 4 * 4 4-7" should format to English (en) 1`] = `"At every minute past hour 4 on every day-of-week from Thursday through  in April."`;
+
+exports[`Cron Integration Tests Expression 40: "* 4 * 4 4-7" should format to Spanish (es) 1`] = `"Cada minuto después de la hora 4 cada día de la semana del jueves al  de abril."`;
+
+exports[`Cron Integration Tests Expression 40: "* 4 * 4 4-7" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de la hora 4 cada día de la semana del jueves al  de abril."`;
+
+exports[`Cron Integration Tests Expression 41: "* * 4,1,18 * 0-2/2 *" should format to English (en) 1`] = `"At every minute on day-of-month 4 and 1 and 18 on every 2nd day-of-week from Sunday through Tuesday."`;
+
+exports[`Cron Integration Tests Expression 41: "* * 4,1,18 * 0-2/2 *" should format to Spanish (es) 1`] = `"Cada minuto los días 4 y 1 y 18 del mes cada segundo día de la semana del domingos al martes."`;
+
+exports[`Cron Integration Tests Expression 41: "* * 4,1,18 * 0-2/2 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto los días 4 y 1 y 18 del mes cada segundo día de la semana del domingos al martes."`;
+
+exports[`Cron Integration Tests Expression 42: "21 22 15-30 10 2-7/2" should format to English (en) 1`] = `"At 22:21 on every day-of-month from 15 through 30 on every 2nd day-of-week from Tuesday through  in October."`;
+
+exports[`Cron Integration Tests Expression 42: "21 22 15-30 10 2-7/2" should format to Spanish (es) 1`] = `"A las 22:21 cada día del mes del 15 al 30 cada segundo día de la semana del martes al  de octubre."`;
+
+exports[`Cron Integration Tests Expression 42: "21 22 15-30 10 2-7/2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 22:21 cada día del mes del 15 al 30 cada segundo día de la semana del martes al  de octubre."`;
+
+exports[`Cron Integration Tests Expression 43: "* */5 * 1-9/3 4-6" should format to English (en) 1`] = `"At every minute past every 5th hour on every day-of-week from Thursday through Saturday in every 3rd month from January through December."`;
+
+exports[`Cron Integration Tests Expression 43: "* */5 * 1-9/3 4-6" should format to Spanish (es) 1`] = `"Cada minuto después de cada quinto hora cada día de la semana del jueves al sábados de cada tercer mes desde enero hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 43: "* */5 * 1-9/3 4-6" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de cada quinto hora cada día de la semana del jueves al sábados de cada tercer mes desde enero hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 44: "54 17-20/2 * * *" should format to English (en) 1`] = `"At minute 54 past every 2nd hour from 17 through 20."`;
+
+exports[`Cron Integration Tests Expression 44: "54 17-20/2 * * *" should format to Spanish (es) 1`] = `"Al minuto 54 después de cada segundo hora desde 17 hasta 20."`;
+
+exports[`Cron Integration Tests Expression 44: "54 17-20/2 * * *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 54 después de cada segundo hora desde 17 hasta 20."`;
+
+exports[`Cron Integration Tests Expression 45: "*/3 * * 11-12 * 2027-2030" should format to English (en) 1`] = `"At every 3rd minute in every month from November through December in 2027-2030."`;
+
+exports[`Cron Integration Tests Expression 45: "*/3 * * 11-12 * 2027-2030" should format to Spanish (es) 1`] = `"Cada tercer minuto de cada mes desde noviembre hasta diciembre en 2027-2030."`;
+
+exports[`Cron Integration Tests Expression 45: "*/3 * * 11-12 * 2027-2030" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada tercer minuto de cada mes desde noviembre hasta diciembre en 2027-2030."`;
+
+exports[`Cron Integration Tests Expression 46: "32-41 23 * 7,8 *" should format to English (en) 1`] = `"At every minute from 32 through 41 past hour 23 in July and August."`;
+
+exports[`Cron Integration Tests Expression 46: "32-41 23 * 7,8 *" should format to Spanish (es) 1`] = `"Cada minuto del 32 al 41 después de la hora 23 de julio y agosto."`;
+
+exports[`Cron Integration Tests Expression 46: "32-41 23 * 7,8 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto del 32 al 41 después de la hora 23 de julio y agosto."`;
+
+exports[`Cron Integration Tests Expression 47: "* 2-4/2 * 2-9/3 7 2024-2028/2" should format to English (en) 1`] = `"At every minute past every 2nd hour from 2 through 4 on  in every 3rd month from February through December in 2024-2028/2."`;
+
+exports[`Cron Integration Tests Expression 47: "* 2-4/2 * 2-9/3 7 2024-2028/2" should format to Spanish (es) 1`] = `"Cada minuto después de cada segundo hora desde 2 hasta 4 los  de cada tercer mes desde febrero hasta diciembre en 2024-2028/2."`;
+
+exports[`Cron Integration Tests Expression 47: "* 2-4/2 * 2-9/3 7 2024-2028/2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de cada segundo hora desde 2 hasta 4 los  de cada tercer mes desde febrero hasta diciembre en 2024-2028/2."`;
+
+exports[`Cron Integration Tests Expression 48: "* * */5 */5 7,2,3,0" should format to English (en) 1`] = `"At every minute on day-of-month */5 and on  and Tuesday and Wednesday and Sunday in every 5th month."`;
+
+exports[`Cron Integration Tests Expression 48: "* * */5 */5 7,2,3,0" should format to Spanish (es) 1`] = `"Cada minuto los días */5 del mes y los  y martes y miércoles y domingos de cada quinto mes."`;
+
+exports[`Cron Integration Tests Expression 48: "* * */5 */5 7,2,3,0" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto los días */5 del mes y los  y martes y miércoles y domingos de cada quinto mes."`;
+
+exports[`Cron Integration Tests Expression 49: "* */4 * * * *" should format to English (en) 1`] = `"At every minute past every 4th hour."`;
+
+exports[`Cron Integration Tests Expression 49: "* */4 * * * *" should format to Spanish (es) 1`] = `"Cada minuto después de cada cuarto hora."`;
+
+exports[`Cron Integration Tests Expression 49: "* */4 * * * *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de cada cuarto hora."`;
+
+exports[`Cron Integration Tests Expression 50: "*/3 */4 * * 5,1,7" should format to English (en) 1`] = `"At every 3rd minute past every 4th hour and on Friday and Monday and ."`;
+
+exports[`Cron Integration Tests Expression 50: "*/3 */4 * * 5,1,7" should format to Spanish (es) 1`] = `"Cada tercer minuto después de cada cuarto hora y los viernes y lunes y ."`;
+
+exports[`Cron Integration Tests Expression 50: "*/3 */4 * * 5,1,7" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada tercer minuto después de cada cuarto hora y los viernes y lunes y ."`;
+
+exports[`Cron Integration Tests Expression 51: "*/8 22-23 */3 * */2" should format to English (en) 1`] = `"At every 8th minute past hour 22 on day-of-month */3 on every 2nd day-of-week."`;
+
+exports[`Cron Integration Tests Expression 51: "*/8 22-23 */3 * */2" should format to Spanish (es) 1`] = `"Cada octavo minuto después de la hora 22 los días */3 del mes cada segundo día de la semana."`;
+
+exports[`Cron Integration Tests Expression 51: "*/8 22-23 */3 * */2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada octavo minuto después de la hora 22 los días */3 del mes cada segundo día de la semana."`;
+
+exports[`Cron Integration Tests Expression 52: "54,53 4-11 10-30 3 *" should format to English (en) 1`] = `"At 04:54 on every day-of-month from 10 through 30 in March."`;
+
+exports[`Cron Integration Tests Expression 52: "54,53 4-11 10-30 3 *" should format to Spanish (es) 1`] = `"A las 04:54 cada día del mes del 10 al 30 de marzo."`;
+
+exports[`Cron Integration Tests Expression 52: "54,53 4-11 10-30 3 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 04:54 cada día del mes del 10 al 30 de marzo."`;
+
+exports[`Cron Integration Tests Expression 53: "29-48/4 14 30-31 9 */3 */3" should format to English (en) 1`] = `"At every 4th minute from 29 through 48 past hour 14 on every day-of-month from 30 through 31 on every 3rd day-of-week in September in every 3rd year."`;
+
+exports[`Cron Integration Tests Expression 53: "29-48/4 14 30-31 9 */3 */3" should format to Spanish (es) 1`] = `"Cada cuarto minuto del 29 al 48 después de la hora 14 cada día del mes del 30 al 31 cada tercer día de la semana de septiembre cada tercer año."`;
+
+exports[`Cron Integration Tests Expression 53: "29-48/4 14 30-31 9 */3 */3" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada cuarto minuto del 29 al 48 después de la hora 14 cada día del mes del 30 al 31 cada tercer día de la semana de septiembre cada tercer año."`;
+
+exports[`Cron Integration Tests Expression 54: "* * 26 * 6" should format to English (en) 1`] = `"At every minute on day-of-month 26 and on Saturday."`;
+
+exports[`Cron Integration Tests Expression 54: "* * 26 * 6" should format to Spanish (es) 1`] = `"Cada minuto los días 26 del mes y los sábados."`;
+
+exports[`Cron Integration Tests Expression 54: "* * 26 * 6" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto los días 26 del mes y los sábados."`;
+
+exports[`Cron Integration Tests Expression 55: "23-52/3 */2 27-31/2 * *" should format to English (en) 1`] = `"At every 3rd minute from 23 through 52 past every 2nd hour on every day-of-month from 27 through 31/2."`;
+
+exports[`Cron Integration Tests Expression 55: "23-52/3 */2 27-31/2 * *" should format to Spanish (es) 1`] = `"Cada tercer minuto del 23 al 52 después de cada segundo hora cada día del mes del 27 al 31/2."`;
+
+exports[`Cron Integration Tests Expression 55: "23-52/3 */2 27-31/2 * *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada tercer minuto del 23 al 52 después de cada segundo hora cada día del mes del 27 al 31/2."`;
+
+exports[`Cron Integration Tests Expression 56: "* * 29-30 */5 *" should format to English (en) 1`] = `"At every minute on every day-of-month from 29 through 30 in every 5th month."`;
+
+exports[`Cron Integration Tests Expression 56: "* * 29-30 */5 *" should format to Spanish (es) 1`] = `"Cada minuto cada día del mes del 29 al 30 de cada quinto mes."`;
+
+exports[`Cron Integration Tests Expression 56: "* * 29-30 */5 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto cada día del mes del 29 al 30 de cada quinto mes."`;
+
+exports[`Cron Integration Tests Expression 57: "*/6 22,8 8,6,25,14 */4 2-6/2" should format to English (en) 1`] = `"At every 6th minute past hour 22 on day-of-month 8 and 6 and 25 and 14 on every 2nd day-of-week from Tuesday through Saturday in every 4th month."`;
+
+exports[`Cron Integration Tests Expression 57: "*/6 22,8 8,6,25,14 */4 2-6/2" should format to Spanish (es) 1`] = `"Cada sexto minuto después de la hora 22 los días 8 y 6 y 25 y 14 del mes cada segundo día de la semana del martes al sábados de cada cuarto mes."`;
+
+exports[`Cron Integration Tests Expression 57: "*/6 22,8 8,6,25,14 */4 2-6/2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada sexto minuto después de la hora 22 los días 8 y 6 y 25 y 14 del mes cada segundo día de la semana del martes al sábados de cada cuarto mes."`;
+
+exports[`Cron Integration Tests Expression 58: "*/10 * * 2-8 */2" should format to English (en) 1`] = `"At every 10th minute on every 2nd day-of-week in every month from February through August."`;
+
+exports[`Cron Integration Tests Expression 58: "*/10 * * 2-8 */2" should format to Spanish (es) 1`] = `"Cada décimo minuto cada segundo día de la semana de cada mes desde febrero hasta agosto."`;
+
+exports[`Cron Integration Tests Expression 58: "*/10 * * 2-8 */2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada décimo minuto cada segundo día de la semana de cada mes desde febrero hasta agosto."`;
+
+exports[`Cron Integration Tests Expression 59: "* 10 * * 5-7/2" should format to English (en) 1`] = `"At every minute past hour 10 on every 2nd day-of-week from Friday through ."`;
+
+exports[`Cron Integration Tests Expression 59: "* 10 * * 5-7/2" should format to Spanish (es) 1`] = `"Cada minuto después de la hora 10 cada segundo día de la semana del viernes al ."`;
+
+exports[`Cron Integration Tests Expression 59: "* 10 * * 5-7/2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de la hora 10 cada segundo día de la semana del viernes al ."`;
+
+exports[`Cron Integration Tests Expression 60: "1-57/4 19-23 31 * 7" should format to English (en) 1`] = `"At every 4th minute from 1 through 57 past hour 19 on day-of-month 31 and on ."`;
+
+exports[`Cron Integration Tests Expression 60: "1-57/4 19-23 31 * 7" should format to Spanish (es) 1`] = `"Cada cuarto minuto del 1 al 57 después de la hora 19 los días 31 del mes y los ."`;
+
+exports[`Cron Integration Tests Expression 60: "1-57/4 19-23 31 * 7" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada cuarto minuto del 1 al 57 después de la hora 19 los días 31 del mes y los ."`;
+
+exports[`Cron Integration Tests Expression 61: "52-56/2 */10 12 5,7 1" should format to English (en) 1`] = `"At every 2nd minute from 52 through 56 past every 10th hour on day-of-month 12 and on Monday in May and July."`;
+
+exports[`Cron Integration Tests Expression 61: "52-56/2 */10 12 5,7 1" should format to Spanish (es) 1`] = `"Cada segundo minuto del 52 al 56 después de cada décimo hora los días 12 del mes y los lunes de mayo y julio."`;
+
+exports[`Cron Integration Tests Expression 61: "52-56/2 */10 12 5,7 1" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada segundo minuto del 52 al 56 después de cada décimo hora los días 12 del mes y los lunes de mayo y julio."`;
+
+exports[`Cron Integration Tests Expression 62: "7-21/3 10 7-31 3,6,6 5,4" should format to English (en) 1`] = `"At every 3rd minute from 7 through 21 past hour 10 on every day-of-month from 7 through 31 and on Friday and Thursday in March and June and June."`;
+
+exports[`Cron Integration Tests Expression 62: "7-21/3 10 7-31 3,6,6 5,4" should format to Spanish (es) 1`] = `"Cada tercer minuto del 7 al 21 después de la hora 10 cada día del mes del 7 al 31 y los viernes y jueves de marzo y junio y junio."`;
+
+exports[`Cron Integration Tests Expression 62: "7-21/3 10 7-31 3,6,6 5,4" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada tercer minuto del 7 al 21 después de la hora 10 cada día del mes del 7 al 31 y los viernes y jueves de marzo y junio y junio."`;
+
+exports[`Cron Integration Tests Expression 63: "19-54/3 10 1-27 */2 1-7" should format to English (en) 1`] = `"At every 3rd minute from 19 through 54 past hour 10 on every day-of-month from 1 through 27 on every day-of-week from Monday through  in every 2nd month."`;
+
+exports[`Cron Integration Tests Expression 63: "19-54/3 10 1-27 */2 1-7" should format to Spanish (es) 1`] = `"Cada tercer minuto del 19 al 54 después de la hora 10 cada día del mes del 1 al 27 cada día de la semana del lunes al  de cada segundo mes."`;
+
+exports[`Cron Integration Tests Expression 63: "19-54/3 10 1-27 */2 1-7" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada tercer minuto del 19 al 54 después de la hora 10 cada día del mes del 1 al 27 cada día de la semana del lunes al  de cada segundo mes."`;
+
+exports[`Cron Integration Tests Expression 64: "*/10 * 2-24/2 */3 1,4" should format to English (en) 1`] = `"At every 10th minute on every day-of-month from 2 through 24/2 and on Monday and Thursday in every 3rd month."`;
+
+exports[`Cron Integration Tests Expression 64: "*/10 * 2-24/2 */3 1,4" should format to Spanish (es) 1`] = `"Cada décimo minuto cada día del mes del 2 al 24/2 y los lunes y jueves de cada tercer mes."`;
+
+exports[`Cron Integration Tests Expression 64: "*/10 * 2-24/2 */3 1,4" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada décimo minuto cada día del mes del 2 al 24/2 y los lunes y jueves de cada tercer mes."`;
+
+exports[`Cron Integration Tests Expression 65: "11 5 17-25/2 8 7,1,5" should format to English (en) 1`] = `"At 05:11 on every day-of-month from 17 through 25/2 and on  and Monday and Friday in August."`;
+
+exports[`Cron Integration Tests Expression 65: "11 5 17-25/2 8 7,1,5" should format to Spanish (es) 1`] = `"A las 05:11 cada día del mes del 17 al 25/2 y los  y lunes y viernes de agosto."`;
+
+exports[`Cron Integration Tests Expression 65: "11 5 17-25/2 8 7,1,5" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 05:11 cada día del mes del 17 al 25/2 y los  y lunes y viernes de agosto."`;
+
+exports[`Cron Integration Tests Expression 66: "49 1-17/3 * 6 *" should format to English (en) 1`] = `"At minute 49 past every 3rd hour from 1 through 17 in June."`;
+
+exports[`Cron Integration Tests Expression 66: "49 1-17/3 * 6 *" should format to Spanish (es) 1`] = `"Al minuto 49 después de cada tercer hora desde 1 hasta 17 de junio."`;
+
+exports[`Cron Integration Tests Expression 66: "49 1-17/3 * 6 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 49 después de cada tercer hora desde 1 hasta 17 de junio."`;
+
+exports[`Cron Integration Tests Expression 67: "37,53 * 2 1 * */3" should format to English (en) 1`] = `"At minute 37 on day-of-month 2 in January in every 3rd year."`;
+
+exports[`Cron Integration Tests Expression 67: "37,53 * 2 1 * */3" should format to Spanish (es) 1`] = `"Al minuto 37 los días 2 del mes de enero cada tercer año."`;
+
+exports[`Cron Integration Tests Expression 67: "37,53 * 2 1 * */3" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 37 los días 2 del mes de enero cada tercer año."`;
+
+exports[`Cron Integration Tests Expression 68: "*/10 17 */10 1-4 1-4" should format to English (en) 1`] = `"At every 10th minute past hour 17 on day-of-month */10 on every day-of-week from Monday through Thursday in every month from January through April."`;
+
+exports[`Cron Integration Tests Expression 68: "*/10 17 */10 1-4 1-4" should format to Spanish (es) 1`] = `"Cada décimo minuto después de la hora 17 los días */10 del mes cada día de la semana del lunes al jueves de cada mes desde enero hasta abril."`;
+
+exports[`Cron Integration Tests Expression 68: "*/10 17 */10 1-4 1-4" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada décimo minuto después de la hora 17 los días */10 del mes cada día de la semana del lunes al jueves de cada mes desde enero hasta abril."`;
+
+exports[`Cron Integration Tests Expression 69: "44-49 1-8/3 * 1 */2" should format to English (en) 1`] = `"At minute 44 past every 3rd hour from 1 through 8 on every 2nd day-of-week in January."`;
+
+exports[`Cron Integration Tests Expression 69: "44-49 1-8/3 * 1 */2" should format to Spanish (es) 1`] = `"Al minuto 44 después de cada tercer hora desde 1 hasta 8 cada segundo día de la semana de enero."`;
+
+exports[`Cron Integration Tests Expression 69: "44-49 1-8/3 * 1 */2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 44 después de cada tercer hora desde 1 hasta 8 cada segundo día de la semana de enero."`;
+
+exports[`Cron Integration Tests Expression 70: "51,45,32 22-23 18,20,9,26 * *" should format to English (en) 1`] = `"At 22:51 on day-of-month 18 and 20 and 9 and 26."`;
+
+exports[`Cron Integration Tests Expression 70: "51,45,32 22-23 18,20,9,26 * *" should format to Spanish (es) 1`] = `"A las 22:51 los días 18 y 20 y 9 y 26 del mes."`;
+
+exports[`Cron Integration Tests Expression 70: "51,45,32 22-23 18,20,9,26 * *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 22:51 los días 18 y 20 y 9 y 26 del mes."`;
+
+exports[`Cron Integration Tests Expression 71: "*/9 19 8,24,14 2 * 2024-2028" should format to English (en) 1`] = `"At every 9th minute past hour 19 on day-of-month 8 and 24 and 14 in February in 2024-2028."`;
+
+exports[`Cron Integration Tests Expression 71: "*/9 19 8,24,14 2 * 2024-2028" should format to Spanish (es) 1`] = `"Cada noveno minuto después de la hora 19 los días 8 y 24 y 14 del mes de febrero en 2024-2028."`;
+
+exports[`Cron Integration Tests Expression 71: "*/9 19 8,24,14 2 * 2024-2028" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada noveno minuto después de la hora 19 los días 8 y 24 y 14 del mes de febrero en 2024-2028."`;
+
+exports[`Cron Integration Tests Expression 72: "3 * 9-17 * *" should format to English (en) 1`] = `"At minute 3 on every day-of-month from 9 through 17."`;
+
+exports[`Cron Integration Tests Expression 72: "3 * 9-17 * *" should format to Spanish (es) 1`] = `"Al minuto 3 cada día del mes del 9 al 17."`;
+
+exports[`Cron Integration Tests Expression 72: "3 * 9-17 * *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 3 cada día del mes del 9 al 17."`;
+
+exports[`Cron Integration Tests Expression 73: "12 * 9 */4 */2" should format to English (en) 1`] = `"At minute 12 on day-of-month 9 on every 2nd day-of-week in every 4th month."`;
+
+exports[`Cron Integration Tests Expression 73: "12 * 9 */4 */2" should format to Spanish (es) 1`] = `"Al minuto 12 los días 9 del mes cada segundo día de la semana de cada cuarto mes."`;
+
+exports[`Cron Integration Tests Expression 73: "12 * 9 */4 */2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 12 los días 9 del mes cada segundo día de la semana de cada cuarto mes."`;
+
+exports[`Cron Integration Tests Expression 74: "44 * * 5,8,6 * *" should format to English (en) 1`] = `"At minute 44 in May and August and June."`;
+
+exports[`Cron Integration Tests Expression 74: "44 * * 5,8,6 * *" should format to Spanish (es) 1`] = `"Al minuto 44 de mayo y agosto y junio."`;
+
+exports[`Cron Integration Tests Expression 74: "44 * * 5,8,6 * *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 44 de mayo y agosto y junio."`;
+
+exports[`Cron Integration Tests Expression 75: "16-51/5 1 7 8-11 *" should format to English (en) 1`] = `"At every 5th minute from 16 through 51 past hour 1 on day-of-month 7 in every month from August through November."`;
+
+exports[`Cron Integration Tests Expression 75: "16-51/5 1 7 8-11 *" should format to Spanish (es) 1`] = `"Cada quinto minuto del 16 al 51 después de la hora 1 los días 7 del mes de cada mes desde agosto hasta noviembre."`;
+
+exports[`Cron Integration Tests Expression 75: "16-51/5 1 7 8-11 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada quinto minuto del 16 al 51 después de la hora 1 los días 7 del mes de cada mes desde agosto hasta noviembre."`;
+
+exports[`Cron Integration Tests Expression 76: "36 6 * 9-12/2 *" should format to English (en) 1`] = `"At 06:36 in every 2nd month from September through December."`;
+
+exports[`Cron Integration Tests Expression 76: "36 6 * 9-12/2 *" should format to Spanish (es) 1`] = `"A las 06:36 de cada segundo mes desde septiembre hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 76: "36 6 * 9-12/2 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 06:36 de cada segundo mes desde septiembre hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 77: "48 9-11 * * 1-3/2" should format to English (en) 1`] = `"At 09:48 on every 2nd day-of-week from Monday through Wednesday."`;
+
+exports[`Cron Integration Tests Expression 77: "48 9-11 * * 1-3/2" should format to Spanish (es) 1`] = `"A las 09:48 cada segundo día de la semana del lunes al miércoles."`;
+
+exports[`Cron Integration Tests Expression 77: "48 9-11 * * 1-3/2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 09:48 cada segundo día de la semana del lunes al miércoles."`;
+
+exports[`Cron Integration Tests Expression 78: "* 5-23 3-17 * */3" should format to English (en) 1`] = `"At every minute past hour 5 on every day-of-month from 3 through 17 on every 3rd day-of-week."`;
+
+exports[`Cron Integration Tests Expression 78: "* 5-23 3-17 * */3" should format to Spanish (es) 1`] = `"Cada minuto después de la hora 5 cada día del mes del 3 al 17 cada tercer día de la semana."`;
+
+exports[`Cron Integration Tests Expression 78: "* 5-23 3-17 * */3" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de la hora 5 cada día del mes del 3 al 17 cada tercer día de la semana."`;
+
+exports[`Cron Integration Tests Expression 79: "*/10 4,2,21,0 7 6 0" should format to English (en) 1`] = `"At every 10th minute past hour 4 on day-of-month 7 and on Sunday in June."`;
+
+exports[`Cron Integration Tests Expression 79: "*/10 4,2,21,0 7 6 0" should format to Spanish (es) 1`] = `"Cada décimo minuto después de la hora 4 los días 7 del mes y los domingos de junio."`;
+
+exports[`Cron Integration Tests Expression 79: "*/10 4,2,21,0 7 6 0" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada décimo minuto después de la hora 4 los días 7 del mes y los domingos de junio."`;
+
+exports[`Cron Integration Tests Expression 80: "* * 11-17 8 */3 2026-2028" should format to English (en) 1`] = `"At every minute on every day-of-month from 11 through 17 on every 3rd day-of-week in August in 2026-2028."`;
+
+exports[`Cron Integration Tests Expression 80: "* * 11-17 8 */3 2026-2028" should format to Spanish (es) 1`] = `"Cada minuto cada día del mes del 11 al 17 cada tercer día de la semana de agosto en 2026-2028."`;
+
+exports[`Cron Integration Tests Expression 80: "* * 11-17 8 */3 2026-2028" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto cada día del mes del 11 al 17 cada tercer día de la semana de agosto en 2026-2028."`;
+
+exports[`Cron Integration Tests Expression 81: "* */2 4-17/2 * *" should format to English (en) 1`] = `"At every minute past every 2nd hour on every day-of-month from 4 through 17/2."`;
+
+exports[`Cron Integration Tests Expression 81: "* */2 4-17/2 * *" should format to Spanish (es) 1`] = `"Cada minuto después de cada segundo hora cada día del mes del 4 al 17/2."`;
+
+exports[`Cron Integration Tests Expression 81: "* */2 4-17/2 * *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de cada segundo hora cada día del mes del 4 al 17/2."`;
+
+exports[`Cron Integration Tests Expression 82: "41-53 * 11-27/4 */5 4 *" should format to English (en) 1`] = `"At minute 41 on every day-of-month from 11 through 27/4 and on Thursday in every 5th month."`;
+
+exports[`Cron Integration Tests Expression 82: "41-53 * 11-27/4 */5 4 *" should format to Spanish (es) 1`] = `"Al minuto 41 cada día del mes del 11 al 27/4 y los jueves de cada quinto mes."`;
+
+exports[`Cron Integration Tests Expression 82: "41-53 * 11-27/4 */5 4 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 41 cada día del mes del 11 al 27/4 y los jueves de cada quinto mes."`;
+
+exports[`Cron Integration Tests Expression 83: "41-53 6-13 */7 4 5" should format to English (en) 1`] = `"At every minute from 41 through 53 past hour 6 on day-of-month */7 and on Friday in April."`;
+
+exports[`Cron Integration Tests Expression 83: "41-53 6-13 */7 4 5" should format to Spanish (es) 1`] = `"Cada minuto del 41 al 53 después de la hora 6 los días */7 del mes y los viernes de abril."`;
+
+exports[`Cron Integration Tests Expression 83: "41-53 6-13 */7 4 5" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto del 41 al 53 después de la hora 6 los días */7 del mes y los viernes de abril."`;
+
+exports[`Cron Integration Tests Expression 84: "* */9 20-29 */4 6,0 *" should format to English (en) 1`] = `"At every minute past every 9th hour on every day-of-month from 20 through 29 and on Saturday and Sunday in every 4th month."`;
+
+exports[`Cron Integration Tests Expression 84: "* */9 20-29 */4 6,0 *" should format to Spanish (es) 1`] = `"Cada minuto después de cada noveno hora cada día del mes del 20 al 29 y los sábados y domingos de cada cuarto mes."`;
+
+exports[`Cron Integration Tests Expression 84: "* */9 20-29 */4 6,0 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de cada noveno hora cada día del mes del 20 al 29 y los sábados y domingos de cada cuarto mes."`;
+
+exports[`Cron Integration Tests Expression 85: "* 22-23 14-19/2 * 5-7" should format to English (en) 1`] = `"At every minute past hour 22 on every day-of-month from 14 through 19/2 on every day-of-week from Friday through ."`;
+
+exports[`Cron Integration Tests Expression 85: "* 22-23 14-19/2 * 5-7" should format to Spanish (es) 1`] = `"Cada minuto después de la hora 22 cada día del mes del 14 al 19/2 cada día de la semana del viernes al ."`;
+
+exports[`Cron Integration Tests Expression 85: "* 22-23 14-19/2 * 5-7" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de la hora 22 cada día del mes del 14 al 19/2 cada día de la semana del viernes al ."`;
+
+exports[`Cron Integration Tests Expression 86: "31,4,8,49 * */6 * *" should format to English (en) 1`] = `"At minute 31 on day-of-month */6."`;
+
+exports[`Cron Integration Tests Expression 86: "31,4,8,49 * */6 * *" should format to Spanish (es) 1`] = `"Al minuto 31 los días */6 del mes."`;
+
+exports[`Cron Integration Tests Expression 86: "31,4,8,49 * */6 * *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 31 los días */6 del mes."`;
+
+exports[`Cron Integration Tests Expression 87: "*/9 * */9 */4 1" should format to English (en) 1`] = `"At every 9th minute on day-of-month */9 and on Monday in every 4th month."`;
+
+exports[`Cron Integration Tests Expression 87: "*/9 * */9 */4 1" should format to Spanish (es) 1`] = `"Cada noveno minuto los días */9 del mes y los lunes de cada cuarto mes."`;
+
+exports[`Cron Integration Tests Expression 87: "*/9 * */9 */4 1" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada noveno minuto los días */9 del mes y los lunes de cada cuarto mes."`;
+
+exports[`Cron Integration Tests Expression 88: "* * */8 */2 */2" should format to English (en) 1`] = `"At every minute on day-of-month */8 on every 2nd day-of-week in every 2nd month."`;
+
+exports[`Cron Integration Tests Expression 88: "* * */8 */2 */2" should format to Spanish (es) 1`] = `"Cada minuto los días */8 del mes cada segundo día de la semana de cada segundo mes."`;
+
+exports[`Cron Integration Tests Expression 88: "* * */8 */2 */2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto los días */8 del mes cada segundo día de la semana de cada segundo mes."`;
+
+exports[`Cron Integration Tests Expression 89: "* * * 5-8/2 */2" should format to English (en) 1`] = `"At every minute on every 2nd day-of-week in every 2nd month from May through December."`;
+
+exports[`Cron Integration Tests Expression 89: "* * * 5-8/2 */2" should format to Spanish (es) 1`] = `"Cada minuto cada segundo día de la semana de cada segundo mes desde mayo hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 89: "* * * 5-8/2 */2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto cada segundo día de la semana de cada segundo mes desde mayo hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 90: "57 * */2 * *" should format to English (en) 1`] = `"At minute 57 on day-of-month */2."`;
+
+exports[`Cron Integration Tests Expression 90: "57 * */2 * *" should format to Spanish (es) 1`] = `"Al minuto 57 los días */2 del mes."`;
+
+exports[`Cron Integration Tests Expression 90: "57 * */2 * *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 57 los días */2 del mes."`;
+
+exports[`Cron Integration Tests Expression 91: "27-58 * * * */2" should format to English (en) 1`] = `"At minute 27 on every 2nd day-of-week."`;
+
+exports[`Cron Integration Tests Expression 91: "27-58 * * * */2" should format to Spanish (es) 1`] = `"Al minuto 27 cada segundo día de la semana."`;
+
+exports[`Cron Integration Tests Expression 91: "27-58 * * * */2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 27 cada segundo día de la semana."`;
+
+exports[`Cron Integration Tests Expression 92: "7-10 * 7 2-3 */3" should format to English (en) 1`] = `"At minute 7 on day-of-month 7 on every 3rd day-of-week in every month from February through March."`;
+
+exports[`Cron Integration Tests Expression 92: "7-10 * 7 2-3 */3" should format to Spanish (es) 1`] = `"Al minuto 7 los días 7 del mes cada tercer día de la semana de cada mes desde febrero hasta marzo."`;
+
+exports[`Cron Integration Tests Expression 92: "7-10 * 7 2-3 */3" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 7 los días 7 del mes cada tercer día de la semana de cada mes desde febrero hasta marzo."`;
+
+exports[`Cron Integration Tests Expression 93: "*/2 21-23/2 8 11-12 *" should format to English (en) 1`] = `"At every 2nd minute past every 2nd hour from 21 through 23 on day-of-month 8 in every month from November through December."`;
+
+exports[`Cron Integration Tests Expression 93: "*/2 21-23/2 8 11-12 *" should format to Spanish (es) 1`] = `"Cada segundo minuto después de cada segundo hora desde 21 hasta 23 los días 8 del mes de cada mes desde noviembre hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 93: "*/2 21-23/2 8 11-12 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada segundo minuto después de cada segundo hora desde 21 hasta 23 los días 8 del mes de cada mes desde noviembre hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 94: "17-57 15 23 5 1-3" should format to English (en) 1`] = `"At every minute from 17 through 57 past hour 15 on day-of-month 23 on every day-of-week from Monday through Wednesday in May."`;
+
+exports[`Cron Integration Tests Expression 94: "17-57 15 23 5 1-3" should format to Spanish (es) 1`] = `"Cada minuto del 17 al 57 después de la hora 15 los días 23 del mes cada día de la semana del lunes al miércoles de mayo."`;
+
+exports[`Cron Integration Tests Expression 94: "17-57 15 23 5 1-3" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto del 17 al 57 después de la hora 15 los días 23 del mes cada día de la semana del lunes al miércoles de mayo."`;
+
+exports[`Cron Integration Tests Expression 95: "2,53 * 25-31/2 1,3,1,11 5" should format to English (en) 1`] = `"At minute 2 on every day-of-month from 25 through 31/2 and on Friday in January and March and January and November."`;
+
+exports[`Cron Integration Tests Expression 95: "2,53 * 25-31/2 1,3,1,11 5" should format to Spanish (es) 1`] = `"Al minuto 2 cada día del mes del 25 al 31/2 y los viernes de enero y marzo y enero y noviembre."`;
+
+exports[`Cron Integration Tests Expression 95: "2,53 * 25-31/2 1,3,1,11 5" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 2 cada día del mes del 25 al 31/2 y los viernes de enero y marzo y enero y noviembre."`;
+
+exports[`Cron Integration Tests Expression 96: "45,13 */7 * 5,1,3,4 *" should format to English (en) 1`] = `"At minute 45 past every 7th hour in May and January and March and April."`;
+
+exports[`Cron Integration Tests Expression 96: "45,13 */7 * 5,1,3,4 *" should format to Spanish (es) 1`] = `"Al minuto 45 después de cada séptimo hora de mayo y enero y marzo y abril."`;
+
+exports[`Cron Integration Tests Expression 96: "45,13 */7 * 5,1,3,4 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 45 después de cada séptimo hora de mayo y enero y marzo y abril."`;
+
+exports[`Cron Integration Tests Expression 97: "*/4 */7 */3 1-10/3 3" should format to English (en) 1`] = `"At every 4th minute past every 7th hour on day-of-month */3 and on Wednesday in every 3rd month from January through December."`;
+
+exports[`Cron Integration Tests Expression 97: "*/4 */7 */3 1-10/3 3" should format to Spanish (es) 1`] = `"Cada cuarto minuto después de cada séptimo hora los días */3 del mes y los miércoles de cada tercer mes desde enero hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 97: "*/4 */7 */3 1-10/3 3" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada cuarto minuto después de cada séptimo hora los días */3 del mes y los miércoles de cada tercer mes desde enero hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 98: "* * * 5 *" should format to English (en) 1`] = `"At every minute in May."`;
+
+exports[`Cron Integration Tests Expression 98: "* * * 5 *" should format to Spanish (es) 1`] = `"Cada minuto de mayo."`;
+
+exports[`Cron Integration Tests Expression 98: "* * * 5 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto de mayo."`;
+
+exports[`Cron Integration Tests Expression 99: "*/6 0-18/3 * 1 2-7" should format to English (en) 1`] = `"At every 6th minute past every 3rd hour from 0 through 18 on every day-of-week from Tuesday through  in January."`;
+
+exports[`Cron Integration Tests Expression 99: "*/6 0-18/3 * 1 2-7" should format to Spanish (es) 1`] = `"Cada sexto minuto después de cada tercer hora desde 0 hasta 18 cada día de la semana del martes al  de enero."`;
+
+exports[`Cron Integration Tests Expression 99: "*/6 0-18/3 * 1 2-7" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada sexto minuto después de cada tercer hora desde 0 hasta 18 cada día de la semana del martes al  de enero."`;
+
+exports[`Cron Integration Tests Expression 100: "17-28 7 28 7-8 *" should format to English (en) 1`] = `"At every minute from 17 through 28 past hour 7 on day-of-month 28 in every month from July through August."`;
+
+exports[`Cron Integration Tests Expression 100: "17-28 7 28 7-8 *" should format to Spanish (es) 1`] = `"Cada minuto del 17 al 28 después de la hora 7 los días 28 del mes de cada mes desde julio hasta agosto."`;
+
+exports[`Cron Integration Tests Expression 100: "17-28 7 28 7-8 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto del 17 al 28 después de la hora 7 los días 28 del mes de cada mes desde julio hasta agosto."`;
+
+exports[`Cron Integration Tests Expression 101: "* * */9 * 1,2" should format to English (en) 1`] = `"At every minute on day-of-month */9 and on Monday and Tuesday."`;
+
+exports[`Cron Integration Tests Expression 101: "* * */9 * 1,2" should format to Spanish (es) 1`] = `"Cada minuto los días */9 del mes y los lunes y martes."`;
+
+exports[`Cron Integration Tests Expression 101: "* * */9 * 1,2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto los días */9 del mes y los lunes y martes."`;
+
+exports[`Cron Integration Tests Expression 102: "* 17,4,5,5 */9 3,6 * *" should format to English (en) 1`] = `"At minute * past hour 17 and 4 and 5 and 5 on day-of-month */9 in March and June."`;
+
+exports[`Cron Integration Tests Expression 102: "* 17,4,5,5 */9 3,6 * *" should format to Spanish (es) 1`] = `"Al minuto * después de la hora 17 y 4 y 5 y 5 los días */9 del mes de marzo y junio."`;
+
+exports[`Cron Integration Tests Expression 102: "* 17,4,5,5 */9 3,6 * *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto * después de la hora 17 y 4 y 5 y 5 los días */9 del mes de marzo y junio."`;
+
+exports[`Cron Integration Tests Expression 103: "59 11,0,15,23 */9 * * 2026-2029/2" should format to English (en) 1`] = `"At minute 59 past hour 11 and 0 and 15 and 23 on day-of-month */9 in 2026-2029/2."`;
+
+exports[`Cron Integration Tests Expression 103: "59 11,0,15,23 */9 * * 2026-2029/2" should format to Spanish (es) 1`] = `"Al minuto 59 después de la hora 11 y 0 y 15 y 23 los días */9 del mes en 2026-2029/2."`;
+
+exports[`Cron Integration Tests Expression 103: "59 11,0,15,23 */9 * * 2026-2029/2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 59 después de la hora 11 y 0 y 15 y 23 los días */9 del mes en 2026-2029/2."`;
+
+exports[`Cron Integration Tests Expression 104: "* * */10 5 2-7/2" should format to English (en) 1`] = `"At every minute on day-of-month */10 on every 2nd day-of-week from Tuesday through  in May."`;
+
+exports[`Cron Integration Tests Expression 104: "* * */10 5 2-7/2" should format to Spanish (es) 1`] = `"Cada minuto los días */10 del mes cada segundo día de la semana del martes al  de mayo."`;
+
+exports[`Cron Integration Tests Expression 104: "* * */10 5 2-7/2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto los días */10 del mes cada segundo día de la semana del martes al  de mayo."`;
+
+exports[`Cron Integration Tests Expression 105: "40 * 12 10-12/2 0,6,0,5" should format to English (en) 1`] = `"At minute 40 on day-of-month 12 and on Sunday and Saturday and Sunday and Friday in every 2nd month from October through December."`;
+
+exports[`Cron Integration Tests Expression 105: "40 * 12 10-12/2 0,6,0,5" should format to Spanish (es) 1`] = `"Al minuto 40 los días 12 del mes y los domingos y sábados y domingos y viernes de cada segundo mes desde octubre hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 105: "40 * 12 10-12/2 0,6,0,5" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 40 los días 12 del mes y los domingos y sábados y domingos y viernes de cada segundo mes desde octubre hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 106: "19-55/5 * * 7-11/2 5,5 */3" should format to English (en) 1`] = `"At every 5th minute from 19 through 55 and on Friday and Friday in every 2nd month from July through December in every 3rd year."`;
+
+exports[`Cron Integration Tests Expression 106: "19-55/5 * * 7-11/2 5,5 */3" should format to Spanish (es) 1`] = `"Cada quinto minuto del 19 al 55 y los viernes y viernes de cada segundo mes desde julio hasta diciembre cada tercer año."`;
+
+exports[`Cron Integration Tests Expression 106: "19-55/5 * * 7-11/2 5,5 */3" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada quinto minuto del 19 al 55 y los viernes y viernes de cada segundo mes desde julio hasta diciembre cada tercer año."`;
+
+exports[`Cron Integration Tests Expression 107: "*/7 * */9 9-12 0-4" should format to English (en) 1`] = `"At every 7th minute on day-of-month */9 on every day-of-week from Sunday through Thursday in every month from September through December."`;
+
+exports[`Cron Integration Tests Expression 107: "*/7 * */9 9-12 0-4" should format to Spanish (es) 1`] = `"Cada séptimo minuto los días */9 del mes cada día de la semana del domingos al jueves de cada mes desde septiembre hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 107: "*/7 * */9 9-12 0-4" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada séptimo minuto los días */9 del mes cada día de la semana del domingos al jueves de cada mes desde septiembre hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 108: "31 18 29 8 * 2030" should format to English (en) 1`] = `"At 18:31 on day-of-month 29 in August in 2030."`;
+
+exports[`Cron Integration Tests Expression 108: "31 18 29 8 * 2030" should format to Spanish (es) 1`] = `"A las 18:31 los días 29 del mes de agosto en 2030."`;
+
+exports[`Cron Integration Tests Expression 108: "31 18 29 8 * 2030" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 18:31 los días 29 del mes de agosto en 2030."`;
+
+exports[`Cron Integration Tests Expression 109: "* */7 */7 * *" should format to English (en) 1`] = `"At every minute past every 7th hour on day-of-month */7."`;
+
+exports[`Cron Integration Tests Expression 109: "* */7 */7 * *" should format to Spanish (es) 1`] = `"Cada minuto después de cada séptimo hora los días */7 del mes."`;
+
+exports[`Cron Integration Tests Expression 109: "* */7 */7 * *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de cada séptimo hora los días */7 del mes."`;
+
+exports[`Cron Integration Tests Expression 110: "* 17-22 */4 1-10/2 */3" should format to English (en) 1`] = `"At every minute past hour 17 on day-of-month */4 on every 3rd day-of-week in every 2nd month from January through December."`;
+
+exports[`Cron Integration Tests Expression 110: "* 17-22 */4 1-10/2 */3" should format to Spanish (es) 1`] = `"Cada minuto después de la hora 17 los días */4 del mes cada tercer día de la semana de cada segundo mes desde enero hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 110: "* 17-22 */4 1-10/2 */3" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de la hora 17 los días */4 del mes cada tercer día de la semana de cada segundo mes desde enero hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 111: "44 12-16 * */3 5-7" should format to English (en) 1`] = `"At 12:44 on every day-of-week from Friday through  in every 3rd month."`;
+
+exports[`Cron Integration Tests Expression 111: "44 12-16 * */3 5-7" should format to Spanish (es) 1`] = `"A las 12:44 cada día de la semana del viernes al  de cada tercer mes."`;
+
+exports[`Cron Integration Tests Expression 111: "44 12-16 * */3 5-7" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 12:44 cada día de la semana del viernes al  de cada tercer mes."`;
+
+exports[`Cron Integration Tests Expression 112: "55 7-16 * * */2" should format to English (en) 1`] = `"At 07:55 on every 2nd day-of-week."`;
+
+exports[`Cron Integration Tests Expression 112: "55 7-16 * * */2" should format to Spanish (es) 1`] = `"A las 07:55 cada segundo día de la semana."`;
+
+exports[`Cron Integration Tests Expression 112: "55 7-16 * * */2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 07:55 cada segundo día de la semana."`;
+
+exports[`Cron Integration Tests Expression 113: "7,37,52 */8 */3 11 * 2028,2029,2024" should format to English (en) 1`] = `"At minute 7 past every 8th hour on day-of-month */3 in November in 2028,2029,2024."`;
+
+exports[`Cron Integration Tests Expression 113: "7,37,52 */8 */3 11 * 2028,2029,2024" should format to Spanish (es) 1`] = `"Al minuto 7 después de cada octavo hora los días */3 del mes de noviembre en 2028,2029,2024."`;
+
+exports[`Cron Integration Tests Expression 113: "7,37,52 */8 */3 11 * 2028,2029,2024" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 7 después de cada octavo hora los días */3 del mes de noviembre en 2028,2029,2024."`;
+
+exports[`Cron Integration Tests Expression 114: "* 10-20/3 25-29 * *" should format to English (en) 1`] = `"At every minute past every 3rd hour from 10 through 20 on every day-of-month from 25 through 29."`;
+
+exports[`Cron Integration Tests Expression 114: "* 10-20/3 25-29 * *" should format to Spanish (es) 1`] = `"Cada minuto después de cada tercer hora desde 10 hasta 20 cada día del mes del 25 al 29."`;
+
+exports[`Cron Integration Tests Expression 114: "* 10-20/3 25-29 * *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de cada tercer hora desde 10 hasta 20 cada día del mes del 25 al 29."`;
+
+exports[`Cron Integration Tests Expression 115: "*/3 */7 5,11,30,21 8,10,7,12 6-7" should format to English (en) 1`] = `"At every 3rd minute past every 7th hour on day-of-month 5 and 11 and 30 and 21 on every day-of-week from Saturday through  in August and October and July and December."`;
+
+exports[`Cron Integration Tests Expression 115: "*/3 */7 5,11,30,21 8,10,7,12 6-7" should format to Spanish (es) 1`] = `"Cada tercer minuto después de cada séptimo hora los días 5 y 11 y 30 y 21 del mes cada día de la semana del sábados al  de agosto y octubre y julio y diciembre."`;
+
+exports[`Cron Integration Tests Expression 115: "*/3 */7 5,11,30,21 8,10,7,12 6-7" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada tercer minuto después de cada séptimo hora los días 5 y 11 y 30 y 21 del mes cada día de la semana del sábados al  de agosto y octubre y julio y diciembre."`;
+
+exports[`Cron Integration Tests Expression 116: "* * 20,14,23,27 * */2" should format to English (en) 1`] = `"At every minute on day-of-month 20 and 14 and 23 and 27 on every 2nd day-of-week."`;
+
+exports[`Cron Integration Tests Expression 116: "* * 20,14,23,27 * */2" should format to Spanish (es) 1`] = `"Cada minuto los días 20 y 14 y 23 y 27 del mes cada segundo día de la semana."`;
+
+exports[`Cron Integration Tests Expression 116: "* * 20,14,23,27 * */2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto los días 20 y 14 y 23 y 27 del mes cada segundo día de la semana."`;
+
+exports[`Cron Integration Tests Expression 117: "22-59/4 23 * * 3" should format to English (en) 1`] = `"At every 4th minute from 22 through 59 past hour 23 on Wednesday."`;
+
+exports[`Cron Integration Tests Expression 117: "22-59/4 23 * * 3" should format to Spanish (es) 1`] = `"Cada cuarto minuto del 22 al 59 después de la hora 23 los miércoles."`;
+
+exports[`Cron Integration Tests Expression 117: "22-59/4 23 * * 3" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada cuarto minuto del 22 al 59 después de la hora 23 los miércoles."`;
+
+exports[`Cron Integration Tests Expression 118: "37,41,10 23,16 * 8-11 0-2 *" should format to English (en) 1`] = `"At minute 37 past hour 23 and 16 on every day-of-week from Sunday through Tuesday in every month from August through November."`;
+
+exports[`Cron Integration Tests Expression 118: "37,41,10 23,16 * 8-11 0-2 *" should format to Spanish (es) 1`] = `"Al minuto 37 después de la hora 23 y 16 cada día de la semana del domingos al martes de cada mes desde agosto hasta noviembre."`;
+
+exports[`Cron Integration Tests Expression 118: "37,41,10 23,16 * 8-11 0-2 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 37 después de la hora 23 y 16 cada día de la semana del domingos al martes de cada mes desde agosto hasta noviembre."`;
+
+exports[`Cron Integration Tests Expression 119: "* * 10-25/5 5-12 4,4,5" should format to English (en) 1`] = `"At every minute on every day-of-month from 10 through 25/5 and on Thursday and Thursday and Friday in every month from May through December."`;
+
+exports[`Cron Integration Tests Expression 119: "* * 10-25/5 5-12 4,4,5" should format to Spanish (es) 1`] = `"Cada minuto cada día del mes del 10 al 25/5 y los jueves y jueves y viernes de cada mes desde mayo hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 119: "* * 10-25/5 5-12 4,4,5" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto cada día del mes del 10 al 25/5 y los jueves y jueves y viernes de cada mes desde mayo hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 120: "22 */8 * 10 7,2,4" should format to English (en) 1`] = `"At minute 22 past every 8th hour and on  and Tuesday and Thursday in October."`;
+
+exports[`Cron Integration Tests Expression 120: "22 */8 * 10 7,2,4" should format to Spanish (es) 1`] = `"Al minuto 22 después de cada octavo hora y los  y martes y jueves de octubre."`;
+
+exports[`Cron Integration Tests Expression 120: "22 */8 * 10 7,2,4" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 22 después de cada octavo hora y los  y martes y jueves de octubre."`;
+
+exports[`Cron Integration Tests Expression 121: "27 13-18 */7 8 */3" should format to English (en) 1`] = `"At 13:27 on day-of-month */7 on every 3rd day-of-week in August."`;
+
+exports[`Cron Integration Tests Expression 121: "27 13-18 */7 8 */3" should format to Spanish (es) 1`] = `"A las 13:27 los días */7 del mes cada tercer día de la semana de agosto."`;
+
+exports[`Cron Integration Tests Expression 121: "27 13-18 */7 8 */3" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 13:27 los días */7 del mes cada tercer día de la semana de agosto."`;
+
+exports[`Cron Integration Tests Expression 122: "53-58/2 * * 2-4/2 6" should format to English (en) 1`] = `"At every 2nd minute from 53 through 58 on Saturday in every 2nd month from February through December."`;
+
+exports[`Cron Integration Tests Expression 122: "53-58/2 * * 2-4/2 6" should format to Spanish (es) 1`] = `"Cada segundo minuto del 53 al 58 los sábados de cada segundo mes desde febrero hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 122: "53-58/2 * * 2-4/2 6" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada segundo minuto del 53 al 58 los sábados de cada segundo mes desde febrero hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 123: "* * * 3 */3" should format to English (en) 1`] = `"At every minute on every 3rd day-of-week in March."`;
+
+exports[`Cron Integration Tests Expression 123: "* * * 3 */3" should format to Spanish (es) 1`] = `"Cada minuto cada tercer día de la semana de marzo."`;
+
+exports[`Cron Integration Tests Expression 123: "* * * 3 */3" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto cada tercer día de la semana de marzo."`;
+
+exports[`Cron Integration Tests Expression 124: "41 * * 6-7 7" should format to English (en) 1`] = `"At minute 41 on  in every month from June through July."`;
+
+exports[`Cron Integration Tests Expression 124: "41 * * 6-7 7" should format to Spanish (es) 1`] = `"Al minuto 41 los  de cada mes desde junio hasta julio."`;
+
+exports[`Cron Integration Tests Expression 124: "41 * * 6-7 7" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 41 los  de cada mes desde junio hasta julio."`;
+
+exports[`Cron Integration Tests Expression 125: "44 * 11 1 4" should format to English (en) 1`] = `"At minute 44 on day-of-month 11 and on Thursday in January."`;
+
+exports[`Cron Integration Tests Expression 125: "44 * 11 1 4" should format to Spanish (es) 1`] = `"Al minuto 44 los días 11 del mes y los jueves de enero."`;
+
+exports[`Cron Integration Tests Expression 125: "44 * 11 1 4" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 44 los días 11 del mes y los jueves de enero."`;
+
+exports[`Cron Integration Tests Expression 126: "29-32 * 19-29 * 6-7 2024-2029/2" should format to English (en) 1`] = `"At minute 29 on every day-of-month from 19 through 29 on every day-of-week from Saturday through  in 2024-2029/2."`;
+
+exports[`Cron Integration Tests Expression 126: "29-32 * 19-29 * 6-7 2024-2029/2" should format to Spanish (es) 1`] = `"Al minuto 29 cada día del mes del 19 al 29 cada día de la semana del sábados al  en 2024-2029/2."`;
+
+exports[`Cron Integration Tests Expression 126: "29-32 * 19-29 * 6-7 2024-2029/2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 29 cada día del mes del 19 al 29 cada día de la semana del sábados al  en 2024-2029/2."`;
+
+exports[`Cron Integration Tests Expression 127: "* */9 * */4 4-7/2" should format to English (en) 1`] = `"At every minute past every 9th hour on every 2nd day-of-week from Thursday through  in every 4th month."`;
+
+exports[`Cron Integration Tests Expression 127: "* */9 * */4 4-7/2" should format to Spanish (es) 1`] = `"Cada minuto después de cada noveno hora cada segundo día de la semana del jueves al  de cada cuarto mes."`;
+
+exports[`Cron Integration Tests Expression 127: "* */9 * */4 4-7/2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de cada noveno hora cada segundo día de la semana del jueves al  de cada cuarto mes."`;
+
+exports[`Cron Integration Tests Expression 128: "47-49 */9 */9 8-11 *" should format to English (en) 1`] = `"At minute 47 past every 9th hour on day-of-month */9 in every month from August through November."`;
+
+exports[`Cron Integration Tests Expression 128: "47-49 */9 */9 8-11 *" should format to Spanish (es) 1`] = `"Al minuto 47 después de cada noveno hora los días */9 del mes de cada mes desde agosto hasta noviembre."`;
+
+exports[`Cron Integration Tests Expression 128: "47-49 */9 */9 8-11 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 47 después de cada noveno hora los días */9 del mes de cada mes desde agosto hasta noviembre."`;
+
+exports[`Cron Integration Tests Expression 129: "56,58,49,55 5-12 * 9-11 *" should format to English (en) 1`] = `"At 05:56 in every month from September through November."`;
+
+exports[`Cron Integration Tests Expression 129: "56,58,49,55 5-12 * 9-11 *" should format to Spanish (es) 1`] = `"A las 05:56 de cada mes desde septiembre hasta noviembre."`;
+
+exports[`Cron Integration Tests Expression 129: "56,58,49,55 5-12 * 9-11 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 05:56 de cada mes desde septiembre hasta noviembre."`;
+
+exports[`Cron Integration Tests Expression 130: "* 19-20 */9 * * 2026-2029/2" should format to English (en) 1`] = `"At every minute past hour 19 on day-of-month */9 in 2026-2029/2."`;
+
+exports[`Cron Integration Tests Expression 130: "* 19-20 */9 * * 2026-2029/2" should format to Spanish (es) 1`] = `"Cada minuto después de la hora 19 los días */9 del mes en 2026-2029/2."`;
+
+exports[`Cron Integration Tests Expression 130: "* 19-20 */9 * * 2026-2029/2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de la hora 19 los días */9 del mes en 2026-2029/2."`;
+
+exports[`Cron Integration Tests Expression 131: "* 3,10 28 * 3,5,4,6 2024-2030" should format to English (en) 1`] = `"At minute * past hour 3 and 10 on day-of-month 28 and on Wednesday and Friday and Thursday and Saturday in 2024-2030."`;
+
+exports[`Cron Integration Tests Expression 131: "* 3,10 28 * 3,5,4,6 2024-2030" should format to Spanish (es) 1`] = `"Al minuto * después de la hora 3 y 10 los días 28 del mes y los miércoles y viernes y jueves y sábados en 2024-2030."`;
+
+exports[`Cron Integration Tests Expression 131: "* 3,10 28 * 3,5,4,6 2024-2030" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto * después de la hora 3 y 10 los días 28 del mes y los miércoles y viernes y jueves y sábados en 2024-2030."`;
+
+exports[`Cron Integration Tests Expression 132: "1 */9 31 6 1,3,7" should format to English (en) 1`] = `"At minute 1 past every 9th hour on day-of-month 31 and on Monday and Wednesday and  in June."`;
+
+exports[`Cron Integration Tests Expression 132: "1 */9 31 6 1,3,7" should format to Spanish (es) 1`] = `"Al minuto 1 después de cada noveno hora los días 31 del mes y los lunes y miércoles y  de junio."`;
+
+exports[`Cron Integration Tests Expression 132: "1 */9 31 6 1,3,7" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 1 después de cada noveno hora los días 31 del mes y los lunes y miércoles y  de junio."`;
+
+exports[`Cron Integration Tests Expression 133: "49-59/3 * 8 10-12 *" should format to English (en) 1`] = `"At every 3rd minute from 49 through 59 on day-of-month 8 in every month from October through December."`;
+
+exports[`Cron Integration Tests Expression 133: "49-59/3 * 8 10-12 *" should format to Spanish (es) 1`] = `"Cada tercer minuto del 49 al 59 los días 8 del mes de cada mes desde octubre hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 133: "49-59/3 * 8 10-12 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada tercer minuto del 49 al 59 los días 8 del mes de cada mes desde octubre hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 134: "* */4 * * 6,3,5 *" should format to English (en) 1`] = `"At every minute past every 4th hour and on Saturday and Wednesday and Friday."`;
+
+exports[`Cron Integration Tests Expression 134: "* */4 * * 6,3,5 *" should format to Spanish (es) 1`] = `"Cada minuto después de cada cuarto hora y los sábados y miércoles y viernes."`;
+
+exports[`Cron Integration Tests Expression 134: "* */4 * * 6,3,5 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de cada cuarto hora y los sábados y miércoles y viernes."`;
+
+exports[`Cron Integration Tests Expression 135: "40,14,27 8 3-27 * *" should format to English (en) 1`] = `"At 08:40 on every day-of-month from 3 through 27."`;
+
+exports[`Cron Integration Tests Expression 135: "40,14,27 8 3-27 * *" should format to Spanish (es) 1`] = `"A las 08:40 cada día del mes del 3 al 27."`;
+
+exports[`Cron Integration Tests Expression 135: "40,14,27 8 3-27 * *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 08:40 cada día del mes del 3 al 27."`;
+
+exports[`Cron Integration Tests Expression 136: "14-55 12 24-27/2 * 3-6 2030,2024,2028" should format to English (en) 1`] = `"At every minute from 14 through 55 past hour 12 on every day-of-month from 24 through 27/2 on every day-of-week from Wednesday through Saturday in 2030,2024,2028."`;
+
+exports[`Cron Integration Tests Expression 136: "14-55 12 24-27/2 * 3-6 2030,2024,2028" should format to Spanish (es) 1`] = `"Cada minuto del 14 al 55 después de la hora 12 cada día del mes del 24 al 27/2 cada día de la semana del miércoles al sábados en 2030,2024,2028."`;
+
+exports[`Cron Integration Tests Expression 136: "14-55 12 24-27/2 * 3-6 2030,2024,2028" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto del 14 al 55 después de la hora 12 cada día del mes del 24 al 27/2 cada día de la semana del miércoles al sábados en 2030,2024,2028."`;
+
+exports[`Cron Integration Tests Expression 137: "37 */10 * 10-12/2 5-6" should format to English (en) 1`] = `"At minute 37 past every 10th hour on every day-of-week from Friday through Saturday in every 2nd month from October through December."`;
+
+exports[`Cron Integration Tests Expression 137: "37 */10 * 10-12/2 5-6" should format to Spanish (es) 1`] = `"Al minuto 37 después de cada décimo hora cada día de la semana del viernes al sábados de cada segundo mes desde octubre hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 137: "37 */10 * 10-12/2 5-6" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 37 después de cada décimo hora cada día de la semana del viernes al sábados de cada segundo mes desde octubre hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 138: "45-56/5 * 1-12 * 3-5/2" should format to English (en) 1`] = `"At every 5th minute from 45 through 56 on every day-of-month from 1 through 12 on every 2nd day-of-week from Wednesday through Friday."`;
+
+exports[`Cron Integration Tests Expression 138: "45-56/5 * 1-12 * 3-5/2" should format to Spanish (es) 1`] = `"Cada quinto minuto del 45 al 56 cada día del mes del 1 al 12 cada segundo día de la semana del miércoles al viernes."`;
+
+exports[`Cron Integration Tests Expression 138: "45-56/5 * 1-12 * 3-5/2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada quinto minuto del 45 al 56 cada día del mes del 1 al 12 cada segundo día de la semana del miércoles al viernes."`;
+
+exports[`Cron Integration Tests Expression 139: "*/10 5 * 4-7/2 *" should format to English (en) 1`] = `"At every 10th minute past hour 5 in every 2nd month from April through December."`;
+
+exports[`Cron Integration Tests Expression 139: "*/10 5 * 4-7/2 *" should format to Spanish (es) 1`] = `"Cada décimo minuto después de la hora 5 de cada segundo mes desde abril hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 139: "*/10 5 * 4-7/2 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada décimo minuto después de la hora 5 de cada segundo mes desde abril hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 140: "8-9 10 * 11-12 6,7,7,5" should format to English (en) 1`] = `"At every minute from 8 through 9 past hour 10 and on Saturday and  and  and Friday in every month from November through December."`;
+
+exports[`Cron Integration Tests Expression 140: "8-9 10 * 11-12 6,7,7,5" should format to Spanish (es) 1`] = `"Cada minuto del 8 al 9 después de la hora 10 y los sábados y  y  y viernes de cada mes desde noviembre hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 140: "8-9 10 * 11-12 6,7,7,5" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto del 8 al 9 después de la hora 10 y los sábados y  y  y viernes de cada mes desde noviembre hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 141: "* * * * 6-7 *" should format to English (en) 1`] = `"At every minute on every day-of-week from Saturday through ."`;
+
+exports[`Cron Integration Tests Expression 141: "* * * * 6-7 *" should format to Spanish (es) 1`] = `"Cada minuto cada día de la semana del sábados al ."`;
+
+exports[`Cron Integration Tests Expression 141: "* * * * 6-7 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto cada día de la semana del sábados al ."`;
+
+exports[`Cron Integration Tests Expression 142: "44-47 * 10 4 */2" should format to English (en) 1`] = `"At minute 44 on day-of-month 10 on every 2nd day-of-week in April."`;
+
+exports[`Cron Integration Tests Expression 142: "44-47 * 10 4 */2" should format to Spanish (es) 1`] = `"Al minuto 44 los días 10 del mes cada segundo día de la semana de abril."`;
+
+exports[`Cron Integration Tests Expression 142: "44-47 * 10 4 */2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 44 los días 10 del mes cada segundo día de la semana de abril."`;
+
+exports[`Cron Integration Tests Expression 143: "*/4 10-21 26 * 7" should format to English (en) 1`] = `"At every 4th minute past hour 10 on day-of-month 26 and on ."`;
+
+exports[`Cron Integration Tests Expression 143: "*/4 10-21 26 * 7" should format to Spanish (es) 1`] = `"Cada cuarto minuto después de la hora 10 los días 26 del mes y los ."`;
+
+exports[`Cron Integration Tests Expression 143: "*/4 10-21 26 * 7" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada cuarto minuto después de la hora 10 los días 26 del mes y los ."`;
+
+exports[`Cron Integration Tests Expression 144: "5,4,28,14 23 */3 10 6" should format to English (en) 1`] = `"At 23:05 on day-of-month */3 and on Saturday in October."`;
+
+exports[`Cron Integration Tests Expression 144: "5,4,28,14 23 */3 10 6" should format to Spanish (es) 1`] = `"A las 23:05 los días */3 del mes y los sábados de octubre."`;
+
+exports[`Cron Integration Tests Expression 144: "5,4,28,14 23 */3 10 6" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 23:05 los días */3 del mes y los sábados de octubre."`;
+
+exports[`Cron Integration Tests Expression 145: "* 5 30-31 5,7,7,10 7,7,6" should format to English (en) 1`] = `"At every minute past hour 5 on every day-of-month from 30 through 31 and on  and  and Saturday in May and July and July and October."`;
+
+exports[`Cron Integration Tests Expression 145: "* 5 30-31 5,7,7,10 7,7,6" should format to Spanish (es) 1`] = `"Cada minuto después de la hora 5 cada día del mes del 30 al 31 y los  y  y sábados de mayo y julio y julio y octubre."`;
+
+exports[`Cron Integration Tests Expression 145: "* 5 30-31 5,7,7,10 7,7,6" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de la hora 5 cada día del mes del 30 al 31 y los  y  y sábados de mayo y julio y julio y octubre."`;
+
+exports[`Cron Integration Tests Expression 146: "42-46/2 * 22 4,4,9 */2" should format to English (en) 1`] = `"At every 2nd minute from 42 through 46 on day-of-month 22 on every 2nd day-of-week in April and April and September."`;
+
+exports[`Cron Integration Tests Expression 146: "42-46/2 * 22 4,4,9 */2" should format to Spanish (es) 1`] = `"Cada segundo minuto del 42 al 46 los días 22 del mes cada segundo día de la semana de abril y abril y septiembre."`;
+
+exports[`Cron Integration Tests Expression 146: "42-46/2 * 22 4,4,9 */2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada segundo minuto del 42 al 46 los días 22 del mes cada segundo día de la semana de abril y abril y septiembre."`;
+
+exports[`Cron Integration Tests Expression 147: "47-53 * 28-30 * */2" should format to English (en) 1`] = `"At minute 47 on every day-of-month from 28 through 30 on every 2nd day-of-week."`;
+
+exports[`Cron Integration Tests Expression 147: "47-53 * 28-30 * */2" should format to Spanish (es) 1`] = `"Al minuto 47 cada día del mes del 28 al 30 cada segundo día de la semana."`;
+
+exports[`Cron Integration Tests Expression 147: "47-53 * 28-30 * */2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 47 cada día del mes del 28 al 30 cada segundo día de la semana."`;
+
+exports[`Cron Integration Tests Expression 148: "11,0,52 9-23 * 3 *" should format to English (en) 1`] = `"At 09:11 in March."`;
+
+exports[`Cron Integration Tests Expression 148: "11,0,52 9-23 * 3 *" should format to Spanish (es) 1`] = `"A las 09:11 de marzo."`;
+
+exports[`Cron Integration Tests Expression 148: "11,0,52 9-23 * 3 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 09:11 de marzo."`;
+
+exports[`Cron Integration Tests Expression 149: "51-52 */4 */8 4,5,10 *" should format to English (en) 1`] = `"At minute 51 past every 4th hour on day-of-month */8 in April and May and October."`;
+
+exports[`Cron Integration Tests Expression 149: "51-52 */4 */8 4,5,10 *" should format to Spanish (es) 1`] = `"Al minuto 51 después de cada cuarto hora los días */8 del mes de abril y mayo y octubre."`;
+
+exports[`Cron Integration Tests Expression 149: "51-52 */4 */8 4,5,10 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 51 después de cada cuarto hora los días */8 del mes de abril y mayo y octubre."`;
+
+exports[`Cron Integration Tests Expression 150: "40 18 12-16/2 5,7,10 * *" should format to English (en) 1`] = `"At 18:40 on every day-of-month from 12 through 16/2 in May and July and October."`;
+
+exports[`Cron Integration Tests Expression 150: "40 18 12-16/2 5,7,10 * *" should format to Spanish (es) 1`] = `"A las 18:40 cada día del mes del 12 al 16/2 de mayo y julio y octubre."`;
+
+exports[`Cron Integration Tests Expression 150: "40 18 12-16/2 5,7,10 * *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 18:40 cada día del mes del 12 al 16/2 de mayo y julio y octubre."`;
+
+exports[`Cron Integration Tests Expression 151: "* * */3 1-3/2 4-5" should format to English (en) 1`] = `"At every minute on day-of-month */3 on every day-of-week from Thursday through Friday in every 2nd month from January through December."`;
+
+exports[`Cron Integration Tests Expression 151: "* * */3 1-3/2 4-5" should format to Spanish (es) 1`] = `"Cada minuto los días */3 del mes cada día de la semana del jueves al viernes de cada segundo mes desde enero hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 151: "* * */3 1-3/2 4-5" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto los días */3 del mes cada día de la semana del jueves al viernes de cada segundo mes desde enero hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 152: "*/3 * 13 * 3-6/2" should format to English (en) 1`] = `"At every 3rd minute on day-of-month 13 on every 2nd day-of-week from Wednesday through Saturday."`;
+
+exports[`Cron Integration Tests Expression 152: "*/3 * 13 * 3-6/2" should format to Spanish (es) 1`] = `"Cada tercer minuto los días 13 del mes cada segundo día de la semana del miércoles al sábados."`;
+
+exports[`Cron Integration Tests Expression 152: "*/3 * 13 * 3-6/2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada tercer minuto los días 13 del mes cada segundo día de la semana del miércoles al sábados."`;
+
+exports[`Cron Integration Tests Expression 153: "* 15-20 30-31 * *" should format to English (en) 1`] = `"At every minute past hour 15 on every day-of-month from 30 through 31."`;
+
+exports[`Cron Integration Tests Expression 153: "* 15-20 30-31 * *" should format to Spanish (es) 1`] = `"Cada minuto después de la hora 15 cada día del mes del 30 al 31."`;
+
+exports[`Cron Integration Tests Expression 153: "* 15-20 30-31 * *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de la hora 15 cada día del mes del 30 al 31."`;
+
+exports[`Cron Integration Tests Expression 154: "* 8 * 11-12 *" should format to English (en) 1`] = `"At every minute past hour 8 in every month from November through December."`;
+
+exports[`Cron Integration Tests Expression 154: "* 8 * 11-12 *" should format to Spanish (es) 1`] = `"Cada minuto después de la hora 8 de cada mes desde noviembre hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 154: "* 8 * 11-12 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de la hora 8 de cada mes desde noviembre hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 155: "* 22 * 6-12 0,3,6" should format to English (en) 1`] = `"At every minute past hour 22 and on Sunday and Wednesday and Saturday in every month from June through December."`;
+
+exports[`Cron Integration Tests Expression 155: "* 22 * 6-12 0,3,6" should format to Spanish (es) 1`] = `"Cada minuto después de la hora 22 y los domingos y miércoles y sábados de cada mes desde junio hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 155: "* 22 * 6-12 0,3,6" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de la hora 22 y los domingos y miércoles y sábados de cada mes desde junio hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 156: "*/7 15 */10 6,12 3-7/2" should format to English (en) 1`] = `"At every 7th minute past hour 15 on day-of-month */10 on every 2nd day-of-week from Wednesday through  in June and December."`;
+
+exports[`Cron Integration Tests Expression 156: "*/7 15 */10 6,12 3-7/2" should format to Spanish (es) 1`] = `"Cada séptimo minuto después de la hora 15 los días */10 del mes cada segundo día de la semana del miércoles al  de junio y diciembre."`;
+
+exports[`Cron Integration Tests Expression 156: "*/7 15 */10 6,12 3-7/2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada séptimo minuto después de la hora 15 los días */10 del mes cada segundo día de la semana del miércoles al  de junio y diciembre."`;
+
+exports[`Cron Integration Tests Expression 157: "* 14,2,2 30 5-7 1-2" should format to English (en) 1`] = `"At minute * past hour 14 and 2 and 2 on day-of-month 30 on every day-of-week from Monday through Tuesday in every month from May through July."`;
+
+exports[`Cron Integration Tests Expression 157: "* 14,2,2 30 5-7 1-2" should format to Spanish (es) 1`] = `"Al minuto * después de la hora 14 y 2 y 2 los días 30 del mes cada día de la semana del lunes al martes de cada mes desde mayo hasta julio."`;
+
+exports[`Cron Integration Tests Expression 157: "* 14,2,2 30 5-7 1-2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto * después de la hora 14 y 2 y 2 los días 30 del mes cada día de la semana del lunes al martes de cada mes desde mayo hasta julio."`;
+
+exports[`Cron Integration Tests Expression 158: "36-42/3 11 5-19 */3 0-5 2025" should format to English (en) 1`] = `"At every 3rd minute from 36 through 42 past hour 11 on every day-of-month from 5 through 19 on every day-of-week from Sunday through Friday in every 3rd month in 2025."`;
+
+exports[`Cron Integration Tests Expression 158: "36-42/3 11 5-19 */3 0-5 2025" should format to Spanish (es) 1`] = `"Cada tercer minuto del 36 al 42 después de la hora 11 cada día del mes del 5 al 19 cada día de la semana del domingos al viernes de cada tercer mes en 2025."`;
+
+exports[`Cron Integration Tests Expression 158: "36-42/3 11 5-19 */3 0-5 2025" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada tercer minuto del 36 al 42 después de la hora 11 cada día del mes del 5 al 19 cada día de la semana del domingos al viernes de cada tercer mes en 2025."`;
+
+exports[`Cron Integration Tests Expression 159: "42 4 * 1-2 *" should format to English (en) 1`] = `"At 04:42 in every month from January through February."`;
+
+exports[`Cron Integration Tests Expression 159: "42 4 * 1-2 *" should format to Spanish (es) 1`] = `"A las 04:42 de cada mes desde enero hasta febrero."`;
+
+exports[`Cron Integration Tests Expression 159: "42 4 * 1-2 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 04:42 de cada mes desde enero hasta febrero."`;
+
+exports[`Cron Integration Tests Expression 160: "* * * * 0" should format to English (en) 1`] = `"At every minute on Sunday."`;
+
+exports[`Cron Integration Tests Expression 160: "* * * * 0" should format to Spanish (es) 1`] = `"Cada minuto los domingos."`;
+
+exports[`Cron Integration Tests Expression 160: "* * * * 0" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto los domingos."`;
+
+exports[`Cron Integration Tests Expression 161: "20-46 9-12/2 */6 */5 2 *" should format to English (en) 1`] = `"At minute 20 past every 2nd hour from 9 through 12 on day-of-month */6 and on Tuesday in every 5th month."`;
+
+exports[`Cron Integration Tests Expression 161: "20-46 9-12/2 */6 */5 2 *" should format to Spanish (es) 1`] = `"Al minuto 20 después de cada segundo hora desde 9 hasta 12 los días */6 del mes y los martes de cada quinto mes."`;
+
+exports[`Cron Integration Tests Expression 161: "20-46 9-12/2 */6 */5 2 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 20 después de cada segundo hora desde 9 hasta 12 los días */6 del mes y los martes de cada quinto mes."`;
+
+exports[`Cron Integration Tests Expression 162: "50 8-11/2 16,23,29,2 */2 4-7" should format to English (en) 1`] = `"At minute 50 past every 2nd hour from 8 through 11 on day-of-month 16 and 23 and 29 and 2 on every day-of-week from Thursday through  in every 2nd month."`;
+
+exports[`Cron Integration Tests Expression 162: "50 8-11/2 16,23,29,2 */2 4-7" should format to Spanish (es) 1`] = `"Al minuto 50 después de cada segundo hora desde 8 hasta 11 los días 16 y 23 y 29 y 2 del mes cada día de la semana del jueves al  de cada segundo mes."`;
+
+exports[`Cron Integration Tests Expression 162: "50 8-11/2 16,23,29,2 */2 4-7" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 50 después de cada segundo hora desde 8 hasta 11 los días 16 y 23 y 29 y 2 del mes cada día de la semana del jueves al  de cada segundo mes."`;
+
+exports[`Cron Integration Tests Expression 163: "4-31/3 * 2,4 4 2,1,6,4" should format to English (en) 1`] = `"At every 3rd minute from 4 through 31 on day-of-month 2 and 4 and on Tuesday and Monday and Saturday and Thursday in April."`;
+
+exports[`Cron Integration Tests Expression 163: "4-31/3 * 2,4 4 2,1,6,4" should format to Spanish (es) 1`] = `"Cada tercer minuto del 4 al 31 los días 2 y 4 del mes y los martes y lunes y sábados y jueves de abril."`;
+
+exports[`Cron Integration Tests Expression 163: "4-31/3 * 2,4 4 2,1,6,4" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada tercer minuto del 4 al 31 los días 2 y 4 del mes y los martes y lunes y sábados y jueves de abril."`;
+
+exports[`Cron Integration Tests Expression 164: "* 15,6,20,6 * 6 1" should format to English (en) 1`] = `"At minute * past hour 15 and 6 and 20 and 6 on Monday in June."`;
+
+exports[`Cron Integration Tests Expression 164: "* 15,6,20,6 * 6 1" should format to Spanish (es) 1`] = `"Al minuto * después de la hora 15 y 6 y 20 y 6 los lunes de junio."`;
+
+exports[`Cron Integration Tests Expression 164: "* 15,6,20,6 * 6 1" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto * después de la hora 15 y 6 y 20 y 6 los lunes de junio."`;
+
+exports[`Cron Integration Tests Expression 165: "12-26 8 19,13,11 1 */2 2030" should format to English (en) 1`] = `"At every minute from 12 through 26 past hour 8 on day-of-month 19 and 13 and 11 on every 2nd day-of-week in January in 2030."`;
+
+exports[`Cron Integration Tests Expression 165: "12-26 8 19,13,11 1 */2 2030" should format to Spanish (es) 1`] = `"Cada minuto del 12 al 26 después de la hora 8 los días 19 y 13 y 11 del mes cada segundo día de la semana de enero en 2030."`;
+
+exports[`Cron Integration Tests Expression 165: "12-26 8 19,13,11 1 */2 2030" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto del 12 al 26 después de la hora 8 los días 19 y 13 y 11 del mes cada segundo día de la semana de enero en 2030."`;
+
+exports[`Cron Integration Tests Expression 166: "19-32 13,0,8 * * 3,4,5,5" should format to English (en) 1`] = `"At every minute from 19 through 32 past hour 13 and on Wednesday and Thursday and Friday and Friday."`;
+
+exports[`Cron Integration Tests Expression 166: "19-32 13,0,8 * * 3,4,5,5" should format to Spanish (es) 1`] = `"Cada minuto del 19 al 32 después de la hora 13 y los miércoles y jueves y viernes y viernes."`;
+
+exports[`Cron Integration Tests Expression 166: "19-32 13,0,8 * * 3,4,5,5" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto del 19 al 32 después de la hora 13 y los miércoles y jueves y viernes y viernes."`;
+
+exports[`Cron Integration Tests Expression 167: "27,35 */9 17,29,13 1,4 1-6 *" should format to English (en) 1`] = `"At minute 27 past every 9th hour on day-of-month 17 and 29 and 13 on every day-of-week from Monday through Saturday in January and April."`;
+
+exports[`Cron Integration Tests Expression 167: "27,35 */9 17,29,13 1,4 1-6 *" should format to Spanish (es) 1`] = `"Al minuto 27 después de cada noveno hora los días 17 y 29 y 13 del mes cada día de la semana del lunes al sábados de enero y abril."`;
+
+exports[`Cron Integration Tests Expression 167: "27,35 */9 17,29,13 1,4 1-6 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 27 después de cada noveno hora los días 17 y 29 y 13 del mes cada día de la semana del lunes al sábados de enero y abril."`;
+
+exports[`Cron Integration Tests Expression 168: "* 23,17 * * * 2027" should format to English (en) 1`] = `"At minute * past hour 23 and 17 in 2027."`;
+
+exports[`Cron Integration Tests Expression 168: "* 23,17 * * * 2027" should format to Spanish (es) 1`] = `"Al minuto * después de la hora 23 y 17 en 2027."`;
+
+exports[`Cron Integration Tests Expression 168: "* 23,17 * * * 2027" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto * después de la hora 23 y 17 en 2027."`;
+
+exports[`Cron Integration Tests Expression 169: "* * * 6-8 2" should format to English (en) 1`] = `"At every minute on Tuesday in every month from June through August."`;
+
+exports[`Cron Integration Tests Expression 169: "* * * 6-8 2" should format to Spanish (es) 1`] = `"Cada minuto los martes de cada mes desde junio hasta agosto."`;
+
+exports[`Cron Integration Tests Expression 169: "* * * 6-8 2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto los martes de cada mes desde junio hasta agosto."`;
+
+exports[`Cron Integration Tests Expression 170: "4 * 7-14 9-12 */2 2027" should format to English (en) 1`] = `"At minute 4 on every day-of-month from 7 through 14 on every 2nd day-of-week in every month from September through December in 2027."`;
+
+exports[`Cron Integration Tests Expression 170: "4 * 7-14 9-12 */2 2027" should format to Spanish (es) 1`] = `"Al minuto 4 cada día del mes del 7 al 14 cada segundo día de la semana de cada mes desde septiembre hasta diciembre en 2027."`;
+
+exports[`Cron Integration Tests Expression 170: "4 * 7-14 9-12 */2 2027" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 4 cada día del mes del 7 al 14 cada segundo día de la semana de cada mes desde septiembre hasta diciembre en 2027."`;
+
+exports[`Cron Integration Tests Expression 171: "* 18-23 * 5-11 6" should format to English (en) 1`] = `"At every minute past hour 18 on Saturday in every month from May through November."`;
+
+exports[`Cron Integration Tests Expression 171: "* 18-23 * 5-11 6" should format to Spanish (es) 1`] = `"Cada minuto después de la hora 18 los sábados de cada mes desde mayo hasta noviembre."`;
+
+exports[`Cron Integration Tests Expression 171: "* 18-23 * 5-11 6" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de la hora 18 los sábados de cada mes desde mayo hasta noviembre."`;
+
+exports[`Cron Integration Tests Expression 172: "57 11 18-30/5 8,2 * 2027-2029" should format to English (en) 1`] = `"At 11:57 on every day-of-month from 18 through 30/5 in August and February in 2027-2029."`;
+
+exports[`Cron Integration Tests Expression 172: "57 11 18-30/5 8,2 * 2027-2029" should format to Spanish (es) 1`] = `"A las 11:57 cada día del mes del 18 al 30/5 de agosto y febrero en 2027-2029."`;
+
+exports[`Cron Integration Tests Expression 172: "57 11 18-30/5 8,2 * 2027-2029" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 11:57 cada día del mes del 18 al 30/5 de agosto y febrero en 2027-2029."`;
+
+exports[`Cron Integration Tests Expression 173: "23 * 9-18/4 * 1" should format to English (en) 1`] = `"At minute 23 on every day-of-month from 9 through 18/4 and on Monday."`;
+
+exports[`Cron Integration Tests Expression 173: "23 * 9-18/4 * 1" should format to Spanish (es) 1`] = `"Al minuto 23 cada día del mes del 9 al 18/4 y los lunes."`;
+
+exports[`Cron Integration Tests Expression 173: "23 * 9-18/4 * 1" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 23 cada día del mes del 9 al 18/4 y los lunes."`;
+
+exports[`Cron Integration Tests Expression 174: "17-42 15 */6 4 *" should format to English (en) 1`] = `"At every minute from 17 through 42 past hour 15 on day-of-month */6 in April."`;
+
+exports[`Cron Integration Tests Expression 174: "17-42 15 */6 4 *" should format to Spanish (es) 1`] = `"Cada minuto del 17 al 42 después de la hora 15 los días */6 del mes de abril."`;
+
+exports[`Cron Integration Tests Expression 174: "17-42 15 */6 4 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto del 17 al 42 después de la hora 15 los días */6 del mes de abril."`;
+
+exports[`Cron Integration Tests Expression 175: "* * 4 11,11,12,4 *" should format to English (en) 1`] = `"At every minute on day-of-month 4 in November and November and December and April."`;
+
+exports[`Cron Integration Tests Expression 175: "* * 4 11,11,12,4 *" should format to Spanish (es) 1`] = `"Cada minuto los días 4 del mes de noviembre y noviembre y diciembre y abril."`;
+
+exports[`Cron Integration Tests Expression 175: "* * 4 11,11,12,4 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto los días 4 del mes de noviembre y noviembre y diciembre y abril."`;
+
+exports[`Cron Integration Tests Expression 176: "42 14 23 6,11,10,7 2" should format to English (en) 1`] = `"At 14:42 on day-of-month 23 and on Tuesday in June and November and October and July."`;
+
+exports[`Cron Integration Tests Expression 176: "42 14 23 6,11,10,7 2" should format to Spanish (es) 1`] = `"A las 14:42 los días 23 del mes y los martes de junio y noviembre y octubre y julio."`;
+
+exports[`Cron Integration Tests Expression 176: "42 14 23 6,11,10,7 2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 14:42 los días 23 del mes y los martes de junio y noviembre y octubre y julio."`;
+
+exports[`Cron Integration Tests Expression 177: "* * * 6 6" should format to English (en) 1`] = `"At every minute on Saturday in June."`;
+
+exports[`Cron Integration Tests Expression 177: "* * * 6 6" should format to Spanish (es) 1`] = `"Cada minuto los sábados de junio."`;
+
+exports[`Cron Integration Tests Expression 177: "* * * 6 6" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto los sábados de junio."`;
+
+exports[`Cron Integration Tests Expression 178: "* 6-23/4 26,12 5-8 6-7 */3" should format to English (en) 1`] = `"At every minute past every 4th hour from 6 through 23 on day-of-month 26 and 12 on every day-of-week from Saturday through  in every month from May through August in every 3rd year."`;
+
+exports[`Cron Integration Tests Expression 178: "* 6-23/4 26,12 5-8 6-7 */3" should format to Spanish (es) 1`] = `"Cada minuto después de cada cuarto hora desde 6 hasta 23 los días 26 y 12 del mes cada día de la semana del sábados al  de cada mes desde mayo hasta agosto cada tercer año."`;
+
+exports[`Cron Integration Tests Expression 178: "* 6-23/4 26,12 5-8 6-7 */3" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de cada cuarto hora desde 6 hasta 23 los días 26 y 12 del mes cada día de la semana del sábados al  de cada mes desde mayo hasta agosto cada tercer año."`;
+
+exports[`Cron Integration Tests Expression 179: "* 14-16 10 1-3/2 0 */2" should format to English (en) 1`] = `"At every minute past hour 14 on day-of-month 10 and on Sunday in every 2nd month from January through December in every 2nd year."`;
+
+exports[`Cron Integration Tests Expression 179: "* 14-16 10 1-3/2 0 */2" should format to Spanish (es) 1`] = `"Cada minuto después de la hora 14 los días 10 del mes y los domingos de cada segundo mes desde enero hasta diciembre cada segundo año."`;
+
+exports[`Cron Integration Tests Expression 179: "* 14-16 10 1-3/2 0 */2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de la hora 14 los días 10 del mes y los domingos de cada segundo mes desde enero hasta diciembre cada segundo año."`;
+
+exports[`Cron Integration Tests Expression 180: "* * */6 7-10/2 4-7/2" should format to English (en) 1`] = `"At every minute on day-of-month */6 on every 2nd day-of-week from Thursday through  in every 2nd month from July through December."`;
+
+exports[`Cron Integration Tests Expression 180: "* * */6 7-10/2 4-7/2" should format to Spanish (es) 1`] = `"Cada minuto los días */6 del mes cada segundo día de la semana del jueves al  de cada segundo mes desde julio hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 180: "* * */6 7-10/2 4-7/2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto los días */6 del mes cada segundo día de la semana del jueves al  de cada segundo mes desde julio hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 181: "5-9/2 */7 6,14,29,12 8-11 1 *" should format to English (en) 1`] = `"At every 2nd minute from 5 through 9 past every 7th hour on day-of-month 6 and 14 and 29 and 12 and on Monday in every month from August through November."`;
+
+exports[`Cron Integration Tests Expression 181: "5-9/2 */7 6,14,29,12 8-11 1 *" should format to Spanish (es) 1`] = `"Cada segundo minuto del 5 al 9 después de cada séptimo hora los días 6 y 14 y 29 y 12 del mes y los lunes de cada mes desde agosto hasta noviembre."`;
+
+exports[`Cron Integration Tests Expression 181: "5-9/2 */7 6,14,29,12 8-11 1 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada segundo minuto del 5 al 9 después de cada séptimo hora los días 6 y 14 y 29 y 12 del mes y los lunes de cada mes desde agosto hasta noviembre."`;
+
+exports[`Cron Integration Tests Expression 182: "44,30 10,18,15 * * *" should format to English (en) 1`] = `"At minute 44 past hour 10 and 18 and 15."`;
+
+exports[`Cron Integration Tests Expression 182: "44,30 10,18,15 * * *" should format to Spanish (es) 1`] = `"Al minuto 44 después de la hora 10 y 18 y 15."`;
+
+exports[`Cron Integration Tests Expression 182: "44,30 10,18,15 * * *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 44 después de la hora 10 y 18 y 15."`;
+
+exports[`Cron Integration Tests Expression 183: "16 16-22 21-23 1-9 */2" should format to English (en) 1`] = `"At 16:16 on every day-of-month from 21 through 23 on every 2nd day-of-week in every month from January through September."`;
+
+exports[`Cron Integration Tests Expression 183: "16 16-22 21-23 1-9 */2" should format to Spanish (es) 1`] = `"A las 16:16 cada día del mes del 21 al 23 cada segundo día de la semana de cada mes desde enero hasta septiembre."`;
+
+exports[`Cron Integration Tests Expression 183: "16 16-22 21-23 1-9 */2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 16:16 cada día del mes del 21 al 23 cada segundo día de la semana de cada mes desde enero hasta septiembre."`;
+
+exports[`Cron Integration Tests Expression 184: "1-38 19-23/2 */6 * *" should format to English (en) 1`] = `"At minute 1 past every 2nd hour from 19 through 23 on day-of-month */6."`;
+
+exports[`Cron Integration Tests Expression 184: "1-38 19-23/2 */6 * *" should format to Spanish (es) 1`] = `"Al minuto 1 después de cada segundo hora desde 19 hasta 23 los días */6 del mes."`;
+
+exports[`Cron Integration Tests Expression 184: "1-38 19-23/2 */6 * *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 1 después de cada segundo hora desde 19 hasta 23 los días */6 del mes."`;
+
+exports[`Cron Integration Tests Expression 185: "*/3 19 30 11-12 5-6" should format to English (en) 1`] = `"At every 3rd minute past hour 19 on day-of-month 30 on every day-of-week from Friday through Saturday in every month from November through December."`;
+
+exports[`Cron Integration Tests Expression 185: "*/3 19 30 11-12 5-6" should format to Spanish (es) 1`] = `"Cada tercer minuto después de la hora 19 los días 30 del mes cada día de la semana del viernes al sábados de cada mes desde noviembre hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 185: "*/3 19 30 11-12 5-6" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada tercer minuto después de la hora 19 los días 30 del mes cada día de la semana del viernes al sábados de cada mes desde noviembre hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 186: "* * 5 * 3" should format to English (en) 1`] = `"At every minute on day-of-month 5 and on Wednesday."`;
+
+exports[`Cron Integration Tests Expression 186: "* * 5 * 3" should format to Spanish (es) 1`] = `"Cada minuto los días 5 del mes y los miércoles."`;
+
+exports[`Cron Integration Tests Expression 186: "* * 5 * 3" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto los días 5 del mes y los miércoles."`;
+
+exports[`Cron Integration Tests Expression 187: "* */2 3-10/2 */4 */2" should format to English (en) 1`] = `"At every minute past every 2nd hour on every day-of-month from 3 through 10/2 on every 2nd day-of-week in every 4th month."`;
+
+exports[`Cron Integration Tests Expression 187: "* */2 3-10/2 */4 */2" should format to Spanish (es) 1`] = `"Cada minuto después de cada segundo hora cada día del mes del 3 al 10/2 cada segundo día de la semana de cada cuarto mes."`;
+
+exports[`Cron Integration Tests Expression 187: "* */2 3-10/2 */4 */2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de cada segundo hora cada día del mes del 3 al 10/2 cada segundo día de la semana de cada cuarto mes."`;
+
+exports[`Cron Integration Tests Expression 188: "* 17-23/2 16 11 *" should format to English (en) 1`] = `"At every minute past every 2nd hour from 17 through 23 on day-of-month 16 in November."`;
+
+exports[`Cron Integration Tests Expression 188: "* 17-23/2 16 11 *" should format to Spanish (es) 1`] = `"Cada minuto después de cada segundo hora desde 17 hasta 23 los días 16 del mes de noviembre."`;
+
+exports[`Cron Integration Tests Expression 188: "* 17-23/2 16 11 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto después de cada segundo hora desde 17 hasta 23 los días 16 del mes de noviembre."`;
+
+exports[`Cron Integration Tests Expression 189: "* * */10 11 1,2,3,0" should format to English (en) 1`] = `"At every minute on day-of-month */10 and on Monday and Tuesday and Wednesday and Sunday in November."`;
+
+exports[`Cron Integration Tests Expression 189: "* * */10 11 1,2,3,0" should format to Spanish (es) 1`] = `"Cada minuto los días */10 del mes y los lunes y martes y miércoles y domingos de noviembre."`;
+
+exports[`Cron Integration Tests Expression 189: "* * */10 11 1,2,3,0" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto los días */10 del mes y los lunes y martes y miércoles y domingos de noviembre."`;
+
+exports[`Cron Integration Tests Expression 190: "12-32/2 16-20 29 12 5-7/2 *" should format to English (en) 1`] = `"At every 2nd minute from 12 through 32 past hour 16 on day-of-month 29 on every 2nd day-of-week from Friday through  in December."`;
+
+exports[`Cron Integration Tests Expression 190: "12-32/2 16-20 29 12 5-7/2 *" should format to Spanish (es) 1`] = `"Cada segundo minuto del 12 al 32 después de la hora 16 los días 29 del mes cada segundo día de la semana del viernes al  de diciembre."`;
+
+exports[`Cron Integration Tests Expression 190: "12-32/2 16-20 29 12 5-7/2 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada segundo minuto del 12 al 32 después de la hora 16 los días 29 del mes cada segundo día de la semana del viernes al  de diciembre."`;
+
+exports[`Cron Integration Tests Expression 191: "37-48/2 */7 9 4 *" should format to English (en) 1`] = `"At every 2nd minute from 37 through 48 past every 7th hour on day-of-month 9 in April."`;
+
+exports[`Cron Integration Tests Expression 191: "37-48/2 */7 9 4 *" should format to Spanish (es) 1`] = `"Cada segundo minuto del 37 al 48 después de cada séptimo hora los días 9 del mes de abril."`;
+
+exports[`Cron Integration Tests Expression 191: "37-48/2 */7 9 4 *" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada segundo minuto del 37 al 48 después de cada séptimo hora los días 9 del mes de abril."`;
+
+exports[`Cron Integration Tests Expression 192: "55-56 0,6,9 * 1-2 */2" should format to English (en) 1`] = `"At every minute from 55 through 56 past hour 0 on every 2nd day-of-week in every month from January through February."`;
+
+exports[`Cron Integration Tests Expression 192: "55-56 0,6,9 * 1-2 */2" should format to Spanish (es) 1`] = `"Cada minuto del 55 al 56 después de la hora 0 cada segundo día de la semana de cada mes desde enero hasta febrero."`;
+
+exports[`Cron Integration Tests Expression 192: "55-56 0,6,9 * 1-2 */2" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada minuto del 55 al 56 después de la hora 0 cada segundo día de la semana de cada mes desde enero hasta febrero."`;
+
+exports[`Cron Integration Tests Expression 193: "*/7 16-22 28-31 6-12 4" should format to English (en) 1`] = `"At every 7th minute past hour 16 on every day-of-month from 28 through 31 and on Thursday in every month from June through December."`;
+
+exports[`Cron Integration Tests Expression 193: "*/7 16-22 28-31 6-12 4" should format to Spanish (es) 1`] = `"Cada séptimo minuto después de la hora 16 cada día del mes del 28 al 31 y los jueves de cada mes desde junio hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 193: "*/7 16-22 28-31 6-12 4" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada séptimo minuto después de la hora 16 cada día del mes del 28 al 31 y los jueves de cada mes desde junio hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 194: "26 11,7 */4 11,7,6,9 5" should format to English (en) 1`] = `"At minute 26 past hour 11 and 7 on day-of-month */4 and on Friday in November and July and June and September."`;
+
+exports[`Cron Integration Tests Expression 194: "26 11,7 */4 11,7,6,9 5" should format to Spanish (es) 1`] = `"Al minuto 26 después de la hora 11 y 7 los días */4 del mes y los viernes de noviembre y julio y junio y septiembre."`;
+
+exports[`Cron Integration Tests Expression 194: "26 11,7 */4 11,7,6,9 5" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 26 después de la hora 11 y 7 los días */4 del mes y los viernes de noviembre y julio y junio y septiembre."`;
+
+exports[`Cron Integration Tests Expression 195: "*/10 */3 * */4 4" should format to English (en) 1`] = `"At every 10th minute past every 3rd hour on Thursday in every 4th month."`;
+
+exports[`Cron Integration Tests Expression 195: "*/10 */3 * */4 4" should format to Spanish (es) 1`] = `"Cada décimo minuto después de cada tercer hora los jueves de cada cuarto mes."`;
+
+exports[`Cron Integration Tests Expression 195: "*/10 */3 * */4 4" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Cada décimo minuto después de cada tercer hora los jueves de cada cuarto mes."`;
+
+exports[`Cron Integration Tests Expression 196: "13 9 20,7,8 9-12 6-7" should format to English (en) 1`] = `"At 09:13 on day-of-month 20 and 7 and 8 on every day-of-week from Saturday through  in every month from September through December."`;
+
+exports[`Cron Integration Tests Expression 196: "13 9 20,7,8 9-12 6-7" should format to Spanish (es) 1`] = `"A las 09:13 los días 20 y 7 y 8 del mes cada día de la semana del sábados al  de cada mes desde septiembre hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 196: "13 9 20,7,8 9-12 6-7" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 09:13 los días 20 y 7 y 8 del mes cada día de la semana del sábados al  de cada mes desde septiembre hasta diciembre."`;
+
+exports[`Cron Integration Tests Expression 197: "24,33 4 */10 7,5 7,6,5" should format to English (en) 1`] = `"At 04:24 on day-of-month */10 and on  and Saturday and Friday in July and May."`;
+
+exports[`Cron Integration Tests Expression 197: "24,33 4 */10 7,5 7,6,5" should format to Spanish (es) 1`] = `"A las 04:24 los días */10 del mes y los  y sábados y viernes de julio y mayo."`;
+
+exports[`Cron Integration Tests Expression 197: "24,33 4 */10 7,5 7,6,5" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 04:24 los días */10 del mes y los  y sábados y viernes de julio y mayo."`;
+
+exports[`Cron Integration Tests Expression 198: "6,38 * 15-26/2 * */3" should format to English (en) 1`] = `"At minute 6 on every day-of-month from 15 through 26/2 on every 3rd day-of-week."`;
+
+exports[`Cron Integration Tests Expression 198: "6,38 * 15-26/2 * */3" should format to Spanish (es) 1`] = `"Al minuto 6 cada día del mes del 15 al 26/2 cada tercer día de la semana."`;
+
+exports[`Cron Integration Tests Expression 198: "6,38 * 15-26/2 * */3" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"Al minuto 6 cada día del mes del 15 al 26/2 cada tercer día de la semana."`;
+
+exports[`Cron Integration Tests Expression 199: "49,38 3-19 */7 * */3" should format to English (en) 1`] = `"At 03:49 on day-of-month */7 on every 3rd day-of-week."`;
+
+exports[`Cron Integration Tests Expression 199: "49,38 3-19 */7 * */3" should format to Spanish (es) 1`] = `"A las 03:49 los días */7 del mes cada tercer día de la semana."`;
+
+exports[`Cron Integration Tests Expression 199: "49,38 3-19 */7 * */3" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 03:49 los días */7 del mes cada tercer día de la semana."`;
+
+exports[`Cron Integration Tests Expression 200: "55,13 19 */7 6 3-7/2 2028,2026" should format to English (en) 1`] = `"At 19:55 on day-of-month */7 on every 2nd day-of-week from Wednesday through  in June in 2028,2026."`;
+
+exports[`Cron Integration Tests Expression 200: "55,13 19 */7 6 3-7/2 2028,2026" should format to Spanish (es) 1`] = `"A las 19:55 los días */7 del mes cada segundo día de la semana del miércoles al  de junio en 2028,2026."`;
+
+exports[`Cron Integration Tests Expression 200: "55,13 19 */7 6 3-7/2 2028,2026" should format to Chilean Slang Spanish (es-CL-Flaite) 1`] = `"A las 19:55 los días */7 del mes cada segundo día de la semana del miércoles al  de junio en 2028,2026."`;
