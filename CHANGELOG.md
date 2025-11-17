@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.2](https://github.com/JonDotsoy/cron/compare/cron-v0.6.1...cron-v0.6.2) (2025-11-17)
+
+
+### Bug Fixes
+
+* **cron-format:** add non-null assertions for type safety ([d371e25](https://github.com/JonDotsoy/cron/commit/d371e2528804f0e9008ce0fe33c1801fc671a8ef))
+
 ## [0.6.1](https://github.com/JonDotsoy/cron/compare/cron-v0.6.0...cron-v0.6.1) (2025-11-17)
 
 
