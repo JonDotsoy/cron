@@ -35,9 +35,12 @@
     "lint": "prettier --check .",
     "fmt": "prettier --write .",
     "examples": "bun run examples/examples.ts",
+    "web:dev": "cd web && bun run dev",
     "web:build": "cd web && bun run build"
   },
-  "workspaces": ["web"],
+  "workspaces": [
+    "web"
+  ],
   "devDependencies": {
     "@types/bun": "latest",
     "prettier": "3.6.2"

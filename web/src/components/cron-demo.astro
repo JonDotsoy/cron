@@ -6,6 +6,7 @@
     <div class="flex justify-between items-center mb-4">
         <select 
             id="language-selector"
+            data-testid="language-selector"
             class="border-2 border-gray-300 rounded-lg px-4 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all shadow-sm hover:border-gray-400 cursor-pointer"
         >
             <option value="en">English</option>
@@ -15,6 +16,7 @@
             <input 
                 type="checkbox" 
                 id="danger-mode"
+                data-testid="danger-mode"
                 class="w-4 h-4 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring-red-500 focus:ring-2 cursor-pointer"
             />
             <span class="text-sm font-medium text-gray-700">🔥 Danger Mode</span>
@@ -33,11 +35,13 @@
             type="text"
             class="flex-1 border-2 border-gray-300 rounded-lg px-4 py-3 text-xl text-center font-mono focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all shadow-sm hover:border-gray-400"
             placeholder="* * * * *"
+            data-testid="input-cron-expression"
         />
         <button 
             id="btn-random" 
             class="bg-indigo-600 hover:bg-indigo-700 text-white p-3 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg active:scale-95 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             title="Generate random cron"
+            data-testid="btn-random"
         >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -76,6 +80,7 @@
 <script>
     import { ColloquialCronFormat } from "../../../src/idioms/colloquial-cron-format";
     import { CronRandom } from "../utils/cron-random";
+    import { sessionStore } from "./session";
 
     const btnRandom = document.getElementById("btn-random");
     const languageSelector = document.getElementById("language-selector") as HTMLSelectElement;
@@ -87,38 +92,6 @@
 
     const randomCron = () => {
         return CronRandom();
-    };
-
-    const getCronFromHash = () => {
-        const hash = window.location.hash.slice(1);
-        if (!hash) return null;
-        
-        const params = new URLSearchParams(hash);
-        return params.get("cron");
-    };
-
-    const checkDangerModeFromHash = () => {
-        const hash = window.location.hash.slice(1);
-        const params = new URLSearchParams(hash);
-        const isDangerMode = params.get("danger") === "true";
-        
-        dangerModeCheckbox.checked = isDangerMode;
-        updateLanguageOptions();
-    };
-
-    const updateHash = () => {
-        const params = new URLSearchParams();
-        
-        if (input.value) {
-            params.set("cron", input.value);
-        }
-        
-        if (dangerModeCheckbox.checked) {
-            params.set("danger", "true");
-        }
-        
-        const newHash = params.toString();
-        window.location.hash = newHash ? `#${newHash}` : "";
     };
 
     const updateLanguageOptions = () => {
@@ -136,6 +109,7 @@
             if (languageSelector.options.length === 3) {
                 if (currentValue === "es-CL-Flaite") {
                     languageSelector.value = "es";
+                    sessionStore.set({ ...sessionStore.get(), locale: "es" });
                     updateFormat();
                 }
                 languageSelector.remove(2);
@@ -143,9 +117,21 @@
         }
     };
 
+    const syncFromStore = () => {
+        const state = sessionStore.get();
+        languageSelector.value = state.locale;
+        dangerModeCheckbox.checked = state.damageMode === "danger";
+        input.value = state.cronExpression;
+        updateLanguageOptions();
+        updateFormat();
+    };
+
     const handleDangerModeChange = () => {
         updateLanguageOptions();
-        updateHash();
+        sessionStore.set({
+            ...sessionStore.get(),
+            damageMode: dangerModeCheckbox.checked ? "danger" : "normal"
+        });
     };
 
     const getSelectedCronPart = () => {
@@ -242,39 +228,45 @@ console.log(result);
         const languages = isDangerMode ? ["en", "es", "es-CL-Flaite"] : ["en", "es"];
         const randomLanguage = languages[Math.floor(Math.random() * languages.length)];
         
-        languageSelector.value = randomLanguage;
-        input.value = valueRandom;
-        updateFormat();
-        updateHash();
+        sessionStore.set({
+            locale: randomLanguage,
+            damageMode: isDangerMode ? "danger" : "normal",
+            cronExpression: valueRandom
+        });
+        
+        // Forzar sincronización inmediata
+        syncFromStore();
     };
 
     const init = () => {
-        checkDangerModeFromHash();
+        syncFromStore();
         
-        const cronFromHash = getCronFromHash();
-        if (cronFromHash) {
-            input.value = cronFromHash;
-            updateFormat();
-        } else {
+        if (!input.value) {
             rand();
         }
     };
 
+    // Suscribirse a cambios en el store
+    sessionStore.listen(syncFromStore);
+
     input?.addEventListener("click", updateSelectionInfo);
     input?.addEventListener("keyup", updateSelectionInfo);
     input?.addEventListener("select", updateSelectionInfo);
-    input?.addEventListener("change", updateHash);
-    btnRandom?.addEventListener("click", rand);
-    languageSelector?.addEventListener("change", updateFormat);
-    dangerModeCheckbox?.addEventListener("change", handleDangerModeChange);
-    window.addEventListener("hashchange", () => {
-        checkDangerModeFromHash();
-        const cronFromHash = getCronFromHash();
-        if (cronFromHash && cronFromHash !== input.value) {
-            input.value = cronFromHash;
-            updateFormat();
-        }
+    input?.addEventListener("input", () => {
+        sessionStore.set({
+            ...sessionStore.get(),
+            cronExpression: input.value
+        });
     });
+    btnRandom?.addEventListener("click", rand);
+    languageSelector?.addEventListener("change", () => {
+        sessionStore.set({
+            ...sessionStore.get(),
+            locale: languageSelector.value
+        });
+        updateFormat();
+    });
+    dangerModeCheckbox?.addEventListener("change", handleDangerModeChange);
     
     init();
 </script>
