@@ -65,23 +65,42 @@ function validateNoNaN(spec: any): void {
 function validateNoEnglishWords(formatted: string): void {
   // Lista de frases y palabras en inglés que NO deben aparecer en español
   const englishPhrases = [
-    "At every", "at every",
-    "past hour", "Past hour",
-    "past every", "Past every",
-    "through", "Through",
+    "At every",
+    "at every",
+    "past hour",
+    "Past hour",
+    "past every",
+    "Past every",
+    "through",
+    "Through",
     "day-of-month",
     "day-of-week",
     "and on",
-    "January", "February", "March", "April", "June",
-    "July", "August", "September", "October", "November", "December",
-    "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+    "January",
+    "February",
+    "March",
+    "April",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
   ];
-  
+
   // Verificar frases completas
   for (const phrase of englishPhrases) {
     expect(formatted).not.toContain(phrase);
   }
-  
+
   // Verificar ordinales en inglés como 1st, 2nd, 3rd, 4th usando regex
   const ordinalPattern = /\b\d+(st|nd|rd|th)\b/i;
   expect(formatted).not.toMatch(ordinalPattern);
@@ -123,10 +142,10 @@ describe("Cron Integration Tests", () => {
         expect(formatted).not.toContain("NaN");
         expect(formatted).not.toContain("undefined");
         expect(typeof formatted).toBe("string");
-        
+
         // Validar que no haya palabras en inglés
         validateNoEnglishWords(formatted);
-        
+
         expect(formatted).toMatchSnapshot();
       });
 
@@ -140,10 +159,10 @@ describe("Cron Integration Tests", () => {
         expect(formatted).not.toContain("NaN");
         expect(formatted).not.toContain("undefined");
         expect(typeof formatted).toBe("string");
-        
+
         // Validar que no haya palabras en inglés
         validateNoEnglishWords(formatted);
-        
+
         expect(formatted).toMatchSnapshot();
       });
     });

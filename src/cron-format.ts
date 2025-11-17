@@ -499,13 +499,10 @@ export class CronFormat implements ICronFormatter {
       // Handle specific minute value
       const minuteNum = parseInt(minute, 10);
       if (rangePart === "*") {
-        return this.applyTemplate(
-          this.localeDictionary.atMinutePastEveryHour,
-          {
-            minute: minuteNum.toString(),
-            ordinal: this.localeDictionary.ordinal(step),
-          },
-        );
+        return this.applyTemplate(this.localeDictionary.atMinutePastEveryHour, {
+          minute: minuteNum.toString(),
+          ordinal: this.localeDictionary.ordinal(step),
+        });
       } else if (rangePart.includes("-")) {
         const [start, end] = rangePart.split("-");
         return this.applyTemplate(

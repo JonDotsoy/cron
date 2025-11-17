@@ -90,11 +90,14 @@ export const colloquialLocales: Record<string, LocaleDictionary> = {
         "Ñeri, la weá corre a las 00:00 el día 1 de enero. Una vez al año no más, al toque.",
       monthly:
         "Loco, la weá corre a las 00:00 el primer día del mes. Todos los meses, brígido, ¿cachái?",
-      weekly: "Bro, la weá corre a las 00:00 el domingo. Una vez a la semana, la dura.",
-      daily: "Hermano, la weá corre a las 00:00. Todos los días, al toque, cachái.",
+      weekly:
+        "Bro, la weá corre a las 00:00 el domingo. Una vez a la semana, la dura.",
+      daily:
+        "Hermano, la weá corre a las 00:00. Todos los días, al toque, cachái.",
       midnight: "La weá corre a medianoche, ñeri, terrible brígido.",
       hourly: "Loco, la weá corre cada hora en punto, al toque.",
-      reboot: "Hermano, la weá corre cuando reinicie el compu, ¿cachái? Al toque no más.",
+      reboot:
+        "Hermano, la weá corre cuando reinicie el compu, ¿cachái? Al toque no más.",
       unknown: template`Ñeri, no cacho esa expresión: ${"expr"}. Qué weá más cuática, la dura.`,
     },
   },
