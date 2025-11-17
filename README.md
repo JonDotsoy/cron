@@ -119,7 +119,7 @@ console.log(formatter.format("0 22 * * 1-5"));
 // Output: "At 22:00 on every day-of-week from Monday through Friday."
 
 console.log(formatter.format("*/5 * * * *"));
-// Output: "At every minute."
+// Output: "At every 5th minute."
 
 console.log(formatter.format("@weekly"));
 // Output: "At 00:00 on Sunday."
@@ -282,7 +282,7 @@ Creates a new Cron instance.
 
 **Properties:**
 
-- `rule`: The original cron expression string
+- `expression`: The original cron expression string
 - `now`: The starting date/time
 - `spec`: The parsed cron specification (read-only)
 
@@ -370,7 +370,7 @@ Converts a cron expression into a human-readable description.
 ```typescript
 const formatter = new CronFormat("en");
 formatter.format("0 22 * * 1-5"); // "At 22:00 on every day-of-week from Monday through Friday."
-formatter.format("*/5 * * * *"); // "At every minute."
+formatter.format("*/5 * * * *"); // "At every 5th minute."
 formatter.format("@weekly"); // "At 00:00 on Sunday."
 ```
 
@@ -519,7 +519,7 @@ const spec = randomSpec();
 // Create a Cron instance from the spec
 const cron = Cron.fromSpec(spec);
 
-console.log(cron.rule); // e.g., "*/5 0-20/2 1,15 * MON-FRI"
+console.log(cron.expression); // e.g., "*/5 0-20/2 1,15 * MON-FRI"
 
 // Use it like any other cron expression
 const nextRun = Cron.next(cron);
@@ -543,7 +543,7 @@ import { Cron } from "@jondotsoy/cron";
 for (let i = 0; i < 10; i++) {
   const spec = randomSpec();
   const cron = Cron.fromSpec(spec);
-  console.log(`Random cron ${i + 1}: ${cron.rule}`);
+  console.log(`Random cron ${i + 1}: ${cron.expression}`);
 }
 ```
 
