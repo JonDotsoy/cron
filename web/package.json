@@ -6,15 +6,15 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "playwright": "bunx playwright test --reporter=line"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.17",
     "astro": "^5.15.8",
     "nanostores": "1.0.1",
     "tailwindcss": "^4.1.17",
-    "temporal-polyfill": "0.3.0",
-    "test": " playwright test"
+    "temporal-polyfill": "0.3.0"
   },
   "devDependencies": {
     "@playwright/test": "1.56.1",

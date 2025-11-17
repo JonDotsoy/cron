@@ -1,0 +1,97 @@
+---
+interface Props {
+  code: string;
+  "data-testid"?: string
+}
+
+const { code, "data-testid": dataTestId } = Astro.props;
+---
+
+<syntax-highlighter data-testid={dataTestId} data-code={code}>{code}</syntax-highlighter>
+
+<script>
+  import './syntax-highlighter.ts';
+  import { sessionStore } from './session';
+  import { ColloquialCronFormat } from '../../../src/idioms/colloquial-cron-format';
+
+  const updateHighlighters = () => {
+    const highlighters = document.querySelectorAll('syntax-highlighter');
+    const state = sessionStore.get();
+    
+    const cronFormat = new ColloquialCronFormat(state.locale as "en" | "es");
+    const formattedCron = cronFormat.formatToParts(state.cronExpression)
+      .map((part) => part.value)
+      .join(" ");
+    
+    // Determinar clase y módulo según el formato del locale
+    const localeSegments = state.locale.split('-');
+    let className = 'CronFormat';
+    let moduleName = '@jondotsoy/cron';
+    
+    if (localeSegments.length === 3) {
+      // Formato: \w+-\w+-\w+ (ej: es-CL-Flaite)
+      className = 'ColloquialCronFormat';
+      moduleName = '@jondotsoy/cron/colloquial-cron-format';
+    } else if (localeSegments.length === 2) {
+      // Formato: \w+-\w+ (ej: en-US)
+      className = 'CronFormat';
+      moduleName = '@jondotsoy/cron';
+    }
+    
+    highlighters.forEach((el) => {
+      const originalCode = el.getAttribute('data-code') || '';
+      const updatedCode = originalCode
+        .replace(/\{\{cron-expression\}\}/g, state.cronExpression)
+        .replace(/\{\{locale\}\}/g, state.locale)
+        .replace(/\{\{cron-formated\}\}/g, formattedCron)
+        .replace(/\{\{class-cron-format\}\}/g, className)
+        .replace(/\{\{cron-module-name\}\}/g, moduleName);
+      el.setAttribute('data-replacement', updatedCode);
+      el.dispatchEvent(new Event('update'));
+    });
+  };
+
+  // Actualizar inmediatamente cuando el DOM esté listo
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateHighlighters);
+  } else {
+    updateHighlighters();
+  }
+
+  // Suscribirse a cambios futuros
+  sessionStore.subscribe(updateHighlighters);
+</script>
+
+<style is:global>
+  syntax-highlighter pre {
+    background-color: #3d3d3d;
+    color: #d4d4d4;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin: 0;
+  }
+  
+  syntax-highlighter code {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  syntax-highlighter .keyword {
+    color: #569cd6;
+    font-weight: bold;
+  }
+
+  syntax-highlighter .string {
+    color: #ce9178;
+  }
+
+  syntax-highlighter .operator {
+    color: #d4d4d4;
+  }
+
+  syntax-highlighter .class {
+    color: #4ec9b0;
+  }
+</style>

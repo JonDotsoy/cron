@@ -2,7 +2,7 @@
 
 ---
 
-<div class="max-w-3xl mx-auto p-6 space-y-8">
+<div class="space-y-8">
     <div class="flex justify-between items-center mb-4">
         <select 
             id="language-selector"
@@ -191,7 +191,9 @@
     };
 
     const updateCodeExample = () => {
-        const codeExample = document.getElementById("code-example") as HTMLElement;
+        const codeExample = document.getElementById("code-example");
+        if (!codeExample) return;
+        
         const language = languageSelector.value;
         const cronExpression = input.value || "* * * * *";
         const output = document.getElementById("show-format")?.textContent || "";
@@ -233,31 +235,54 @@ console.log(result);
             damageMode: isDangerMode ? "danger" : "normal",
             cronExpression: valueRandom
         });
-        
-        // Forzar sincronización inmediata
-        syncFromStore();
     };
 
     const init = () => {
-        syncFromStore();
+        const state = sessionStore.get();
         
-        if (!input.value) {
+        // Si no hay valor en el store, generar uno random
+        if (!state.cronExpression || state.cronExpression === "* * * * *") {
             rand();
+        } else {
+            syncFromStore();
         }
     };
 
     // Suscribirse a cambios en el store
-    sessionStore.listen(syncFromStore);
+    sessionStore.subscribe(syncFromStore);
 
     input?.addEventListener("click", updateSelectionInfo);
     input?.addEventListener("keyup", updateSelectionInfo);
     input?.addEventListener("select", updateSelectionInfo);
-    input?.addEventListener("input", () => {
+    
+    let inputTimeout: number | undefined;
+    const handleInputChange = () => {
+        updateFormat();
+        if (inputTimeout) {
+            clearTimeout(inputTimeout);
+        }
+        inputTimeout = setTimeout(() => {
+            sessionStore.set({
+                ...sessionStore.get(),
+                cronExpression: input.value
+            });
+        }, 300);
+    };
+
+    const handleInputBlur = () => {
+        if (inputTimeout) {
+            clearTimeout(inputTimeout);
+        }
         sessionStore.set({
             ...sessionStore.get(),
             cronExpression: input.value
         });
-    });
+        updateFormat();
+    };
+
+    input?.addEventListener("input", handleInputChange);
+    input?.addEventListener("change", handleInputBlur);
+    input?.addEventListener("blur", handleInputBlur);
     btnRandom?.addEventListener("click", rand);
     languageSelector?.addEventListener("change", () => {
         sessionStore.set({
