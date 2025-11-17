@@ -46,6 +46,8 @@ jobs:
       - run: bun install
       - run: bun run web:build
       - run: npx wrangler deploy --assets ./web/dist/ --compatibility-date 2025-11-16
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
 
   publish:
     runs-on: ubuntu-latest
