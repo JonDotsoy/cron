@@ -15,6 +15,12 @@ export interface LocaleDictionary {
   // Time expressions
   atEveryMinute: TemplateResult;
   atEveryMinutePastHour: TemplateResult;
+  atEveryMinutePastEveryHour: TemplateResult;
+  atEveryMinutePastEveryHourFromThrough: TemplateResult;
+  atEveryMinutePastEveryHourFrom: TemplateResult;
+  atMinutePastEveryHour: TemplateResult;
+  atMinutePastEveryHourFromThrough: TemplateResult;
+  atMinutePastEveryHourFrom: TemplateResult;
   atMinute: TemplateResult;
   atMinutePastHour: TemplateResult;
   atEveryMinuteFromThroughPastHour: TemplateResult;
@@ -75,6 +81,12 @@ export const locales: Record<string, LocaleDictionary> = {
     // Time expressions
     atEveryMinute: template`At every minute`,
     atEveryMinutePastHour: template`At every minute past hour ${"hour"}`,
+    atEveryMinutePastEveryHour: template`At every minute past every ${"ordinal"} hour`,
+    atEveryMinutePastEveryHourFromThrough: template`At every minute past every ${"ordinal"} hour from ${"start"} through ${"end"}`,
+    atEveryMinutePastEveryHourFrom: template`At every minute past every ${"ordinal"} hour from ${"start"}`,
+    atMinutePastEveryHour: template`At minute ${"minute"} past every ${"ordinal"} hour`,
+    atMinutePastEveryHourFromThrough: template`At minute ${"minute"} past every ${"ordinal"} hour from ${"start"} through ${"end"}`,
+    atMinutePastEveryHourFrom: template`At minute ${"minute"} past every ${"ordinal"} hour from ${"start"}`,
     atMinute: template`At minute ${"minute"}`,
     atMinutePastHour: template`At minute ${"minute"} past hour ${"hour"}`,
     atEveryMinuteFromThroughPastHour: template`At every minute from ${"start"} through ${"end"} past hour ${"hour"}`,
@@ -158,6 +170,12 @@ export const locales: Record<string, LocaleDictionary> = {
     // Time expressions
     atEveryMinute: template`Cada minuto`,
     atEveryMinutePastHour: template`Cada minuto después de la hora ${"hour"}`,
+    atEveryMinutePastEveryHour: template`Cada minuto después de cada ${"ordinal"} hora`,
+    atEveryMinutePastEveryHourFromThrough: template`Cada minuto después de cada ${"ordinal"} hora desde ${"start"} hasta ${"end"}`,
+    atEveryMinutePastEveryHourFrom: template`Cada minuto después de cada ${"ordinal"} hora desde ${"start"}`,
+    atMinutePastEveryHour: template`Al minuto ${"minute"} después de cada ${"ordinal"} hora`,
+    atMinutePastEveryHourFromThrough: template`Al minuto ${"minute"} después de cada ${"ordinal"} hora desde ${"start"} hasta ${"end"}`,
+    atMinutePastEveryHourFrom: template`Al minuto ${"minute"} después de cada ${"ordinal"} hora desde ${"start"}`,
     atMinute: template`Al minuto ${"minute"}`,
     atMinutePastHour: template`Al minuto ${"minute"} después de la hora ${"hour"}`,
     atEveryMinuteFromThroughPastHour: template`Cada minuto del ${"start"} al ${"end"} después de la hora ${"hour"}`,

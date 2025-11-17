@@ -10,38 +10,44 @@ export const colloquialLocales: Record<string, LocaleDictionary> = {
   ...baseLocales,
   "es-CL-Flaite": {
     // Time expressions
-    atEveryMinute: template`La weá corre cada minuto`,
-    atEveryMinutePastHour: template`La weá corre cada minuto pasao' las ${"hour"}`,
-    atMinute: template`La weá corre al minuto ${"minute"}`,
-    atMinutePastHour: template`La weá corre al minuto ${"minute"} pasao' las ${"hour"}`,
-    atEveryMinuteFromThroughPastHour: template`La weá corre entre el minuto ${"start"} y el ${"end"} pasao' las ${"hour"} de la mañana`,
-    atTime: template`La weá corre a las ${"time"}`,
-    atEveryMinuteWithStep: template`La weá corre cada ${"ordinal"} minuto`,
-    atEveryMinuteFromThroughWithStep: template`La weá corre cada ${"ordinal"} minuto del ${"start"} al ${"end"}`,
-    atEveryMinuteFromWithStep: template`La weá corre cada ${"ordinal"} minuto desde el ${"start"}`,
+    atEveryMinute: template`Hermano, esta weá corre cada minuto, cachái`,
+    atEveryMinutePastHour: template`La weá corre cada minuto pasao' las ${"hour"}, al toque`,
+    atEveryMinutePastEveryHour: template`Ñeri, corre cada minuto pasao' cada ${"ordinal"} hora, brígido`,
+    atEveryMinutePastEveryHourFromThrough: template`Loco, corre cada minuto pasao' cada ${"ordinal"} hora desde las ${"start"} hasta las ${"end"}, la dura`,
+    atEveryMinutePastEveryHourFrom: template`Bro, corre cada minuto pasao' cada ${"ordinal"} hora desde las ${"start"}, cachái`,
+    atMinutePastEveryHour: template`Al minuto ${"minute"} pasao' cada ${"ordinal"} hora, hermano`,
+    atMinutePastEveryHourFromThrough: template`Al minuto ${"minute"} pasao' cada ${"ordinal"} hora desde las ${"start"} hasta las ${"end"}, terrible específico`,
+    atMinutePastEveryHourFrom: template`Al minuto ${"minute"} pasao' cada ${"ordinal"} hora desde las ${"start"}, ñeri`,
+    atMinute: template`Al minuto ${"minute"}, al toque`,
+    atMinutePastHour: template`Al minuto ${"minute"} pasao' las ${"hour"}, cachái`,
+    atEveryMinuteFromThroughPastHour: template`Entre el minuto ${"start"} y el ${"end"} pasao' las ${"hour"}, la mansa volá`,
+    atTime: template`A las ${"time"}, hermano`,
+    atEveryMinuteWithStep: template`Cada ${"ordinal"} minuto, al toque`,
+    atEveryMinuteFromThroughWithStep: template`Cada ${"ordinal"} minuto del ${"start"} al ${"end"}, brígido`,
+    atEveryMinuteFromWithStep: template`Cada ${"ordinal"} minuto desde el ${"start"}, cachái`,
 
     // Day expressions
-    onDayOfMonth: template`, sólo los días ${"day"}`,
-    onEveryDayOfMonthFromThrough: template`cada día del mes del ${"start"} al ${"end"}, terrible específico`,
+    onDayOfMonth: template`, pero sólo los días ${"day"}, ñeri`,
+    onEveryDayOfMonthFromThrough: template`cada día del mes del ${"start"} al ${"end"}, qué weá más brígida`,
 
     // Weekday expressions
-    onWeekday: template`los ${"weekday"}`,
-    andOnWeekday: template`, y encima tiene que caer ${"weekday"}…`,
-    onEveryDayOfWeekFromThrough: template`del ${"start"} al ${"end"}`,
-    onEveryDayOfWeekFromThroughWithStep: template`cada ${"ordinal"} día de la semana del ${"start"} al ${"end"}, terrible específico`,
-    onEveryWeekday: template`cada ${"ordinal"} día de la semana`,
-    onEveryWeekdayFrom: template`cada ${"ordinal"} día de la semana desde el ${"start"}`,
+    onWeekday: template`los ${"weekday"}, hermano`,
+    andOnWeekday: template`, y encima tiene que caer ${"weekday"}, la dura`,
+    onEveryDayOfWeekFromThrough: template`del ${"start"} al ${"end"}, cachái`,
+    onEveryDayOfWeekFromThroughWithStep: template`cada ${"ordinal"} día de la semana del ${"start"} al ${"end"}, qué weá más cuática`,
+    onEveryWeekday: template`cada ${"ordinal"} día de la semana, bro`,
+    onEveryWeekdayFrom: template`cada ${"ordinal"} día de la semana desde el ${"start"}, al toque`,
 
     // Month expressions
-    inMonth: template` en ${"month"}`,
-    inMonths: template` en ${"months"}`,
-    everyMonth: template`cada ${"ordinal"} mes`,
-    everyMonthFromThrough: template`cada ${"ordinal"} mes desde ${"start"} hasta ${"end"}`,
-    everyMonthFromThroughRange: template`desde ${"start"} hasta ${"end"}`,
+    inMonth: template` en ${"month"}, hermano`,
+    inMonths: template` en ${"months"}, cachái`,
+    everyMonth: template`cada ${"ordinal"} mes, ñeri`,
+    everyMonthFromThrough: template`cada ${"ordinal"} mes desde ${"start"} hasta ${"end"}, brígido`,
+    everyMonthFromThroughRange: template`desde ${"start"} hasta ${"end"}, loco`,
 
     // Year expressions
-    inYear: template`en ${"year"}`,
-    inEveryYear: template` y más encima la cuestión pasa cada ${"ordinal"} años. Terrible específica la volá`,
+    inYear: template`en ${"year"}, hermano`,
+    inEveryYear: template` y más encima la cuestión pasa cada ${"ordinal"} años, la mansa volá brígida`,
 
     // Month names
     monthNames: [
@@ -79,17 +85,17 @@ export const colloquialLocales: Record<string, LocaleDictionary> = {
     // Special expressions
     specialExpressions: {
       yearly:
-        "La weá corre a las 00:00 el día 1 de enero. Una vez al año no más.",
+        "Hermano, la weá corre a las 00:00 el día 1 de enero. Una vez al año no más, cachái.",
       annually:
-        "La weá corre a las 00:00 el día 1 de enero. Una vez al año no más.",
+        "Ñeri, la weá corre a las 00:00 el día 1 de enero. Una vez al año no más, al toque.",
       monthly:
-        "La weá corre a las 00:00 el primer día del mes. Todos los meses, ¿cachai?",
-      weekly: "La weá corre a las 00:00 el domingo. Una vez a la semana.",
-      daily: "La weá corre a las 00:00. Todos los días, compadre.",
-      midnight: "La weá corre a medianoche, ¿cachai?",
-      hourly: "La weá corre cada hora en punto.",
-      reboot: "La weá corre cuando reinicie el compu, ¿cachai?",
-      unknown: template`No cacho esa expresión: ${"expr"}. Terrible rara la volá.`,
+        "Loco, la weá corre a las 00:00 el primer día del mes. Todos los meses, brígido, ¿cachái?",
+      weekly: "Bro, la weá corre a las 00:00 el domingo. Una vez a la semana, la dura.",
+      daily: "Hermano, la weá corre a las 00:00. Todos los días, al toque, cachái.",
+      midnight: "La weá corre a medianoche, ñeri, terrible brígido.",
+      hourly: "Loco, la weá corre cada hora en punto, al toque.",
+      reboot: "Hermano, la weá corre cuando reinicie el compu, ¿cachái? Al toque no más.",
+      unknown: template`Ñeri, no cacho esa expresión: ${"expr"}. Qué weá más cuática, la dura.`,
     },
   },
 };
