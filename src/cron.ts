@@ -30,7 +30,7 @@ type ListValues = {
 
 type Rule = ValueRule | AnyRule | RangeValues | StepValues | ListValues;
 
-type Spec =
+export type Spec =
   | {
       minute: Rule;
       hour: Rule;
@@ -53,6 +53,57 @@ export class Cron {
 
   get spec(): Spec {
     return this.#spec;
+  }
+
+  static fromSpec(spec: Spec): Cron {
+    const rule = Cron.specToString(spec);
+    return new Cron(rule);
+  }
+
+  private static specToString(spec: Spec): string {
+    if ("@special" in spec) {
+      return "@reboot";
+    }
+
+    const minute = Cron.ruleToString(spec.minute);
+    const hour = Cron.ruleToString(spec.hour);
+    const dayOfMonth = Cron.ruleToString(spec.dayOfMonth);
+    const month = Cron.ruleToString(spec.month);
+    const dayOfWeek = Cron.ruleToString(spec.dayOfWeek);
+    const year = "any" in spec.year ? "" : ` ${Cron.ruleToString(spec.year)}`;
+
+    return `${minute} ${hour} ${dayOfMonth} ${month} ${dayOfWeek}${year}`;
+  }
+
+  private static ruleToString(rule: Rule): string {
+    if ("any" in rule) {
+      return "*";
+    }
+
+    if ("value" in rule) {
+      return rule.value.toString();
+    }
+
+    if ("rangeValues" in rule) {
+      return `${rule.rangeValues.start}-${rule.rangeValues.end}`;
+    }
+
+    if ("stepValues" in rule) {
+      const { start, end, step } = rule.stepValues;
+      if (start === 0 && end === 59) return `*/${step}`;
+      if (start === 0 && end === 23) return `*/${step}`;
+      if (start === 1 && end === 31) return `*/${step}`;
+      if (start === 1 && end === 12) return `*/${step}`;
+      if (start === 0 && end === 7) return `*/${step}`;
+      if (start === 1970 && end === 3000) return `*/${step}`;
+      return `${start}-${end}/${step}`;
+    }
+
+    if ("listValues" in rule) {
+      return rule.listValues.map((r) => Cron.ruleToString(r)).join(",");
+    }
+
+    return "*";
   }
 
   *[Symbol.iterator](): Generator<Temporal.PlainDateTime> {

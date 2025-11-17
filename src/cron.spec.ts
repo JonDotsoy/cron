@@ -1104,3 +1104,239 @@ describe("Cron - NaN validation", () => {
     expect(specString).not.toContain("null");
   });
 });
+
+describe("Cron.fromSpec", () => {
+  test("should create Cron from spec with value rules", () => {
+    const spec = {
+      minute: { value: 30 },
+      hour: { value: 14 },
+      dayOfMonth: { any: true as const },
+      month: { any: true as const },
+      dayOfWeek: { any: true as const },
+      year: { any: true as const },
+    };
+
+    const cron = Cron.fromSpec(spec);
+
+    expect(cron.spec).toEqual(spec);
+    expect(cron.rule).toBe("30 14 * * *");
+  });
+
+  test("should create Cron from spec with range values", () => {
+    const spec = {
+      minute: { rangeValues: { start: 0, end: 30 } },
+      hour: { rangeValues: { start: 9, end: 17 } },
+      dayOfMonth: { any: true as const },
+      month: { any: true as const },
+      dayOfWeek: { any: true as const },
+      year: { any: true as const },
+    };
+
+    const cron = Cron.fromSpec(spec);
+
+    expect(cron.spec).toEqual(spec);
+    expect(cron.rule).toBe("0-30 9-17 * * *");
+  });
+
+  test("should create Cron from spec with step values", () => {
+    const spec = {
+      minute: { stepValues: { start: 0, end: 59, step: 15 } },
+      hour: { any: true as const },
+      dayOfMonth: { any: true as const },
+      month: { any: true as const },
+      dayOfWeek: { any: true as const },
+      year: { any: true as const },
+    };
+
+    const cron = Cron.fromSpec(spec);
+
+    expect(cron.spec).toEqual(spec);
+    expect(cron.rule).toBe("*/15 * * * *");
+  });
+
+  test("should create Cron from spec with step values in range", () => {
+    const spec = {
+      minute: { stepValues: { start: 10, end: 50, step: 10 } },
+      hour: { any: true as const },
+      dayOfMonth: { any: true as const },
+      month: { any: true as const },
+      dayOfWeek: { any: true as const },
+      year: { any: true as const },
+    };
+
+    const cron = Cron.fromSpec(spec);
+
+    expect(cron.spec).toEqual(spec);
+    expect(cron.rule).toBe("10-50/10 * * * *");
+  });
+
+  test("should create Cron from spec with list values", () => {
+    const spec = {
+      minute: { value: 0 },
+      hour: {
+        listValues: [{ value: 9 }, { value: 12 }, { value: 18 }],
+      },
+      dayOfMonth: { any: true as const },
+      month: { any: true as const },
+      dayOfWeek: { any: true as const },
+      year: { any: true as const },
+    };
+
+    const cron = Cron.fromSpec(spec);
+
+    expect(cron.spec).toEqual(spec);
+    expect(cron.rule).toBe("0 9,12,18 * * *");
+  });
+
+  test("should create Cron from spec with mixed list values", () => {
+    const spec = {
+      minute: { value: 0 },
+      hour: { any: true as const },
+      dayOfMonth: {
+        listValues: [
+          { value: 1 },
+          { rangeValues: { start: 10, end: 15 } },
+          { value: 25 },
+        ],
+      },
+      month: { any: true as const },
+      dayOfWeek: { any: true as const },
+      year: { any: true as const },
+    };
+
+    const cron = Cron.fromSpec(spec);
+
+    expect(cron.spec).toEqual(spec);
+    expect(cron.rule).toBe("0 * 1,10-15,25 * *");
+  });
+
+  test("should create Cron from spec with year", () => {
+    const spec = {
+      minute: { value: 0 },
+      hour: { value: 0 },
+      dayOfMonth: { value: 1 },
+      month: { value: 1 },
+      dayOfWeek: { any: true as const },
+      year: { value: 2025 },
+    };
+
+    const cron = Cron.fromSpec(spec);
+
+    expect(cron.spec).toEqual(spec);
+    expect(cron.rule).toBe("0 0 1 1 * 2025");
+  });
+
+  test("should create Cron from spec with year range", () => {
+    const spec = {
+      minute: { value: 0 },
+      hour: { value: 0 },
+      dayOfMonth: { value: 1 },
+      month: { value: 1 },
+      dayOfWeek: { any: true as const },
+      year: { rangeValues: { start: 2025, end: 2030 } },
+    };
+
+    const cron = Cron.fromSpec(spec);
+
+    expect(cron.spec).toEqual(spec);
+    expect(cron.rule).toBe("0 0 1 1 * 2025-2030");
+  });
+
+  test("should create Cron from @reboot spec", () => {
+    const spec = { "@special": "reboot" as const };
+
+    const cron = Cron.fromSpec(spec);
+
+    expect(cron.spec).toEqual(spec);
+    expect(cron.rule).toBe("@reboot");
+  });
+
+  test("should create Cron from spec with all any rules", () => {
+    const spec = {
+      minute: { any: true as const },
+      hour: { any: true as const },
+      dayOfMonth: { any: true as const },
+      month: { any: true as const },
+      dayOfWeek: { any: true as const },
+      year: { any: true as const },
+    };
+
+    const cron = Cron.fromSpec(spec);
+
+    expect(cron.spec).toEqual(spec);
+    expect(cron.rule).toBe("* * * * *");
+  });
+
+  test("should create Cron from spec with weekday range", () => {
+    const spec = {
+      minute: { value: 0 },
+      hour: { value: 9 },
+      dayOfMonth: { any: true as const },
+      month: { any: true as const },
+      dayOfWeek: { rangeValues: { start: 1, end: 5 } },
+      year: { any: true as const },
+    };
+
+    const cron = Cron.fromSpec(spec);
+
+    expect(cron.spec).toEqual(spec);
+    expect(cron.rule).toBe("0 9 * * 1-5");
+  });
+
+  test("should create Cron from spec with month range", () => {
+    const spec = {
+      minute: { value: 0 },
+      hour: { value: 0 },
+      dayOfMonth: { value: 1 },
+      month: { rangeValues: { start: 6, end: 8 } },
+      dayOfWeek: { any: true as const },
+      year: { any: true as const },
+    };
+
+    const cron = Cron.fromSpec(spec);
+
+    expect(cron.spec).toEqual(spec);
+    expect(cron.rule).toBe("0 0 1 6-8 *");
+  });
+
+  test("should roundtrip: spec -> Cron -> spec", () => {
+    const originalSpec = {
+      minute: { stepValues: { start: 0, end: 59, step: 5 } },
+      hour: { rangeValues: { start: 9, end: 17 } },
+      dayOfMonth: { any: true as const },
+      month: { listValues: [{ value: 1 }, { value: 6 }, { value: 12 }] },
+      dayOfWeek: { rangeValues: { start: 1, end: 5 } },
+      year: { any: true as const },
+    };
+
+    const cron = Cron.fromSpec(originalSpec);
+    const resultSpec = cron.spec;
+
+    expect(resultSpec).toEqual(originalSpec);
+  });
+
+  test("should generate correct dates from spec-created Cron", () => {
+    const spec = {
+      minute: { value: 30 },
+      hour: { value: 14 },
+      dayOfMonth: { any: true as const },
+      month: { any: true as const },
+      dayOfWeek: { any: true as const },
+      year: { any: true as const },
+    };
+
+    const cron = Cron.fromSpec(spec);
+    const list = take(cron, 3);
+
+    const f = list.map((item) => ({
+      hour: item.hour,
+      minute: item.minute,
+    }));
+
+    expect(f).toEqual([
+      { hour: 14, minute: 30 },
+      { hour: 14, minute: 30 },
+      { hour: 14, minute: 30 },
+    ]);
+  });
+});
