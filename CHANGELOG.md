@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.4.0](https://github.com/JonDotsoy/cron/compare/cron-v0.3.6...cron-v0.4.0) (2025-11-17)
+
+
+### Features
+
+* **cron-format:** add support for minute step expressions with specific hours ([9101e62](https://github.com/JonDotsoy/cron/commit/9101e6258754e17f43455eedba882f5043ab1665))
+* **cron-format:** add support for step expressions in day-of-week and minute fields ([c2da6be](https://github.com/JonDotsoy/cron/commit/c2da6be031936159c71933f5ea959ae24e818f22))
+* **idioms:** add support for colloquial language variants in cron formatting ([6835da5](https://github.com/JonDotsoy/cron/commit/6835da53efd883c466fa4b37958852478514c729))
+* **year-field:** add support for year field in cron expressions ([b2c9ed8](https://github.com/JonDotsoy/cron/commit/b2c9ed84035687f0b0021879ddbbafb371707ca2))
+
 ## [0.3.6](https://github.com/JonDotsoy/cron/compare/cron-v0.3.0...cron-v0.3.6) (2025-11-16)
 
 
