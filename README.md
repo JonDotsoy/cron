@@ -483,6 +483,70 @@ const text = formatter.format("0 22 * * 1-5");
 const parts = formatter.formatToParts("0 22 * * 1-5");
 ```
 
+## Utilities
+
+### `@jondotsoy/cron/utils`
+
+The utils module provides helper functions for testing and generating random cron specifications.
+
+#### `randomSpec(): Spec`
+
+Generates a random cron specification for testing purposes. This is useful for fuzzing tests, generating test cases, or creating random schedules.
+
+**Returns:** A randomly generated `Spec` object that can be used with `Cron.fromSpec()`
+
+**Behavior:**
+
+- 10% chance of generating a `@reboot` special expression
+- 90% chance of generating a standard cron specification with random rules
+- Year field has 80% chance of being `*` (any), 20% chance of a specific range (2024-2030)
+- Each field can be:
+  - Any value (`*`)
+  - Specific value (e.g., `5`)
+  - Range (e.g., `1-5`)
+  - Step values (e.g., `*/2`)
+  - List of values (e.g., `1,3,5`)
+
+**Example:**
+
+```typescript
+import { randomSpec } from "@jondotsoy/cron/utils";
+import { Cron } from "@jondotsoy/cron";
+
+// Generate a random cron specification
+const spec = randomSpec();
+
+// Create a Cron instance from the spec
+const cron = Cron.fromSpec(spec);
+
+console.log(cron.rule); // e.g., "*/5 0-20/2 1,15 * MON-FRI"
+
+// Use it like any other cron expression
+const nextRun = Cron.next(cron);
+console.log(nextRun.toString());
+```
+
+**Use Cases:**
+
+- **Fuzzing tests**: Generate random cron expressions to test parser robustness
+- **Property-based testing**: Create diverse test cases automatically
+- **Load testing**: Generate random schedules for stress testing schedulers
+- **Example generation**: Create varied examples for documentation
+
+**Example with multiple random specs:**
+
+```typescript
+import { randomSpec } from "@jondotsoy/cron/utils";
+import { Cron } from "@jondotsoy/cron";
+
+// Generate 10 random cron expressions
+for (let i = 0; i < 10; i++) {
+  const spec = randomSpec();
+  const cron = Cron.fromSpec(spec);
+  console.log(`Random cron ${i + 1}: ${cron.rule}`);
+}
+```
+
 ## License
 
 [MIT](./LICENSE) © 2025 Jonathan Delgado
