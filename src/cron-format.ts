@@ -74,7 +74,7 @@ export class CronFormat implements ICronFormatter {
 
     // Handle special expressions like @weekly
     if ("@special" in cron.spec) {
-      const description = this.formatSpecialExpression(cron.rule.trim());
+      const description = this.formatSpecialExpression(cron.expression.trim());
       parts.push({ type: "literal", value: description });
       return parts;
     }
@@ -276,6 +276,21 @@ export class CronFormat implements ICronFormatter {
 
     // Case: * H -> "At every minute past hour H"
     if (minute === "*" && hour !== "*") {
+      // Check if hour has a step (e.g., "*/7")
+      if (hour.includes("/")) {
+        const [rangePart, stepPart] = hour.split("/");
+        const step = parseInt(stepPart!, 10);
+
+        if (rangePart === "*") {
+          return `At every minute past every ${this.localeDictionary.ordinal(step)} hour`;
+        } else if (rangePart!.includes("-")) {
+          const [start, end] = rangePart!.split("-");
+          return `At every minute past every ${this.localeDictionary.ordinal(step)} hour from ${start} through ${end}`;
+        } else {
+          return `At every minute past every ${this.localeDictionary.ordinal(step)} hour from ${rangePart}`;
+        }
+      }
+
       // Check if hour is a list (e.g., "0,12")
       if (hour.includes(",")) {
         const hours = hour.split(",").map((h) => h.trim());
@@ -329,7 +344,7 @@ export class CronFormat implements ICronFormatter {
     }
 
     // Check if minute has a step (e.g., "*/6" or "0-30/6") and hour is specific
-    if (minute.includes("/") && hour !== "*") {
+    if (minute.includes("/") && hour !== "*" && !hour.includes("/")) {
       const hourNum = parseInt(hour, 10);
       const [rangePart, stepPart] = minute.split("/");
 
@@ -352,18 +367,71 @@ export class CronFormat implements ICronFormatter {
     }
 
     // Check if hour has a step (e.g., "0-20/2" or "*/2")
-    if (hour.includes("/") && minute !== "*") {
-      const minuteNum = parseInt(minute, 10);
+    if (hour.includes("/")) {
       const [rangePart, stepPart] = hour.split("/");
 
       if (!rangePart || !stepPart) {
-        return this.applyTemplate(this.localeDictionary.atMinute, {
-          minute: minuteNum.toString(),
-        });
+        if (minute !== "*") {
+          const minuteNum = parseInt(minute, 10);
+          return this.applyTemplate(this.localeDictionary.atMinute, {
+            minute: minuteNum.toString(),
+          });
+        }
+        return this.applyTemplate(this.localeDictionary.atEveryMinute, {});
       }
 
       const step = parseInt(stepPart, 10);
 
+      // Handle minute with step in hour
+      if (minute.includes("/")) {
+        const [minRangePart, minStepPart] = minute.split("/");
+        const minStep = parseInt(minStepPart!, 10);
+
+        if (rangePart === "*") {
+          if (minRangePart === "*") {
+            return `At every ${this.localeDictionary.ordinal(minStep)} minute past every ${this.localeDictionary.ordinal(step)} hour`;
+          } else if (minRangePart!.includes("-")) {
+            const [minStart, minEnd] = minRangePart!.split("-");
+            return `At every ${this.localeDictionary.ordinal(minStep)} minute from ${minStart} through ${minEnd} past every ${this.localeDictionary.ordinal(step)} hour`;
+          } else {
+            return `At every ${this.localeDictionary.ordinal(minStep)} minute from ${minRangePart} past every ${this.localeDictionary.ordinal(step)} hour`;
+          }
+        } else if (rangePart.includes("-")) {
+          const [start, end] = rangePart.split("-");
+          if (minRangePart === "*") {
+            return `At every ${this.localeDictionary.ordinal(minStep)} minute past every ${this.localeDictionary.ordinal(step)} hour from ${start} through ${end}`;
+          } else if (minRangePart!.includes("-")) {
+            const [minStart, minEnd] = minRangePart!.split("-");
+            return `At every ${this.localeDictionary.ordinal(minStep)} minute from ${minStart} through ${minEnd} past every ${this.localeDictionary.ordinal(step)} hour from ${start} through ${end}`;
+          } else {
+            return `At every ${this.localeDictionary.ordinal(minStep)} minute from ${minRangePart} past every ${this.localeDictionary.ordinal(step)} hour from ${start} through ${end}`;
+          }
+        } else {
+          if (minRangePart === "*") {
+            return `At every ${this.localeDictionary.ordinal(minStep)} minute past every ${this.localeDictionary.ordinal(step)} hour from ${rangePart}`;
+          } else if (minRangePart!.includes("-")) {
+            const [minStart, minEnd] = minRangePart!.split("-");
+            return `At every ${this.localeDictionary.ordinal(minStep)} minute from ${minStart} through ${minEnd} past every ${this.localeDictionary.ordinal(step)} hour from ${rangePart}`;
+          } else {
+            return `At every ${this.localeDictionary.ordinal(minStep)} minute from ${minRangePart} past every ${this.localeDictionary.ordinal(step)} hour from ${rangePart}`;
+          }
+        }
+      }
+
+      // Handle minute as "*"
+      if (minute === "*") {
+        if (rangePart === "*") {
+          return `At every minute past every ${this.localeDictionary.ordinal(step)} hour`;
+        } else if (rangePart.includes("-")) {
+          const [start, end] = rangePart.split("-");
+          return `At every minute past every ${this.localeDictionary.ordinal(step)} hour from ${start} through ${end}`;
+        } else {
+          return `At every minute past every ${this.localeDictionary.ordinal(step)} hour from ${rangePart}`;
+        }
+      }
+
+      // Handle specific minute value
+      const minuteNum = parseInt(minute, 10);
       if (rangePart === "*") {
         return `At minute ${minuteNum} past every ${this.localeDictionary.ordinal(step)} hour`;
       } else if (rangePart.includes("-")) {
