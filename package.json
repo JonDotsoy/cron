@@ -48,5 +48,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/JonDotsoy/cron.git"
-  }
+  },
+  "homepage": "https://cron.jon.soy"
 }
