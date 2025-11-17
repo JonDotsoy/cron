@@ -1,14 +1,7 @@
 ---
 import "../styles/global.css";
 import CronDemo from "../components/cron-demo.astro";
-import Code from "../components/code.astro";
-
-const code = `import { Cron, {{class-cron-format}} } from "{{cron-module-name}}";
-const cron = new Cron("{{cron-expression}}");
-
-new {{class-cron-format}}("{{locale}}").format(cron);
-// "{{cron-formated}}"
-`
+import SampleComp from "../components/docs.md";
 ---
 
 <html lang="en">
@@ -34,9 +27,8 @@ new {{class-cron-format}}("{{locale}}").format(cron);
 			<div class="py-6">
 				<CronDemo />
 			</div>
-			<div class="mt-8">
-				<h2 class="text-2xl font-semibold text-gray-800 mb-4">Code Example</h2>
-				<Code data-testid="code-1" code={code} />
+			<div class="prose mx-auto">
+				<SampleComp></SampleComp>
 			</div>
 			<div class="text-center mt-8">
 				<a href="https://github.com/JonDotsoy/cron" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline">

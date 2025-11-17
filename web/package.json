@@ -10,6 +10,7 @@
     "playwright": "bunx playwright test --reporter=line"
   },
   "dependencies": {
+    "@tailwindcss/typography": "0.5.19",
     "@tailwindcss/vite": "^4.1.17",
     "astro": "^5.15.8",
     "nanostores": "1.0.1",
