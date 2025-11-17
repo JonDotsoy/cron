@@ -21,7 +21,7 @@ if (existsSync(memoPath)) {
   while (uniqueExpressions.size < 100) {
     const spec = randomSpec();
     const cron = Cron.fromSpec(spec);
-    uniqueExpressions.add(cron.rule);
+    uniqueExpressions.add(cron.expression);
   }
 
   expresions = Array.from(uniqueExpressions);

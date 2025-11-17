@@ -1119,7 +1119,7 @@ describe("Cron.fromSpec", () => {
     const cron = Cron.fromSpec(spec);
 
     expect(cron.spec).toEqual(spec);
-    expect(cron.rule).toBe("30 14 * * *");
+    expect(cron.expression).toBe("30 14 * * *");
   });
 
   test("should create Cron from spec with range values", () => {
@@ -1135,7 +1135,7 @@ describe("Cron.fromSpec", () => {
     const cron = Cron.fromSpec(spec);
 
     expect(cron.spec).toEqual(spec);
-    expect(cron.rule).toBe("0-30 9-17 * * *");
+    expect(cron.expression).toBe("0-30 9-17 * * *");
   });
 
   test("should create Cron from spec with step values", () => {
@@ -1151,7 +1151,7 @@ describe("Cron.fromSpec", () => {
     const cron = Cron.fromSpec(spec);
 
     expect(cron.spec).toEqual(spec);
-    expect(cron.rule).toBe("*/15 * * * *");
+    expect(cron.expression).toBe("*/15 * * * *");
   });
 
   test("should create Cron from spec with step values in range", () => {
@@ -1167,7 +1167,7 @@ describe("Cron.fromSpec", () => {
     const cron = Cron.fromSpec(spec);
 
     expect(cron.spec).toEqual(spec);
-    expect(cron.rule).toBe("10-50/10 * * * *");
+    expect(cron.expression).toBe("10-50/10 * * * *");
   });
 
   test("should create Cron from spec with list values", () => {
@@ -1185,7 +1185,7 @@ describe("Cron.fromSpec", () => {
     const cron = Cron.fromSpec(spec);
 
     expect(cron.spec).toEqual(spec);
-    expect(cron.rule).toBe("0 9,12,18 * * *");
+    expect(cron.expression).toBe("0 9,12,18 * * *");
   });
 
   test("should create Cron from spec with mixed list values", () => {
@@ -1207,7 +1207,7 @@ describe("Cron.fromSpec", () => {
     const cron = Cron.fromSpec(spec);
 
     expect(cron.spec).toEqual(spec);
-    expect(cron.rule).toBe("0 * 1,10-15,25 * *");
+    expect(cron.expression).toBe("0 * 1,10-15,25 * *");
   });
 
   test("should create Cron from spec with year", () => {
@@ -1223,7 +1223,7 @@ describe("Cron.fromSpec", () => {
     const cron = Cron.fromSpec(spec);
 
     expect(cron.spec).toEqual(spec);
-    expect(cron.rule).toBe("0 0 1 1 * 2025");
+    expect(cron.expression).toBe("0 0 1 1 * 2025");
   });
 
   test("should create Cron from spec with year range", () => {
@@ -1239,7 +1239,7 @@ describe("Cron.fromSpec", () => {
     const cron = Cron.fromSpec(spec);
 
     expect(cron.spec).toEqual(spec);
-    expect(cron.rule).toBe("0 0 1 1 * 2025-2030");
+    expect(cron.expression).toBe("0 0 1 1 * 2025-2030");
   });
 
   test("should create Cron from @reboot spec", () => {
@@ -1248,7 +1248,7 @@ describe("Cron.fromSpec", () => {
     const cron = Cron.fromSpec(spec);
 
     expect(cron.spec).toEqual(spec);
-    expect(cron.rule).toBe("@reboot");
+    expect(cron.expression).toBe("@reboot");
   });
 
   test("should create Cron from spec with all any rules", () => {
@@ -1264,7 +1264,7 @@ describe("Cron.fromSpec", () => {
     const cron = Cron.fromSpec(spec);
 
     expect(cron.spec).toEqual(spec);
-    expect(cron.rule).toBe("* * * * *");
+    expect(cron.expression).toBe("* * * * *");
   });
 
   test("should create Cron from spec with weekday range", () => {
@@ -1280,7 +1280,7 @@ describe("Cron.fromSpec", () => {
     const cron = Cron.fromSpec(spec);
 
     expect(cron.spec).toEqual(spec);
-    expect(cron.rule).toBe("0 9 * * 1-5");
+    expect(cron.expression).toBe("0 9 * * 1-5");
   });
 
   test("should create Cron from spec with month range", () => {
@@ -1296,7 +1296,7 @@ describe("Cron.fromSpec", () => {
     const cron = Cron.fromSpec(spec);
 
     expect(cron.spec).toEqual(spec);
-    expect(cron.rule).toBe("0 0 1 6-8 *");
+    expect(cron.expression).toBe("0 0 1 6-8 *");
   });
 
   test("should roundtrip: spec -> Cron -> spec", () => {

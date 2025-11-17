@@ -64,10 +64,10 @@ export class Cron {
   #year: Rule | null;
 
   constructor(
-    readonly rule: string,
+    readonly expression: string,
     readonly now: Temporal.PlainDateTime = Temporal.Now.plainDateTimeISO(),
   ) {
-    this.#spec = Cron.parseSpec(rule);
+    this.#spec = Cron.parseSpec(expression);
     const spec = this.#spec;
     const isReboot = "@special" in spec;
     this.#isReboot = isReboot;
