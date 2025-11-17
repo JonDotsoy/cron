@@ -172,6 +172,17 @@ export class Cron {
     throw new Error("No next datetime found");
   }
 
+  static take(cron: Cron, limit = 1): Temporal.PlainDateTime[] {
+    const results: Temporal.PlainDateTime[] = [];
+    let count = 0;
+    for (const datetime of cron) {
+      results.push(datetime);
+      count++;
+      if (count >= limit) break;
+    }
+    return results;
+  }
+
   static setInterval(callback: () => void, cron: Cron) {
     const abort = new AbortController();
     const promise = this.createInterval(callback, cron, abort.signal);
