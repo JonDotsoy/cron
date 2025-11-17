@@ -21,6 +21,10 @@
     "./colloquial-cron-format": {
       "types": "./lib/types/idioms/colloquial-cron-format.d.ts",
       "import": "./lib/esm/idioms/colloquial-cron-format.js"
+    },
+    "./utils": {
+      "types": "./lib/types/utils.d.ts",
+      "import": "./lib/esm/utils.js"
     }
   },
   "files": [
