@@ -4,6 +4,63 @@
 npm install @jondotsoy/cron
 ```
 
+## Schedule Tasks with Cron
+
+Use `Cron.setInterval` to schedule tasks based on cron expressions:
+
+```typescript
+import { Cron } from "@jondotsoy/cron";
+
+const cron = new Cron("*/5 * * * *"); // Every 5 minutes
+
+const { promise, abort } = Cron.setInterval(() => {
+  console.log("Task executed at:", new Date().toISOString());
+}, cron);
+
+// Stop the scheduler when needed
+setTimeout(() => {
+  abort();
+  console.log("Scheduler stopped");
+}, 60000);
+
+// Wait for the scheduler to complete
+await promise;
+```
+
+### Using `using` keyword (TypeScript 5.2+)
+
+Automatic resource disposal with the `using` keyword:
+
+```typescript
+import { Cron } from "@jondotsoy/cron";
+
+{
+  using cronInterval = Cron.setInterval(() => {
+    console.log("Task executed at:", new Date().toISOString());
+  }, new Cron("*/5 * * * *"));
+
+  // The interval will automatically be aborted when exiting this scope
+}
+// Scheduler is automatically stopped here
+```
+
+### Using `await using` keyword
+
+For async disposal that waits for the scheduler to fully complete:
+
+```typescript
+import { Cron } from "@jondotsoy/cron";
+
+{
+  await using cronInterval = Cron.setInterval(() => {
+    console.log("Task executed at:", new Date().toISOString());
+  }, new Cron("@daily"));
+
+  // The interval will automatically be aborted and awaited when exiting this scope
+}
+// Scheduler is fully stopped and cleaned up here
+```
+
 ## Format Cron Expressions
 
 ```typescript
