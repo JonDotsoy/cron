@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.0](https://github.com/JonDotsoy/cron/compare/cron-v0.4.0...cron-v0.5.0) (2025-11-17)
+
+
+### Features
+
+* **colloquial-idioms:** add support for inverted ranges and step expressions in day-of-week ([bb8180f](https://github.com/JonDotsoy/cron/commit/bb8180f24f4dee7780ff428f2c4616343f75a56b))
+* **localization:** add minute step expression templates for multiple locales ([ab60cd8](https://github.com/JonDotsoy/cron/commit/ab60cd8e9501d0ed2bc8a9737219adc9be0814e3))
+
 ## [0.4.0](https://github.com/JonDotsoy/cron/compare/cron-v0.3.6...cron-v0.4.0) (2025-11-17)
 
 
