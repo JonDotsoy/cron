@@ -296,12 +296,27 @@ export class CronFormat implements ICronFormatter {
       const step = parseInt(stepPart!, 10);
 
       if (rangePart === "*") {
-        return `At every ${this.localeDictionary.ordinal(step)} minute`;
+        return this.applyTemplate(this.localeDictionary.atEveryMinuteWithStep, {
+          ordinal: this.localeDictionary.ordinal(step),
+        });
       } else if (rangePart!.includes("-")) {
         const [start, end] = rangePart!.split("-");
-        return `At every ${this.localeDictionary.ordinal(step)} minute from ${start} through ${end}`;
+        return this.applyTemplate(
+          this.localeDictionary.atEveryMinuteFromThroughWithStep,
+          {
+            ordinal: this.localeDictionary.ordinal(step),
+            start: start!,
+            end: end!,
+          },
+        );
       } else {
-        return `At every ${this.localeDictionary.ordinal(step)} minute from ${rangePart}`;
+        return this.applyTemplate(
+          this.localeDictionary.atEveryMinuteFromWithStep,
+          {
+            ordinal: this.localeDictionary.ordinal(step),
+            start: rangePart!,
+          },
+        );
       }
     }
 

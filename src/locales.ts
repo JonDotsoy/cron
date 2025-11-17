@@ -19,6 +19,9 @@ export interface LocaleDictionary {
   atMinutePastHour: TemplateResult;
   atEveryMinuteFromThroughPastHour: TemplateResult;
   atTime: TemplateResult;
+  atEveryMinuteWithStep: TemplateResult;
+  atEveryMinuteFromThroughWithStep: TemplateResult;
+  atEveryMinuteFromWithStep: TemplateResult;
 
   // Day expressions
   onDayOfMonth: TemplateResult;
@@ -76,6 +79,9 @@ export const locales: Record<string, LocaleDictionary> = {
     atMinutePastHour: template`At minute ${"minute"} past hour ${"hour"}`,
     atEveryMinuteFromThroughPastHour: template`At every minute from ${"start"} through ${"end"} past hour ${"hour"}`,
     atTime: template`At ${"time"}`,
+    atEveryMinuteWithStep: template`At every ${"ordinal"} minute`,
+    atEveryMinuteFromThroughWithStep: template`At every ${"ordinal"} minute from ${"start"} through ${"end"}`,
+    atEveryMinuteFromWithStep: template`At every ${"ordinal"} minute from ${"start"}`,
 
     // Day expressions
     onDayOfMonth: template`on day-of-month ${"day"}`,
@@ -156,6 +162,9 @@ export const locales: Record<string, LocaleDictionary> = {
     atMinutePastHour: template`Al minuto ${"minute"} después de la hora ${"hour"}`,
     atEveryMinuteFromThroughPastHour: template`Cada minuto del ${"start"} al ${"end"} después de la hora ${"hour"}`,
     atTime: template`A las ${"time"}`,
+    atEveryMinuteWithStep: template`Cada ${"ordinal"} minuto`,
+    atEveryMinuteFromThroughWithStep: template`Cada ${"ordinal"} minuto del ${"start"} al ${"end"}`,
+    atEveryMinuteFromWithStep: template`Cada ${"ordinal"} minuto desde ${"start"}`,
 
     // Day expressions
     onDayOfMonth: template`los días ${"day"} del mes`,

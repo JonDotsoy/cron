@@ -16,6 +16,9 @@ export const colloquialLocales: Record<string, LocaleDictionary> = {
     atMinutePastHour: template`La weá corre al minuto ${"minute"} pasao' las ${"hour"}`,
     atEveryMinuteFromThroughPastHour: template`La weá corre entre el minuto ${"start"} y el ${"end"} pasao' las ${"hour"} de la mañana`,
     atTime: template`La weá corre a las ${"time"}`,
+    atEveryMinuteWithStep: template`La weá corre cada ${"ordinal"} minuto`,
+    atEveryMinuteFromThroughWithStep: template`La weá corre cada ${"ordinal"} minuto del ${"start"} al ${"end"}`,
+    atEveryMinuteFromWithStep: template`La weá corre cada ${"ordinal"} minuto desde el ${"start"}`,
 
     // Day expressions
     onDayOfMonth: template`, sólo los días ${"day"}`,
