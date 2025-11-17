@@ -43,16 +43,54 @@ export type Spec =
 
 export class Cron {
   #spec: Spec;
+  #isReboot: boolean;
+  #minute: Rule | null;
+  #hour: Rule | null;
+  #dayOfMonth: Rule | null;
+  #month: Rule | null;
+  #dayOfWeek: Rule | null;
+  #year: Rule | null;
 
   constructor(
     readonly rule: string,
     readonly now: Temporal.PlainDateTime = Temporal.Now.plainDateTimeISO(),
   ) {
     this.#spec = Cron.parseSpec(rule);
+    const spec = this.#spec;
+    const isReboot = "@special" in spec;
+    this.#isReboot = isReboot;
+    this.#minute = isReboot ? null : spec.minute;
+    this.#hour = isReboot ? null : spec.hour;
+    this.#dayOfMonth = isReboot ? null : spec.dayOfMonth;
+    this.#month = isReboot ? null : spec.month;
+    this.#dayOfWeek = isReboot ? null : spec.dayOfWeek;
+    this.#year = isReboot ? null : spec.year;
   }
 
   get spec(): Spec {
     return this.#spec;
+  }
+
+  get isReboot(): boolean {
+    return this.isReboot;
+  }
+  get minute(): Rule | null {
+    return this.#minute;
+  }
+  get hour(): Rule | null {
+    return this.#hour;
+  }
+  get dayOfMonth(): Rule | null {
+    return this.#dayOfMonth;
+  }
+  get month(): Rule | null {
+    return this.#month;
+  }
+  get dayOfWeek(): Rule | null {
+    return this.#dayOfWeek;
+  }
+  get year(): Rule | null {
+    return this.#year;
   }
 
   static fromSpec(spec: Spec): Cron {
