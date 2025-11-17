@@ -41,6 +41,18 @@ export type Spec =
     }
   | { "@special": "reboot" };
 
+/**
+ * Cron expression parser and scheduler that generates execution times based on cron syntax.
+ *
+ * Supports standard cron expressions (5 or 6 fields) and special expressions like @hourly, @daily, @weekly, @monthly, @yearly, and @reboot.
+ *
+ * @example
+ * ```ts
+ * const cron = new Cron("0 0 * * *"); // Daily at midnight
+ * const nextRun = Cron.next(cron);
+ * const next5Runs = Cron.take(cron, 5);
+ * ```
+ */
 export class Cron {
   #spec: Spec;
   #isReboot: boolean;
@@ -165,6 +177,20 @@ export class Cron {
     }
   }
 
+  /**
+   * Returns the next execution time for the given cron expression.
+   *
+   * @param cron - The Cron instance to get the next execution time from
+   * @returns The next datetime when the cron expression will match
+   * @throws {Error} If the cron expression is @reboot or no next datetime is found
+   *
+   * @example
+   * ```ts
+   * const cron = new Cron("0 12 * * *"); // Daily at noon
+   * const nextRun = Cron.next(cron);
+   * console.log(nextRun.toString()); // Next occurrence at 12:00
+   * ```
+   */
   static next(cron: Cron): Temporal.PlainDateTime {
     for (const datetime of cron) {
       return datetime;
@@ -172,6 +198,21 @@ export class Cron {
     throw new Error("No next datetime found");
   }
 
+  /**
+   * Returns an array of the next N execution times for the given cron expression.
+   *
+   * @param cron - The Cron instance to get execution times from
+   * @param limit - The number of execution times to return (default: 1)
+   * @returns An array of datetimes when the cron expression will match
+   * @throws {Error} If the cron expression is @reboot
+   *
+   * @example
+   * ```ts
+   * const cron = new Cron("0 *\/6 * * *"); // Every 6 hours
+   * const next5Runs = Cron.take(cron, 5);
+   * next5Runs.forEach(dt => console.log(dt.toString()));
+   * ```
+   */
   static take(cron: Cron, limit = 1): Temporal.PlainDateTime[] {
     const results: Temporal.PlainDateTime[] = [];
     let count = 0;
@@ -183,6 +224,34 @@ export class Cron {
     return results;
   }
 
+  /**
+   * Schedules a callback to be executed at times matching the cron expression.
+   *
+   * For @reboot expressions, the callback is executed immediately once.
+   * For regular cron expressions, the callback is executed at each matching time.
+   *
+   * @param callback - The function to execute at each scheduled time
+   * @param cron - The Cron instance defining the schedule
+   * @returns An object with methods to control the interval:
+   *   - `promise`: A promise that resolves when the interval is aborted
+   *   - `abort()`: Stops the scheduled executions
+   *   - `[Symbol.dispose]()`: Cleanup method for using with `using` keyword
+   *   - `[Symbol.asyncDispose]()`: Async cleanup method for using with `await using` keyword
+   *
+   * @example
+   * ```ts
+   * const cron = new Cron("0 * * * *"); // Every hour
+   * const interval = Cron.setInterval(() => {
+   *   console.log("Running scheduled task");
+   * }, cron);
+   *
+   * // Stop after some time
+   * setTimeout(() => interval.abort(), 10000);
+   *
+   * // Or use with disposal
+   * using interval = Cron.setInterval(() => console.log("Task"), cron);
+   * ```
+   */
   static setInterval(callback: () => void, cron: Cron) {
     const abort = new AbortController();
     const promise = this.createInterval(callback, cron, abort.signal);
