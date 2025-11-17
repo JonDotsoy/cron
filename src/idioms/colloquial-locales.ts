@@ -25,6 +25,9 @@ export const colloquialLocales: Record<string, LocaleDictionary> = {
     onWeekday: template`los ${"weekday"}`,
     andOnWeekday: template`, y encima tiene que caer ${"weekday"}…`,
     onEveryDayOfWeekFromThrough: template`del ${"start"} al ${"end"}`,
+    onEveryDayOfWeekFromThroughWithStep: template`cada ${"ordinal"} día de la semana del ${"start"} al ${"end"}, terrible específico`,
+    onEveryWeekday: template`cada ${"ordinal"} día de la semana`,
+    onEveryWeekdayFrom: template`cada ${"ordinal"} día de la semana desde el ${"start"}`,
 
     // Month expressions
     inMonth: template` en ${"month"}`,

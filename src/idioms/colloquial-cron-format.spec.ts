@@ -84,6 +84,20 @@ describe("ColloquialCronFormat", () => {
       expect(formatter.format(cron)).toBe(expected);
     });
 
+    it('formatea "*/6 * * */5 4-3/4 2024" con rango invertido en dayOfWeek', () => {
+      const cron = "*/6 * * */5 4-3/4 2024";
+      const result = formatter.format(cron);
+
+      // Verify no NaN in the output
+      expect(result).not.toContain("NaN");
+
+      // Verify the expected components are present
+      expect(result).toContain("La weá corre");
+      expect(result).toContain("cada 6");
+      expect(result).toContain("cada 5 mes");
+      expect(result).toContain("2024");
+    });
+
     describe("formatToParts", () => {
       it('devuelve partes para "2-7 4 5,7 4,6,10 3,5 */4"', () => {
         const cron = "2-7 4 5,7 4,6,10 3,5 */4";
