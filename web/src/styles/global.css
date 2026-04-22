@@ -1,2 +1,6 @@
 @import "tailwindcss";
 @plugin '@tailwindcss/typography';
+
+:root {
+  --screen: 75ch;
+}

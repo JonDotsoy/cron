@@ -3,7 +3,7 @@ import { test, expect } from "@playwright/test";
 test("should change cron expression when clicking random button", async ({
   page,
 }) => {
-  await page.goto("http://localhost:4321/");
+  await page.goto("/");
   await page.getByTestId("input-cron-expression").isVisible();
   const initialText = await page
     .getByTestId("input-cron-expression")
@@ -20,7 +20,7 @@ test("should load cron expression and locale from URL hash", async ({
   page,
 }) => {
   await page.goto(
-    "http://localhost:4321/#locale=es&damagemode=normal&cron=18%2C20%2C58+19+10+9+4+*%2F2",
+    "/#locale=es&damagemode=normal&cron=18%2C20%2C58+19+10+9+4+*%2F2",
   );
   await page.getByTestId("input-cron-expression").isVisible();
   const lang = await page.getByTestId("language-selector").inputValue();
@@ -33,14 +33,14 @@ test("should load cron expression and locale from URL hash", async ({
 
 test("should load danger mode from URL hash", async ({ page }) => {
   await page.goto(
-    "http://localhost:4321/#locale=es&damagemode=danger&cron=18%2C20%2C58+19+10+9+4+*%2F2",
+    "/#locale=es&damagemode=danger&cron=18%2C20%2C58+19+10+9+4+*%2F2",
   );
   const dangerMode = await page.getByTestId("danger-mode").inputValue();
   expect(dangerMode).toEqual("on");
 });
 
 test("should update URL hash when toggling danger mode", async ({ page }) => {
-  await page.goto("http://localhost:4321/");
+  await page.goto("/");
   await page.getByTestId("danger-mode").click();
   await page.waitForTimeout(100);
   const url = page.url();
@@ -50,7 +50,7 @@ test("should update URL hash when toggling danger mode", async ({ page }) => {
 test("should update URL hash when changing cron expression", async ({
   page,
 }) => {
-  await page.goto("http://localhost:4321/");
+  await page.goto("/");
   const input = page.getByTestId("input-cron-expression");
   await input.fill("37,33 15-20 17,22 7,9 * 2025,2027");
   await input.blur();
@@ -67,7 +67,7 @@ test("should update URL hash when changing cron expression", async ({
 test("should update code-1 element when cron expression changes", async ({
   page,
 }) => {
-  await page.goto("http://localhost:4321/");
+  await page.goto("/");
   const codeElement = page.getByTestId("code-1");
   await codeElement.isVisible();
   const initialCode = await codeElement.textContent();
@@ -88,7 +88,7 @@ test("should update code-1 element when cron expression changes", async ({
 test("should update URL hash multiple times when changing cron expression", async ({
   page,
 }) => {
-  await page.goto("http://localhost:4321/");
+  await page.goto("/");
   const input = page.getByTestId("input-cron-expression");
   const initialUrl = page.url();
   await input.clear();
@@ -106,10 +106,55 @@ test("should update URL hash multiple times when changing cron expression", asyn
 });
 
 test("should not contain template placeholders in code", async ({ page }) => {
-  await page.goto("http://localhost:4321/");
+  await page.goto("/");
   const codeElement = page.getByTestId("code-1");
   await codeElement.isVisible();
   const codeText = await codeElement.textContent();
   expect(codeText).not.toContain("{{locale}}");
   expect(codeText).not.toContain("{{cron-formated}}");
+});
+
+test("t1", async ({ page }) => {
+  await page.goto("/demo/location_hash");
+  const existsLocationHashStorageSetItem = await page.evaluate(
+    `!!LocationHashStorage.setItem`,
+  );
+  const existsLocationHashStorageGetItem = await page.evaluate(
+    `!!LocationHashStorage.getItem`,
+  );
+  const existsLocationHashStorageRemoveItem = await page.evaluate(
+    `!!LocationHashStorage.removeItem`,
+  );
+
+  expect(existsLocationHashStorageSetItem).toBe(true);
+  expect(existsLocationHashStorageGetItem).toBe(true);
+  expect(existsLocationHashStorageRemoveItem).toBe(true);
+});
+
+test("t2", async ({ page }) => {
+  await page.goto("/demo/location_hash");
+
+  await page.evaluate(`LocationHashStorage.setItem("foo", "bar")`);
+
+  const url = page.url();
+  expect(url).toContain("foo=bar");
+
+  await page.evaluate(`LocationHashStorage.setItem("taz", "biz")`);
+
+  const url2 = page.url();
+  expect(url2).toContain("taz=biz");
+
+  const retrievedValue = await page.evaluate(
+    `LocationHashStorage.getItem("taz")`,
+  );
+  expect(retrievedValue).toBe("biz");
+});
+
+test("t3", async ({ page }) => {
+  await page.goto("/demo/location_hash#taz=biz");
+
+  const retrievedValue = await page.evaluate(
+    `LocationHashStorage.getItem("taz")`,
+  );
+  expect(retrievedValue).toBe("biz");
 });
