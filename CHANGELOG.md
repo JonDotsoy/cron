@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.4](https://github.com/JonDotsoy/cron/compare/cron-v0.6.3...cron-v0.6.4) (2026-04-23)
+
+
+### Bug Fixes
+
+* **tsconfig:** add missing types for bun ([4ece8aa](https://github.com/JonDotsoy/cron/commit/4ece8aad927789d20c63462d0cfc3fd26f0aca16))
+
 ## [0.6.3](https://github.com/JonDotsoy/cron/compare/cron-v0.6.2...cron-v0.6.3) (2025-11-17)
 
 
