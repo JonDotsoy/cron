@@ -44,7 +44,7 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "temporal-polyfill": "0.3.0"
+    "temporal-polyfill": "0.3.2"
   },
   "license": "MIT",
   "author": "Jonathan Delgado <hi@jon.soy>",
