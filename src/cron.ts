@@ -84,7 +84,7 @@ export class Cron {
   }
 
   get isReboot(): boolean {
-    return this.isReboot;
+    return this.#isReboot;
   }
   get minute(): Rule | null {
     return this.#minute;
@@ -161,7 +161,7 @@ export class Cron {
       throw new Error("Cannot iterate over @reboot expression");
     }
 
-    // Start from current time, rounded to next mi ew   nute
+    // Start from current time, rounded to next minute
     let current = Temporal.Now.plainDateTimeISO();
     current = current
       .add({ minutes: 1 })
@@ -356,6 +356,11 @@ export class Cron {
     return current.add({ minutes: 1 });
   }
 
+  static canParse(expr: string): boolean {
+    const trimmed = expr.trim();
+    return Cron._SPECIAL_RE.test(trimmed) || Cron._STANDARD_RE.test(trimmed);
+  }
+
   static parseSpec(rule: string): Spec {
     const trimmed = rule.trim();
 
@@ -401,6 +406,11 @@ export class Cron {
       year: yearPart ? Cron.parseField(yearPart, 1970, 3000) : { any: true },
     };
   }
+
+  private static readonly _SPECIAL_RE =
+    /^@(?:yearly|annually|monthly|weekly|daily|midnight|hourly|reboot)$/i;
+  private static readonly _STANDARD_RE =
+    /^(?:(?:\*(?:\/\d+)?|\w+(?:-\w+)?(?:\/\d+)?)(?:,(?:\*(?:\/\d+)?|\w+(?:-\w+)?(?:\/\d+)?))*\s+){4}(?:\*(?:\/\d+)?|\w+(?:-\w+)?(?:\/\d+)?)(?:,(?:\*(?:\/\d+)?|\w+(?:-\w+)?(?:\/\d+)?))*(?:\s+(?:\*(?:\/\d+)?|\w+(?:-\w+)?(?:\/\d+)?)(?:,(?:\*(?:\/\d+)?|\w+(?:-\w+)?(?:\/\d+)?))*)?$/;
 
   private static readonly MONTH_NAMES: Record<string, number> = {
     jan: 1,

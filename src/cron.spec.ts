@@ -1029,7 +1029,7 @@ describe("Cron - NaN validation", () => {
 
   test("should parse complex expression without NaN values", () => {
     const expression = "*/6 19 31 2 3-6 2028-2030";
-    const cron = new Cron(expression);
+    const cron: any = new Cron(expression);
 
     // Check minute field
     if ("stepValues" in cron.spec.minute) {
@@ -1338,5 +1338,43 @@ describe("Cron.fromSpec", () => {
       { hour: 14, minute: 30 },
       { hour: 14, minute: 30 },
     ]);
+  });
+});
+
+describe("Cron 2", () => {
+  test.each([["0 * * * *"], ["1,2-4 * * * *"]])("should", (cronExpr) => {
+    const cron = new Cron(cronExpr);
+
+    console.log(`Testing cron expression:`, cron.minute);
+  });
+});
+
+describe("Cron.canParse", () => {
+  test.each([
+    ["0 * * * *", true],
+    ["0 0 * * *", true],
+    ["*/5 * * * *", true],
+    ["0 9-17 * * 1-5", true],
+    ["0,30 * * * *", true],
+    ["0 0 1 jan *", true],
+    ["0 0 * * mon-fri", true],
+    ["0 0 * * * 2025", true],
+    ["@yearly", true],
+    ["@annually", true],
+    ["@monthly", true],
+    ["@weekly", true],
+    ["@daily", true],
+    ["@midnight", true],
+    ["@hourly", true],
+    ["@reboot", true],
+    ["  0 * * * *  ", true],
+    ["* * * * *", true],
+    ["invalid", false],
+    ["", false],
+    ["@unknown", false],
+    ["* * * *", false],
+    ["* * * * * * *", false],
+  ])("canParse(%s) === %s", (expr, expected) => {
+    expect(Cron.canParse(expr)).toBe(expected);
   });
 });
